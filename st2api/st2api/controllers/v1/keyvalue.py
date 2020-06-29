@@ -22,7 +22,7 @@ from st2api.controllers.resource import ResourceController
 from st2common import log as logging
 from st2common.constants.keyvalue import ALL_SCOPE, FULL_SYSTEM_SCOPE, SYSTEM_SCOPE
 from st2common.constants.keyvalue import FULL_USER_SCOPE, USER_SCOPE, ALLOWED_SCOPES
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.keyvalue import CryptoKeyNotSetupException, InvalidScopeException
 from st2common.models.api.keyvalue import KeyValuePairAPI
 from st2common.models.db.auth import UserDB
@@ -294,7 +294,7 @@ class KeyValuePairController(ResourceController):
                     scope=scope,
                     name=key_ref
                 )
-            except StackStormDBObjectNotFoundError:
+            except coditationDBObjectNotFoundError:
                 existing_kvp_api = None
 
             # st2client sends invalid id when initially setting a key so we ignore those

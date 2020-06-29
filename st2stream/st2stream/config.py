@@ -54,10 +54,10 @@ def _register_app_opts():
     api_opts = [
         cfg.StrOpt(
             'host', default='127.0.0.1',
-            help='StackStorm stream API server host'),
+            help='coditation stream API server host'),
         cfg.IntOpt(
             'port', default=9102,
-            help='StackStorm API stream, server port'),
+            help='coditation API stream, server port'),
         cfg.BoolOpt(
             'debug', default=False,
             help='Specify to enable debug mode.'),

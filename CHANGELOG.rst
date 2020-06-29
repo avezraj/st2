@@ -93,7 +93,7 @@ Changed
   task completion instead of task transition. (improvement)
 * The workflow engine orquesta is updated to v1.1.0 for the st2 v3.2 release. The version upgrade
   contains various new features and bug fixes. Please review the release notes for the full list of
-  changes at https://github.com/StackStorm/orquesta/releases/tag/v1.1.0 and the st2 upgrade notes
+  changes at https://github.com/coditation/orquesta/releases/tag/v1.1.0 and the st2 upgrade notes
   for potential impact. (improvement)
 * Update st2 nginx config to remove deprecated ``ssl on`` option. #4917 (improvement)
 
@@ -165,15 +165,15 @@ Fixed
 
 * Fix dependency conflicts by updating ``requests`` (2.23.0) and ``gitpython`` (2.1.15). #4869
 * Fix orquesta syntax error for with items task where action is misindented or missing. (bug fix)
-  PR StackStorm/orquesta#195.
+  PR coditation/orquesta#195.
 * Fix orquesta yaql/jinja vars extraction to ignore methods of base ctx() dict. (bug fix)
-  PR StackStorm/orquesta#196. Fixes #4866.
+  PR coditation/orquesta#196. Fixes #4866.
 * Fix parsing of array of dicts in YAQL functions. Fix regression in YAQL/Jinja conversion
-  functions as a result of the change. (bug fix) PR StackStorm/orquesta#191.
+  functions as a result of the change. (bug fix) PR coditation/orquesta#191.
 
   Contributed by Hiroyasu Ohyama (@userlocalhost)
 * Fix retry in orquesta when a task that has a transition on failure will also be traversed on
-  retry. (bug fix) PR StackStorm/orquesta#200
+  retry. (bug fix) PR coditation/orquesta#200
 
 Removed
 ~~~~~~~
@@ -226,14 +226,14 @@ Fixed
 * Add ``source_channel`` back to the context used by Mistral workflows for executions which are
   triggered via ChatOps (using action alias).
 
-  In StackStorm v3.0.0, this variable was inadvertently removed from the context used by Mistral
+  In coditation v3.0.0, this variable was inadvertently removed from the context used by Mistral
   workflows. (bug fix) #4650 #4656
 * Fix a bug with ``timestamp`` attribute in the ``execution.log`` attribute being incorrect when
   server time where st2api is running was not set to UTC. (bug fix) #4668
 
   Contributed by Igor Cherkaev. (@emptywee)
 * Fix a bug with some packs which use ``--use-python3`` flag (running Python 3 actions on installation
-  where StackStorm components run under Python 2) which rely on modules from Python 3 standard
+  where coditation components run under Python 2) which rely on modules from Python 3 standard
   library which are also available in Python 2 site-packages (e.g. ``concurrent``) not working
   correctly.
 
@@ -303,7 +303,7 @@ Added
   as-is).
 
   The most common use case for this feature is migrating / restoring datastore values from one
-  StackStorm instance to another which uses the same crypto key.
+  coditation instance to another which uses the same crypto key.
 
   Contributed by Nick Maludy (Encore Technologies) #4547
 * Add ``source_channel`` to Orquesta ``st2()`` context for workflows called via ChatOps. #4600
@@ -315,10 +315,10 @@ Changed
 * Refactored workflow state in orquesta workflow engine. Previously, state in the workflow engine
   is not status to be consistent with st2. Other terminologies used in the engine are also revised
   to make it easier for developers to understand. (improvement)
-* Update Python runner code so it prioritizes libraries from pack virtual environment over StackStorm
+* Update Python runner code so it prioritizes libraries from pack virtual environment over coditation
   system dependencies.
 
-  For example, if pack depends on ``six==1.11.0`` in pack ``requirements.txt``, but StackStorm depends
+  For example, if pack depends on ``six==1.11.0`` in pack ``requirements.txt``, but coditation depends
   on ``six==1.10.0``, ``six==1.11.0`` will be used when running Python actions from that pack.
 
   Keep in mind that will not work correctly if pack depends on a library which brakes functionality used
@@ -358,14 +358,14 @@ Fixed
 
 * Refactored orquesta execution graph to fix performance issue for workflows with many references
   to non-join tasks. st2workflowengine and DB models are refactored accordingly. (improvement)
-  StackStorm/orquesta#122.
+  coditation/orquesta#122.
 * Fix orquesta workflow stuck in running status when one or more items failed execution for a with
   items task. (bug fix) #4523
 * Fix orquesta workflow bug where context variables are being overwritten on task join. (bug fix)
-  StackStorm/orquesta#112
+  coditation/orquesta#112
 * Fix orquesta with items task performance issue. Workflow runtime increase significantly when a
   with items task has many items and result in many retries on write conflicts. A distributed lock
-  is acquired before write operations to avoid write conflicts. (bug fix) Stackstorm/orquesta#125
+  is acquired before write operations to avoid write conflicts. (bug fix) coditation/orquesta#125
 * Fix a bug with some API endpoints returning 500 internal server error when an exception contained
   unicode data. (bug fix) #4598
 * Fix the ``st2 workflow inspect`` command so it correctly passes authentication token. (bug fix)
@@ -386,7 +386,7 @@ Fixed
 
   Reported by Carlos Santana (@kknyxkk) and Rafael Martins (@rsmartins78).
 * Fix ``st2-self-check`` so it sets correct permissions on pack directories which it copies over
-  to ``/opt/stackstorm/packs``. (bug fix) #4645
+  to ``/opt/coditation/packs``. (bug fix) #4645
 * Fix ``POST /v1/actions`` API endpoint to throw a more user-friendly error when writing data file
   to disk fails because of incorrect permissions. (bug fix) #4645
 
@@ -453,7 +453,7 @@ Added
   NOTE: Those options are only supported when using a default and officially supported AMQP backend
   with RabbitMQ server. (new feature) #4541
 * Add metrics instrumentation to the ``st2notifier`` service. For the available / exposed metrics,
-  please refer to https://docs.stackstorm.com/reference/metrics.html. (improvement) #4536
+  please refer to https://docs.coditation.com/reference/metrics.html. (improvement) #4536
 
 Changed
 ~~~~~~~
@@ -471,7 +471,7 @@ Changed
   could result in a code execution vulnerability if code uses ``yaml.load`` in an unsafe manner
   on untrusted input.
 
-  NOTE: StackStorm platform itself is not affected, because we already used ``yaml.safe_load``
+  NOTE: coditation platform itself is not affected, because we already used ``yaml.safe_load``
   everywhere.
 
   Only custom packs which use ``yaml.load`` with non trusted user input could potentially be
@@ -597,7 +597,7 @@ Changed
   which has been introduced in a previous release. This means that the runner loading is now fully
   automatic and dynamic.
 
-  All the available / installed runners are automatically loaded and registering on each StackStorm
+  All the available / installed runners are automatically loaded and registering on each coditation
   service startup.
 
   This means that ``st2ctl reload --register-runners`` flag is now obsolete because runners are
@@ -606,9 +606,9 @@ Changed
   also deprecated and unused.
 
   For users who wish to develop and user custom action runners, they simply need to ensure they are
-  packaged as Python packages and available / installed in StackStorm virtual environment
-  (``/opt/stackstorm/st2``). (improvement) #4217
-* Old runner names which have been deprecated in StackStorm v0.9.0 have been removed (run-local,
+  packaged as Python packages and available / installed in coditation virtual environment
+  (``/opt/coditation/st2``). (improvement) #4217
+* Old runner names which have been deprecated in coditation v0.9.0 have been removed (run-local,
   run-local-script, run-remote, run-remote-script, run-python, http-runner). If you are still using
   actions which reference runners using old names, you need to update them to keep it working.
   #4217
@@ -623,7 +623,7 @@ Changed
 
 * Improve ``st2.conf`` migration for the new services by using prod-friendly logging settings by default #4415
 * Refactor Orquesta workflow to output on error. Depends on PR
-  https://github.com/StackStorm/orquesta/pull/101 and https://github.com/StackStorm/orquesta/pull/102
+  https://github.com/coditation/orquesta/pull/101 and https://github.com/coditation/orquesta/pull/102
   (improvement)
 * Rename ``st2client.liveactions`` to ``st2client.executions``. ``st2client.liveactions`` already
   represented operations on execution objects, but it was incorrectly named.
@@ -659,9 +659,9 @@ Fixed
 
   Reported by Nick Maludy (improvement) #4260
 * Fix string operations on unicode data in Orquesta workflows, associated with PR
-  https://github.com/StackStorm/orquesta/pull/98. (bug fix)
+  https://github.com/coditation/orquesta/pull/98. (bug fix)
 * Fix access to st2 and action context in Orquesta workflows, associated with PR
-  https://github.com/StackStorm/orquesta/pull/104. (bug fix)
+  https://github.com/coditation/orquesta/pull/104. (bug fix)
 * ``st2ctl reload --register-aliases`` and ``st2ctl reload --register-all`` now spits a warning when
   trying to register aliases with no corresponding action registered in the db.
 
@@ -685,7 +685,7 @@ Fixed
   using Python 3 virtual environment.
 
   We only support running Python runner actions from packs which use mixed Python environments
-  (StackStorm components are running under Python 2 and particular a pack virtual environment is
+  (coditation components are running under Python 2 and particular a pack virtual environment is
   using Python 3). #4354
 * Update ``st2-pack-install`` and ``st2 pack install`` command so it works with local git repos
   (``file://<path to local git repo>``) which are in a detached head state (e.g. specific revision
@@ -720,7 +720,7 @@ Added
   It's primary meant to be used in scenarios where the content (packs) are baked into the base
   container / VM image which is deployed to the cluster.
 
-  Keep in mind that the content itself still needs to be registered with StackStorm at some later
+  Keep in mind that the content itself still needs to be registered with coditation at some later
   point when access to RabbitMQ and MongoDB is available by running
   ``st2ctl reload --register-all``. (new feature) #3912 #4256
 * Add new ``/v1/stream/executions/<id>/output[?output_type=all|stdout|stderr]`` stream API
@@ -797,7 +797,7 @@ Changed
   (improvement) #4231
 * Improve code metric instrumentation and instrument code and various services with more metrics.
   Also document various exposed metrics. Documentation can be found at
-  https://docs.stackstorm.com/latest/reference/metrics.html (improvement) #4310
+  https://docs.coditation.com/latest/reference/metrics.html (improvement) #4310
 * Add new ``metrics.prefix`` config option. With this option user can specify an optional prefix
   which is prepended to each metric key (name). This comes handy in scenarios where user wants to
   submit metrics from multiple environments / deployments (e.g. testing, staging, dev) to the same
@@ -816,7 +816,7 @@ Fixed
   appear when using Python 3 for a particular pack virtual environment and running on RHEL /
   CentOS. (bug fix) #4297
 * Fix a bug with action runner throwing an exception and failing to run an action if there was an
-  empty pack config inside ``/opt/stackstorm/configs/``. (bug fix) #4325
+  empty pack config inside ``/opt/coditation/configs/``. (bug fix) #4325
 * Fix ``action_sensor.enable`` config option so it works correctly if user sets this option to a
   non-default value of ``True``. (bug fix) #4312 #4315
 
@@ -828,13 +828,13 @@ Fixed
 Deprecated
 ~~~~~~~~~~
 
-* The CloudSlang runner is now deprecated. In StackStorm 3.1 it will be removed from the core
-  StackStorm codebase. The runner code will be moved to a separate repository, and no longer
-  maintained by the core StackStorm team. Users will still be able to install and use this runner,
+* The CloudSlang runner is now deprecated. In coditation 3.1 it will be removed from the core
+  coditation codebase. The runner code will be moved to a separate repository, and no longer
+  maintained by the core coditation team. Users will still be able to install and use this runner,
   but it will require additional steps to install.
-* The ``winexe``-based Windows runners are now deprecated. They will be removed in StackStorm 3.1.
+* The ``winexe``-based Windows runners are now deprecated. They will be removed in coditation 3.1.
   They have been replaced by ``pywinrm``-based Windows runners. See
-  https://docs.stackstorm.com/latest/reference/runners.html#winrm-command-runner-winrm-cmd
+  https://docs.coditation.com/latest/reference/runners.html#winrm-command-runner-winrm-cmd
   for more on using these new runners.
 
 2.8.1 - July 18, 2018
@@ -887,7 +887,7 @@ Fixed
 Added
 ~~~~~
 
-* Orquesta - new StackStorm-native workflow engine. This is currently in **beta**. (new feature)
+* Orquesta - new coditation-native workflow engine. This is currently in **beta**. (new feature)
 * Added metrics for collecting performance and health information about the various ST2 services
   and functions. (new feature) #4004 #2974
 * When running a dev (unstable) release include git revision hash in the output when using
@@ -936,7 +936,7 @@ Changed
   This way users don't need to explicitly provide ``--config-file`` CLI argument when running
   various scripts (e.g. ``st2-track-result``, ``st2-apply-rbac-definitions``, etc.) and when they
   just want to use a default config file. (improvement) #4111
-* Update st2 CLI to print a warning if a non-unicode system locale which would prevent StackStorm
+* Update st2 CLI to print a warning if a non-unicode system locale which would prevent coditation
   to function correctly in some scenarios is used. (improvement) #4127 #4120
 * Upgrade various internal Python library dependencies to the latest stable versions (kombu, amqp,
   gitpython, pytz, semver, oslo.utils). (improvement) #4162
@@ -998,9 +998,9 @@ Fixed
   Note: This issue only affects users which utilize RBAC with remote LDAP groups to local RBAC
   roles synchronization feature enabled. (enterprise) (bug fix) #4103 #4105
 * Fix an issue with some sensors which rely on ``select.poll()`` (FileWatch, GithubSensor, etc.)
-  stopped working with StackStorm >= 2.7.0.
+  stopped working with coditation >= 2.7.0.
 
-  StackStorm v2.7.0 inadvertently introduced a change which broke a small set of sensors which
+  coditation v2.7.0 inadvertently introduced a change which broke a small set of sensors which
   rely on ``select.poll()`` functionality. (bug fix) #4118
 
 * Throw if ``id`` CLI argument is not passed to the ``st2-track-result`` script. (bug fix) #4115
@@ -1091,7 +1091,7 @@ Changed
 * Increase maximum retry delay for ``action.retry`` policy from 5 seconds to 120 seconds. Because
   of the way retries are currently implemented (they are not st2notifier service restart safe),
   long retry delays are not recommended. For more information on this limitation please refer to
-  the documentation - https://docs.stackstorm.com/reference/policies.html#retry. #3630 #3637
+  the documentation - https://docs.coditation.com/reference/policies.html#retry. #3630 #3637
 * Update Python runner so it throws a more user-friendly exception in case Python script tries to
   access a key in ``self.config`` dictionary which doesn't exist. (improvement) #4014
 * Update various Python dependencies to the latest stable versions (apscheduler, gitpython,
@@ -1129,7 +1129,7 @@ Fixed
 * Fixed missing "paused" status option from "st2 execution list" help output. (bugfix) #4037
 
   Contributed by Ben Hohnke (NTT Communications ICT Solutions)
-* Fix "st2 pack install" command so it doesn't require access to pack index (index.stackstorm.org)
+* Fix "st2 pack install" command so it doesn't require access to pack index (index.coditation.org)
   when installing a local pack (pack name starting with "file://"). (bug fix) #3771 #3772
 * Fix rules engine so it correctly handles and renders action parameters which contain Jinja
   expressions and default values. (bug fix) #4050 #4050
@@ -1202,7 +1202,7 @@ Changed
 ~~~~~~~
 
 * ``st2actions.runners.pythonrunner.Action`` class path for base Python runner actions has been
-  deprecated since StackStorm v1.6.0 and will be fully removed in StackStorm v2.7.0. If you have
+  deprecated since coditation v1.6.0 and will be fully removed in coditation v2.7.0. If you have
   any actions still using this path you are encouraged to update them to use
   ``st2common.runners.base_action.Action`` path. #3803
 * Refactor ``st2common`` Python package so it's fully self sustaining and can be used in a
@@ -1217,7 +1217,7 @@ Changed
 * Mask values in an Inquiry response displayed to the user that were marked as "secret" in the
   inquiry's response schema. #3825
 * Real-time action output streaming is now enabled by default. For more information on this
-  feature, please refer to the documentation - https://docs.stackstorm.com/latest/reference/action_output_streaming.html.
+  feature, please refer to the documentation - https://docs.coditation.com/latest/reference/action_output_streaming.html.
   You can disable this functionality by setting ``actionrunner.stream_output`` config option in
   ``st2.conf`` to ``False`` and restart the services (``sudo st2ctl restart``).
 
@@ -1337,7 +1337,7 @@ Added
   particular assignment comes from (from which local assignment or mapping file). (improvement)
   #3763
 * Add support for overlapping RBAC role assignments for assignments via remote LDAP group to
-  StackStorm role mappings. This means that the same role can now be granted via multiple RBAC
+  coditation role mappings. This means that the same role can now be granted via multiple RBAC
   mapping files.
   #3763
 * Add new Jinja filters ``from_json_string``, ``from_yaml_string``, and ``jsonpath_query``.
@@ -1387,7 +1387,7 @@ Fixed
   cascaded down to subworkflows appropriately. Cancel from tasks in the workflow or chain is
   cascaded up to the parent. (bug fix)
 * Fix delays in st2resultstracker on querying workflow status from Mistral. Make sleep time for
-  empty queue and no workers configurable. Reduce the default sleep times to 5 seconds. StackStorm
+  empty queue and no workers configurable. Reduce the default sleep times to 5 seconds. coditation
   instances that handle more workflows should consider increasing the query interval for better
   CPU utilization.
 * Fix missing type for the parameters with enum in the core st2 packs.(bug fix) #3737
@@ -1460,7 +1460,7 @@ Changed
   ``st2 run`` CLI command. #3670
 
   Contributed by Hiroyasu OHYAMA.
-* Added new command ``st2-cleanup-db`` that drops the current StackStorm MongoDB database. #3659
+* Added new command ``st2-cleanup-db`` that drops the current coditation MongoDB database. #3659
 
   Contributed by Nick Maludy (Encore Technologies).
 
@@ -1499,7 +1499,7 @@ Added
 
   Contributed by Hiroyasu OHYAMA.
 * Copy nearly all existing Jinja filters and make them available in both Jinja and YAQL within
-  Mistral workflows (https://github.com/StackStorm/st2mistral/pull/30). Modify st2kv default
+  Mistral workflows (https://github.com/coditation/st2mistral/pull/30). Modify st2kv default
   behavior (BREAKING CHANGE) to not decrypt ciphertext in datastore by default (now explicitly
   enabled via optional parameter).
 
@@ -1525,7 +1525,7 @@ Removed
 ~~~~~~~
 
 * Support for pack ``config.yaml`` has been removed. Pack configuration should use the new
-  style, at ``/opt/stackstorm/configs/<pack>.yaml``. Packs containing ``config.yaml`` will generate
+  style, at ``/opt/coditation/configs/<pack>.yaml``. Packs containing ``config.yaml`` will generate
   a fatal ERROR on pack registration.
 
 Fixed
@@ -1580,7 +1580,7 @@ Fixed
   (bug fix)
 
   Contributed by carbineneutral. #3534 #3544
-* st2 pack commands now work when StackStorm servers are behind a HTTP/HTTPS proxy. You can set
+* st2 pack commands now work when coditation servers are behind a HTTP/HTTPS proxy. You can set
   ``http_proxy`` or ``https_proxy`` environment variables for ``st2api`` and ``st2actionrunner``
   processes and pack commands will work with proxy. Refer to documentation for details on
   proxy configuration. (bug-fix) #3137
@@ -1629,7 +1629,7 @@ Changed
 * Update ``st2 run`` / ``st2 execution run`` command to display result of workflow actions when
   they finish. In the workflow case, result of the last task (action) of the workflow is used.
   (improvement) #3481
-* Update Python runner so it mimics behavior from StackStorm pre 1.6 and returns action result as
+* Update Python runner so it mimics behavior from coditation pre 1.6 and returns action result as
   is (serialized as string) in case we are unable to serialize action result because it contains
   non-simple types (e.g. class instances) which can't be serialized.
 
@@ -1692,7 +1692,7 @@ Added
   about a particular user, retrieve a list of groups a particular user is a member of).
   (new feature)
 * Add support for automatic RBAC role assignment based on the remote auth backend groups user is a
-  member of (e.g. LDAP groups) and mappings defined in ``/opt/stackstorm/rbac/mappings`` directory.
+  member of (e.g. LDAP groups) and mappings defined in ``/opt/coditation/rbac/mappings`` directory.
 
   Note: This functionality is currently implemented for enterprise LDAP auth backend and only
   available in enterprise edition.
@@ -1734,9 +1734,9 @@ Changed
 * Refactor the action execution asynchronous callback functionality into the runner plugin
   architecture. (improvement)
 * Linux file watch sensor is now disabled by default. To enable it, set ``enabled: true`` in
-  ``/opt/stackstorm/packs/linux/sensors/file_watch_sensor.yaml``
+  ``/opt/coditation/packs/linux/sensors/file_watch_sensor.yaml``
 * Update the code so user can specify arbitrary default TTL for access tokens in ``st2.conf`` and
-  all the StackStorm services which rely on access tokens still work.
+  all the coditation services which rely on access tokens still work.
 
   Previously, the lowest TTL user could specify for all the services to still work was 24 hours.
   This has been fixed and the default TTL specified in the config now only affects user access
@@ -1794,7 +1794,7 @@ Deprecated
 ~~~~~~~~~~
 
 * Packs containing ``config.yaml`` will now generate a WARNING log on pack registration. Support for
-  ``config.yaml`` will be removed in StackStorm 2.4. Migrate your pack configurations now.
+  ``config.yaml`` will be removed in coditation 2.4. Migrate your pack configurations now.
 
 Fixed
 ~~~~~
@@ -1826,7 +1826,7 @@ Security
 ~~~~~~~~
 
 * Make sure all the role assignments for a particular user are correctly deleted from the database
-  after deleting an assignment file from ``/opt/stackstorm/rbac/assignments`` directory and running
+  after deleting an assignment file from ``/opt/coditation/rbac/assignments`` directory and running
   ``st2-apply-rbac-definitions`` tool. (bug fix)
 
 
@@ -1839,7 +1839,7 @@ Added
 * Allow user to specify which branch of ``st2tests`` repository to use by passing ``-b`` option to
   ``st2-self-check`` script. (improvement)
 * Update ``tooz`` library to the latest version (v1.15.0). Using the latest version means
-  StackStorm now also supports using ``consul``, ``etcd`` and other new backends supported by
+  coditation now also supports using ``consul``, ``etcd`` and other new backends supported by
   tooz for coordination. (improvement)
 
 Fixed
@@ -1851,12 +1851,12 @@ Fixed
   directory name doesn't match the pack name (this might be the case with new pack management
   during development where local git repository directory name doesn't match pack name) (bug fix)
 * Fix a bug with default values from pack config schema not being passed via config to Python
-  runner actions and sensors if pack didn't contain a config file in ``/opt/stackstorm/configs``
+  runner actions and sensors if pack didn't contain a config file in ``/opt/coditation/configs``
   directory. (bug fix)
 
   Reported by Jon Middleton.
 * Make various improvements and changes to ``st2-run-pack-tests`` script so it works out of the box
-  on servers where StackStorm has been installed using packages. (improvement)
+  on servers where coditation has been installed using packages. (improvement)
 * Fix a bug with authentication middleware not working correctly when supplying credentials in an
   Authorization header using basic auth format when password contained a colon (``:``).
 
@@ -2026,22 +2026,22 @@ Added
 
 * New pack management:
 
-  - Add new ``stackstorm_version`` and ``system`` fields to the pack.yaml metadata file. Value of
-    the first field can contain a specific StackStorm version with which the pack is designed to
+  - Add new ``coditation_version`` and ``system`` fields to the pack.yaml metadata file. Value of
+    the first field can contain a specific coditation version with which the pack is designed to
     work with (e.g. ``>=1.6.0,<2.2.0`` or ``>2.0.0``). This field is checked when installing /
     registering a pack and installation is aborted if pack doesn't support the currently running
-    StackStorm version. Second field can contain an object with optional system / OS level
+    coditation version. Second field can contain an object with optional system / OS level
     dependencies. (new feature)
   - Add new ``contributors`` field to the pack metadata file. This field can contain a list of
     people who have contributed to the pack. The format is ``Name <email>``, e.g.
-    ``Tomaz Muraus <tomaz@stackstorm.com>`` (new feature)
+    ``Tomaz Muraus <tomaz@coditation.com>`` (new feature)
   - Add support for default values and dynamic config values for nested config objects.
     (new feature, improvement)
   - Add new ``st2-validate-pack-config`` tool for validating config file against a particular
     config schema file. (new-feature)
 
 * Add new ``POST /v1/actionalias/match`` API endpoint which allows users to perform ChatOps action
-  alias matching server-side. This makes it easier to build and maintain StackStorm ChatOps
+  alias matching server-side. This makes it easier to build and maintain coditation ChatOps
   clients / adapters for various protocols and mediums. Clients can now be very thin wrappers
   around this new API endpoint.
 
@@ -2172,11 +2172,11 @@ Added
   command by passing multiple ids to the command -
   ``st2 execution cancel <id 1> <id 2> <id n>`` (improvement)
 * We now execute --register-rules as part of st2ctl reload. PR raised by Vaishali:
-  https://github.com/StackStorm/st2/issues/2861#issuecomment-239275641
+  https://github.com/coditation/st2/issues/2861#issuecomment-239275641
 * Update ``packs.uninstall`` command to print a warning message if any rules in the system
   reference a trigger from a pack which is being uninstalled. (improvement)
 * Allow user to list and view rules using the API even if a rule in the database references a
-  non-existent trigger. This shouldn't happen during normal usage of StackStorm, but it makes it
+  non-existent trigger. This shouldn't happen during normal usage of coditation, but it makes it
   easier for the user to clean up in case database ends up in a inconsistent state. (improvement)
 
 Changed
@@ -2184,7 +2184,7 @@ Changed
 
 * Refactor Jinja filter functions into appropriate modules. (improvement)
 * Bump default timeout for ``packs.load`` command from ``60`` to ``100`` seconds. (improvement)
-* Upgrade pip and virtualenv libraries used by StackStorm pack virtual environments to the latest
+* Upgrade pip and virtualenv libraries used by coditation pack virtual environments to the latest
   versions (8.1.2 and 15.0.3).
 * Change Python runner action and sensor Python module loading so the module is still loaded even if
   the module name clashes with another module which is already in ``PYTHONPATH``
@@ -2223,13 +2223,13 @@ Added
   display chatops messages in custom formatted way. (improvement)
 * Include a field ``elapsed_seconds`` in execution API response for GET calls. The clients using
   the API can now use ``elapsed_seconds`` without having to repeat computation. (improvement)
-* Implement custom YAQL function ``st2kv`` in Mistral to get key-value pair from StackStorm's
+* Implement custom YAQL function ``st2kv`` in Mistral to get key-value pair from coditation's
   datastore. (new-feature)
 
 Changed
 ~~~~~~~
 
-* Upgrade to pymongo 3.2.2 and mongoengine 0.10.6 so StackStorm now also supports and works with
+* Upgrade to pymongo 3.2.2 and mongoengine 0.10.6 so coditation now also supports and works with
   MongoDB 3.x. (improvement)
 * Update action runner to use two internal green thread pools - one for regular (non-workflow) and
   one for workflow actions. Both pool sizes are user-configurable. This should help increase the
@@ -2250,7 +2250,7 @@ Changed
 * Include testing for chatops ``format_execution_result`` python action. The tests cover various
   action types. (improvement)
 * Update ``st2-register-content`` script so it validates new style configs in
-  ``/opt/stackstorm/configs/`` directory when using ``--register-configs`` flag if a pack contains
+  ``/opt/coditation/configs/`` directory when using ``--register-configs`` flag if a pack contains
   a config schema (``config.schema.yaml``). (improvement)
 
 Fixed
@@ -2320,7 +2320,7 @@ Added
 * Introduce a new concept of pack config schemas. Each pack can now contain a
   ``config.schema.yaml`` file. This file can contain an optional schema for the pack config.
   Site-specific pack configuration is then stored outside the pack directory, in
-  ``/opt/stackstorm/configs/<pack name>.yaml``. Those files are similar to the existing pack
+  ``/opt/coditation/configs/<pack name>.yaml``. Those files are similar to the existing pack
   configs, but in addition to the static values they can also contain dynamic values. Dynamic value
   is a value which contains a Jinja expression which is resolved to a datastore item during
   run-time. (new feature)
@@ -2352,7 +2352,7 @@ Removed
 * Remove now deprecated Fabric based remote runner and corresponding
   ``ssh_runner.use_paramiko_ssh_runner`` config option. (cleanup)
 * Remove support for JSON format for resource metadata files. YAML was introduced and support for
-  JSON has been deprecated in StackStorm v0.6. Now the only supported metadata file format is YAML.
+  JSON has been deprecated in coditation v0.6. Now the only supported metadata file format is YAML.
 
 Fixed
 ~~~~~
@@ -2689,7 +2689,7 @@ Fixed
 Added
 ~~~~~
 
-* Allow user to specify URL which Mistral uses to talk to StackStorm API using ``mistral.api_url``
+* Allow user to specify URL which Mistral uses to talk to coditation API using ``mistral.api_url``
   configuration option. If this option is not provided it defaults to the old behavior of using the
   public API url (``auth.api_url`` setting). (improvement)
 
@@ -2729,7 +2729,7 @@ Added
   backends. For backward compatibility reasons, ``flat_file`` backend is installed and available by
   default. (new feature, improvement)
 * New st2auth authentication backend for authenticating against LDAP servers -
-  https://github.com/StackStorm/st2-auth-backend-ldap. (new feature)
+  https://github.com/coditation/st2-auth-backend-ldap. (new feature)
 * Enable Mistral workflow cancellation via ``st2 execution cancel``. (improvement)
 * Allow action-alias to be created and deleted from CLI.
 * Add support for ``--profile`` flag to all the services. When this flag is provided service runs
@@ -2862,7 +2862,7 @@ Added
 
 * Add new OpenStack Keystone authentication backend.
   [Itxaka Serrano]
-* Support for RabbitMQ cluster. StackStorm works with a RabbitMQ cluster and switches
+* Support for RabbitMQ cluster. coditation works with a RabbitMQ cluster and switches
   nodes on failover. (feature)
 * Introduce a Paramiko SSH runner that uses eventlets to run scripts or commands in parallel.
   (improvement) (experimental)
@@ -2930,7 +2930,7 @@ Changed
 ~~~~~~~
 
 * Changes to htpasswd file used in ``flat_file`` auth backend do not require
-  a restart of st2auth and consequently StackStorm. (feature)
+  a restart of st2auth and consequently coditation. (feature)
 
 
 0.12.1 - July 31, 2015
@@ -3249,7 +3249,7 @@ Added
   local or the remote runner (``run-local``, ``run-local-script``, ``run-remote``,
   ``run-remote-script``). (new-feature)
 * Default values of the parameter of an Action can be system values stored in kv-store. (new-feature)
-* Allow users to specify additional paths where StackStorm looks for integration packs using
+* Allow users to specify additional paths where coditation looks for integration packs using
   ``packs_base_paths`` setting. (new-feature)
 * Allow user to specify which Python binary to use for the Python runner actions using
   ``actionrunner.python_binary`` setting (new-feature)
@@ -3405,7 +3405,7 @@ Changed
 * Sensors are now run in their own process for isolation.
 * Python Actions are now run in their own process for isolation.
 * Separate out ``rules_engine`` into own process.
-* Packs default path moves from ``/opt/stackstorm`` to ``/opt/stackstorm/packs/``.
+* Packs default path moves from ``/opt/coditation`` to ``/opt/coditation/packs/``.
 * Webhooks are not part of a sensor. They are now part of core API. (Authentication may
   be required.)
 * API URLs are now versioned. All the existing paths have been prefixed with ``/v1``

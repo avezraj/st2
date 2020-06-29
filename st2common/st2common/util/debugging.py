@@ -37,7 +37,7 @@ def enable_debugging():
     global ENABLE_DEBUGGING
     ENABLE_DEBUGGING = True
 
-    # Set debug level for all StackStorm loggers
+    # Set debug level for all coditation loggers
     set_log_level_for_all_loggers(level=stdlib_logging.DEBUG)
 
     # Set debug log level for kombu

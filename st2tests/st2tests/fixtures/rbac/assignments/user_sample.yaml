@@ -1,5 +1,5 @@
 ---
-    username: "stackstorm_user"
+    username: "coditation_user"
     description: "User role assignment file which servers for demonstration purposes"
     enabled: false
     roles:

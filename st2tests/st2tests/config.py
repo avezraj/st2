@@ -309,7 +309,7 @@ def _register_scheduler_opts():
 def _register_exporter_opts():
     exporter_opts = [
         cfg.StrOpt(
-            'dump_dir', default='/opt/stackstorm/exports/',
+            'dump_dir', default='/opt/coditation/exports/',
             help='Directory to dump data to.')
     ]
 

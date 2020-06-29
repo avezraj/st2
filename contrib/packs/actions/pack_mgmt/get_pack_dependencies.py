@@ -59,10 +59,10 @@ class GetPackDependencies(Action):
                 # Check existing pack by pack name
                 existing_pack_version = get_pack_version(pack_name)
 
-                # Try one more time to get existing pack version by name if 'stackstorm-' is in
+                # Try one more time to get existing pack version by name if 'coditation-' is in
                 # pack name
-                if not existing_pack_version and 'stackstorm-' in pack_name.lower():
-                    existing_pack_version = get_pack_version(pack_name.split('stackstorm-')[-1])
+                if not existing_pack_version and 'coditation-' in pack_name.lower():
+                    existing_pack_version = get_pack_version(pack_name.split('coditation-')[-1])
 
                 if existing_pack_version:
                     if existing_pack_version and not existing_pack_version.startswith('v'):

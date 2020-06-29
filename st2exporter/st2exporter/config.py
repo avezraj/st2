@@ -50,7 +50,7 @@ def _register_common_opts():
 def _register_app_opts():
     dump_opts = [
         cfg.StrOpt(
-            'dump_dir', default='/opt/stackstorm/exports/',
+            'dump_dir', default='/opt/coditation/exports/',
             help='Directory to dump data to.')
     ]
 

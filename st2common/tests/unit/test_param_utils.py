@@ -882,7 +882,7 @@ class ParamsUtilsTest(DbTestCase):
             'fork': {
                 'type': 'string',
                 'position': 2,
-                'default': 'StackStorm',
+                'default': 'coditation',
             },
             'branch': {
                 'type': 'string',
@@ -910,7 +910,7 @@ class ParamsUtilsTest(DbTestCase):
         live_action_db_parameters = {
             'project': 'st2flow',
             'version': '3.0.0',
-            'fork': 'StackStorm',
+            'fork': 'coditation',
             'local_repo': '/tmp/repo'
         }
 
@@ -922,7 +922,7 @@ class ParamsUtilsTest(DbTestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2flow',
             'version': '3.0.0',
-            'fork': 'StackStorm',
+            'fork': 'coditation',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': False,  # default value used
@@ -933,7 +933,7 @@ class ParamsUtilsTest(DbTestCase):
         live_action_db_parameters = {
             'project': 'st2web',
             'version': '3.1.0',
-            'fork': 'StackStorm1',
+            'fork': 'coditation1',
             'update_changelog': True,
             'local_repo': '/tmp/repob'
         }
@@ -946,7 +946,7 @@ class ParamsUtilsTest(DbTestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2web',
             'version': '3.1.0',
-            'fork': 'StackStorm1',
+            'fork': 'coditation1',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': True,  # default value used
@@ -957,7 +957,7 @@ class ParamsUtilsTest(DbTestCase):
         live_action_db_parameters = {
             'project': 'st2rbac',
             'version': '3.2.0',
-            'fork': 'StackStorm2',
+            'fork': 'coditation2',
             'update_changelog': None,
             'local_repo': '/tmp/repoc'
         }
@@ -970,7 +970,7 @@ class ParamsUtilsTest(DbTestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2rbac',
             'version': '3.2.0',
-            'fork': 'StackStorm2',
+            'fork': 'coditation2',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': False,  # default value used

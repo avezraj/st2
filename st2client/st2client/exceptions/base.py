@@ -13,9 +13,9 @@
 # limitations under the License.
 
 
-class StackStormCLIBaseException(Exception):
+class coditationCLIBaseException(Exception):
     """
         The root of the exception class hierarchy for all
-        StackStorm CLI exceptions.
+        coditation CLI exceptions.
     """
     pass

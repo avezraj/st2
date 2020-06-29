@@ -19,7 +19,7 @@ import uuid
 
 import mock
 
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.transport.publishers import PoolPublisher
 from st2common.models.api.action import RunnerTypeAPI
 from st2common.models.db.action import ActionDB
@@ -47,10 +47,10 @@ class ActionDBUtilsTestCase(DbTestCase):
 
     def test_get_runnertype_nonexisting(self):
         # By id.
-        self.assertRaises(StackStormDBObjectNotFoundError, action_db_utils.get_runnertype_by_id,
+        self.assertRaises(coditationDBObjectNotFoundError, action_db_utils.get_runnertype_by_id,
                           'somedummyrunnerid')
         # By name.
-        self.assertRaises(StackStormDBObjectNotFoundError, action_db_utils.get_runnertype_by_name,
+        self.assertRaises(coditationDBObjectNotFoundError, action_db_utils.get_runnertype_by_name,
                           'somedummyrunnername')
 
     def test_get_runnertype_existing(self):
@@ -63,7 +63,7 @@ class ActionDBUtilsTestCase(DbTestCase):
 
     def test_get_action_nonexisting(self):
         # By id.
-        self.assertRaises(StackStormDBObjectNotFoundError, action_db_utils.get_action_by_id,
+        self.assertRaises(coditationDBObjectNotFoundError, action_db_utils.get_action_by_id,
                           'somedummyactionid')
         # By ref.
         action = action_db_utils.get_action_by_ref('packaintexist.somedummyactionname')
@@ -82,7 +82,7 @@ class ActionDBUtilsTestCase(DbTestCase):
 
     def test_get_actionexec_nonexisting(self):
         # By id.
-        self.assertRaises(StackStormDBObjectNotFoundError, action_db_utils.get_liveaction_by_id,
+        self.assertRaises(coditationDBObjectNotFoundError, action_db_utils.get_liveaction_by_id,
                           'somedummyactionexecid')
 
     def test_get_actionexec_existing(self):

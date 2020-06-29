@@ -20,7 +20,7 @@ import six
 from wsgiref.handlers import format_date_time
 
 from st2api.controllers.v1.packs import BasePacksController
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common import log as logging
 from st2common.models.api.pack import PackAPI
 from st2common.persistence.pack import Pack
@@ -118,7 +118,7 @@ class FilesController(BaseFileController):
 
         if not pack_db:
             msg = 'Pack with ref_or_id "%s" does not exist' % (ref_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         pack_ref = pack_db.ref
         pack_files = pack_db.files
@@ -184,7 +184,7 @@ class FileController(BaseFileController):
 
         if not pack_db:
             msg = 'Pack with ref_or_id "%s" does not exist' % (ref_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         if not file_path:
             raise ValueError('Missing file path')
@@ -202,7 +202,7 @@ class FileController(BaseFileController):
         normalized_file_path = get_pack_file_abs_path(pack_ref=pack_ref, file_path=file_path)
         if not normalized_file_path or not os.path.isfile(normalized_file_path):
             # Ignore references to files which don't exist on disk
-            raise StackStormDBObjectNotFoundError('File "%s" not found' % (file_path))
+            raise coditationDBObjectNotFoundError('File "%s" not found' % (file_path))
 
         file_size, file_mtime = self._get_file_stats(file_path=normalized_file_path)
 

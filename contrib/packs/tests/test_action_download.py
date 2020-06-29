@@ -41,37 +41,37 @@ PACK_INDEX = {
     "test": {
         "version": "0.4.0",
         "name": "test",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test",
         "author": "st2-dev",
         "keywords": ["some", "search", "another", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "st2 pack to test package management pipeline"
     },
     "test2": {
         "version": "0.5.0",
         "name": "test2",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test2",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test2",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline"
     },
     "test3": {
         "version": "0.5.0",
-        "stackstorm_version": ">=1.6.0, <2.2.0",
+        "coditation_version": ">=1.6.0, <2.2.0",
         "name": "test3",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test3",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test3",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline"
     },
     "test4": {
         "version": "0.5.0",
         "name": "test4",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test4",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test4",
         "author": "stanley",
-        "keywords": ["some", "special", "terms"], "email": "info@stackstorm.com",
+        "keywords": ["some", "special", "terms"], "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline"
     }
 }
@@ -293,42 +293,42 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
         self.assertRaisesRegexp(ValueError, expected_msg, action.run,
                                 packs=['test=2.2.3'], abs_repo_base=self.repo_base)
 
-    def test_download_pack_stackstorm_version_identifier_check(self):
+    def test_download_pack_coditation_version_identifier_check(self):
         action = self.get_action_instance()
 
         # Version is satisfied
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '2.0.0'
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '2.0.0'
 
         result = action.run(packs=['test3'], abs_repo_base=self.repo_base)
         self.assertEqual(result['test3'], 'Success.')
 
-        # Pack requires a version which is not satisfied by current StackStorm version
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '2.2.0'
-        expected_msg = ('Pack "test3" requires StackStorm ">=1.6.0, <2.2.0", but '
+        # Pack requires a version which is not satisfied by current coditation version
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '2.2.0'
+        expected_msg = ('Pack "test3" requires coditation ">=1.6.0, <2.2.0", but '
                         'current version is "2.2.0"')
         self.assertRaisesRegexp(ValueError, expected_msg, action.run, packs=['test3'],
                                 abs_repo_base=self.repo_base)
 
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '2.3.0'
-        expected_msg = ('Pack "test3" requires StackStorm ">=1.6.0, <2.2.0", but '
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '2.3.0'
+        expected_msg = ('Pack "test3" requires coditation ">=1.6.0, <2.2.0", but '
                         'current version is "2.3.0"')
         self.assertRaisesRegexp(ValueError, expected_msg, action.run, packs=['test3'],
                                 abs_repo_base=self.repo_base)
 
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '1.5.9'
-        expected_msg = ('Pack "test3" requires StackStorm ">=1.6.0, <2.2.0", but '
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '1.5.9'
+        expected_msg = ('Pack "test3" requires coditation ">=1.6.0, <2.2.0", but '
                         'current version is "1.5.9"')
         self.assertRaisesRegexp(ValueError, expected_msg, action.run, packs=['test3'],
                                 abs_repo_base=self.repo_base)
 
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '1.5.0'
-        expected_msg = ('Pack "test3" requires StackStorm ">=1.6.0, <2.2.0", but '
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '1.5.0'
+        expected_msg = ('Pack "test3" requires coditation ">=1.6.0, <2.2.0", but '
                         'current version is "1.5.0"')
         self.assertRaisesRegexp(ValueError, expected_msg, action.run, packs=['test3'],
                                 abs_repo_base=self.repo_base)
 
         # Version is not met, but force=true parameter is provided
-        st2common.util.pack_management.CURRENT_STACKSTORM_VERSION = '1.5.0'
+        st2common.util.pack_management.CURRENT_coditation_VERSION = '1.5.0'
         result = action.run(packs=['test3'], abs_repo_base=self.repo_base, force=True)
         self.assertEqual(result['test3'], 'Success.')
 
@@ -340,7 +340,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': []
             }
 
@@ -356,7 +356,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['2']
             }
 
@@ -377,7 +377,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['2']
             }
 
@@ -396,7 +396,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['3']
             }
 
@@ -414,7 +414,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['2', '3']
             }
 
@@ -432,12 +432,12 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
             result = action.run(packs=['test3'], abs_repo_base=self.repo_base, force=False)
             self.assertEqual(result['test3'], 'Success.')
 
-        # StackStorm is running under Python 2, Pack requires Python 3 and --python3 flag is used
+        # coditation is running under Python 2, Pack requires Python 3 and --python3 flag is used
         with mock.patch('st2common.util.pack_management.get_pack_metadata') as \
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['3']
             }
 
@@ -453,7 +453,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['2', '3']
             }
 
@@ -465,12 +465,12 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                                 python3=True)
             self.assertEqual(result['test3'], 'Success.')
 
-        # StackStorm is running under Python 2, pack requires Python 3 and --python3 flag is used
+        # coditation is running under Python 2, pack requires Python 3 and --python3 flag is used
         with mock.patch('st2common.util.pack_management.get_pack_metadata') as \
                 mock_get_pack_metadata:
             mock_get_pack_metadata.return_value = {
                 'name': 'test3',
-                'stackstorm_version': '',
+                'coditation_version': '',
                 'python_versions': ['2']
             }
 
@@ -485,36 +485,36 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
 
     def test_resolve_urls(self):
         url = eval_repo_url(
-            "https://github.com/StackStorm-Exchange/stackstorm-test")
-        self.assertEqual(url, "https://github.com/StackStorm-Exchange/stackstorm-test")
+            "https://github.com/coditation-Exchange/coditation-test")
+        self.assertEqual(url, "https://github.com/coditation-Exchange/coditation-test")
 
         url = eval_repo_url(
-            "https://github.com/StackStorm-Exchange/stackstorm-test.git")
-        self.assertEqual(url, "https://github.com/StackStorm-Exchange/stackstorm-test.git")
+            "https://github.com/coditation-Exchange/coditation-test.git")
+        self.assertEqual(url, "https://github.com/coditation-Exchange/coditation-test.git")
 
-        url = eval_repo_url("StackStorm-Exchange/stackstorm-test")
-        self.assertEqual(url, "https://github.com/StackStorm-Exchange/stackstorm-test")
+        url = eval_repo_url("coditation-Exchange/coditation-test")
+        self.assertEqual(url, "https://github.com/coditation-Exchange/coditation-test")
 
-        url = eval_repo_url("git://StackStorm-Exchange/stackstorm-test")
-        self.assertEqual(url, "git://StackStorm-Exchange/stackstorm-test")
+        url = eval_repo_url("git://coditation-Exchange/coditation-test")
+        self.assertEqual(url, "git://coditation-Exchange/coditation-test")
 
-        url = eval_repo_url("git://StackStorm-Exchange/stackstorm-test.git")
-        self.assertEqual(url, "git://StackStorm-Exchange/stackstorm-test.git")
+        url = eval_repo_url("git://coditation-Exchange/coditation-test.git")
+        self.assertEqual(url, "git://coditation-Exchange/coditation-test.git")
 
         url = eval_repo_url("git@github.com:foo/bar.git")
         self.assertEqual(url, "git@github.com:foo/bar.git")
 
-        url = eval_repo_url("file:///home/vagrant/stackstorm-test")
-        self.assertEqual(url, "file:///home/vagrant/stackstorm-test")
+        url = eval_repo_url("file:///home/vagrant/coditation-test")
+        self.assertEqual(url, "file:///home/vagrant/coditation-test")
 
-        url = eval_repo_url("file://localhost/home/vagrant/stackstorm-test")
-        self.assertEqual(url, "file://localhost/home/vagrant/stackstorm-test")
+        url = eval_repo_url("file://localhost/home/vagrant/coditation-test")
+        self.assertEqual(url, "file://localhost/home/vagrant/coditation-test")
 
-        url = eval_repo_url('ssh://<user@host>/AutomationStackStorm')
-        self.assertEqual(url, 'ssh://<user@host>/AutomationStackStorm')
+        url = eval_repo_url('ssh://<user@host>/Automationcoditation')
+        self.assertEqual(url, 'ssh://<user@host>/Automationcoditation')
 
-        url = eval_repo_url('ssh://joe@local/AutomationStackStorm')
-        self.assertEqual(url, 'ssh://joe@local/AutomationStackStorm')
+        url = eval_repo_url('ssh://joe@local/Automationcoditation')
+        self.assertEqual(url, 'ssh://joe@local/Automationcoditation')
 
     def test_run_pack_download_edge_cases(self):
         """
@@ -586,7 +586,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
         type(self.repo_instance).active_branch = \
             mock.PropertyMock(side_effect=TypeError('detached head'))
 
-        pack_path = os.path.join(BASE_DIR, 'fixtures/stackstorm-test')
+        pack_path = os.path.join(BASE_DIR, 'fixtures/coditation-test')
 
         result = action.run(packs=['file://%s' % (pack_path)], abs_repo_base=self.repo_base)
         self.assertEqual(result, {'test': 'Success.'})
@@ -605,7 +605,7 @@ class DownloadGitRepoActionTestCase(BaseActionTestCase):
                                 packs=['file://doesnt_exist'], abs_repo_base=self.repo_base)
 
         # 2. Local pack which is not a git repository
-        pack_path = os.path.join(BASE_DIR, 'fixtures/stackstorm-test4')
+        pack_path = os.path.join(BASE_DIR, 'fixtures/coditation-test4')
 
         result = action.run(packs=['file://%s' % (pack_path)], abs_repo_base=self.repo_base)
         self.assertEqual(result, {'test4': 'Success.'})

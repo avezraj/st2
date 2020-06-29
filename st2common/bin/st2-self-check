@@ -1,5 +1,5 @@
 #!/bin/bash
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -67,7 +67,7 @@ if [[ `id -u` != 0 ]]; then
 fi
 
 # Installations which use Python 3 (e.g. Ubuntu Bionic) ship without Mistral
-PYTHON_VERSION=$(/opt/stackstorm/st2/bin/python --version 2>&1 | awk '{print $2'} | awk -F"." '{print $1}')
+PYTHON_VERSION=$(/opt/coditation/st2/bin/python --version 2>&1 | awk '{print $2'} | awk -F"." '{print $1}')
 
 if [ "${PYTHON_VERSION}" = "3" ]; then
     RUN_MISTRAL_TESTS=false
@@ -97,7 +97,7 @@ fi
 
 pushd ~
 echo "Cloning st2tests (branch=${ST2_TESTS_BRANCH}) in `pwd`."
-git clone --depth 1 --branch ${ST2_TESTS_BRANCH} https://github.com/StackStorm/st2tests.git
+git clone --depth 1 --branch ${ST2_TESTS_BRANCH} https://github.com/coditation/st2tests.git
 EXIT_CODE=$?
 
 if [ ${EXIT_CODE} -ne 0 ]; then
@@ -108,8 +108,8 @@ fi
 echo "Copying asserts, fixtures, tests and examples packs."
 chown -R root:st2packs st2tests/packs/
 chmod -R 775 st2tests/packs/*
-cp -R --preserve st2tests/packs/* /opt/stackstorm/packs/
-cp -Rf --preserve /usr/share/doc/st2/examples /opt/stackstorm/packs/
+cp -R --preserve st2tests/packs/* /opt/coditation/packs/
+cp -Rf --preserve /usr/share/doc/st2/examples /opt/coditation/packs/
 
 echo "Installing asserts, fixtures, tests and examples packs."
 st2 run packs.setup_virtualenv packs=examples,tests,asserts,fixtures,webui

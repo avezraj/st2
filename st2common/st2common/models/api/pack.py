@@ -32,7 +32,7 @@ from st2common.models.api.base import BaseAPI
 from st2common.models.db.pack import PackDB
 from st2common.models.db.pack import ConfigSchemaDB
 from st2common.models.db.pack import ConfigDB
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.util.pack import validate_config_against_schema
 
 __all__ = [
@@ -95,9 +95,9 @@ class PackAPI(BaseAPI):
                 'pattern': PACK_VERSION_REGEX,
                 'required': True
             },
-            'stackstorm_version': {
+            'coditation_version': {
                 'type': 'string',
-                'description': 'Required StackStorm version. Examples: ">1.6.0", '
+                'description': 'Required coditation version. Examples: ">1.6.0", '
                                '">=1.8.0, <2.2.0"',
                 'pattern': ST2_VERSION_REGEX,
             },
@@ -134,7 +134,7 @@ class PackAPI(BaseAPI):
                     'maxLength': 100
                 },
                 'description': ('A list of people who have contributed to the pack. Format is: '
-                                'Name <email address> e.g. Tomaz Muraus <tomaz@stackstorm.com>.')
+                                'Name <email address> e.g. Tomaz Muraus <tomaz@coditation.com>.')
             },
             'files': {
                 'type': 'array',
@@ -144,7 +144,7 @@ class PackAPI(BaseAPI):
             },
             'dependencies': {
                 'type': 'array',
-                'description': 'A list of other StackStorm packs this pack depends upon. '
+                'description': 'A list of other coditation packs this pack depends upon. '
                                'The same format as in "st2 pack install" is used: '
                                '"<name or full URL>[=<version or git ref>]".',
                 'items': {'type': 'string'},
@@ -208,7 +208,7 @@ class PackAPI(BaseAPI):
         keywords = getattr(pack, 'keywords', [])
         version = str(pack.version)
 
-        stackstorm_version = getattr(pack, 'stackstorm_version', None)
+        coditation_version = getattr(pack, 'coditation_version', None)
         python_versions = getattr(pack, 'python_versions', [])
         author = pack.author
         email = pack.email
@@ -221,7 +221,7 @@ class PackAPI(BaseAPI):
         model = cls.model(ref=ref, name=name, description=description, keywords=keywords,
                           version=version, author=author, email=email, contributors=contributors,
                           files=files, dependencies=dependencies, system=system,
-                          stackstorm_version=stackstorm_version, path=pack_dir,
+                          coditation_version=coditation_version, path=pack_dir,
                           python_versions=python_versions)
         return model
 
@@ -301,7 +301,7 @@ class ConfigAPI(BaseAPI):
     def _validate_config_values_against_schema(self):
         try:
             config_schema_db = ConfigSchema.get_by_pack(value=self.pack)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             # Config schema is optional
             return
 

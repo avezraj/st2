@@ -79,7 +79,7 @@ def setup(service, config, setup_db=True, register_mq_exchanges=True,
     4. Registers RabbitMQ exchanges
     5. Registers common signal handlers
     6. Register internal trigger types
-    7. Register all the runners which are installed inside StackStorm virtualenv.
+    7. Register all the runners which are installed inside coditation virtualenv.
     8. Register service in the service registry with the provided capabilities
 
     :param service: Name of the service.

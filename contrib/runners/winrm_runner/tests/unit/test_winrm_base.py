@@ -867,9 +867,9 @@ Add-Content -value $data -encoding byte -path $filePath
 
     def test_param_to_ps_string(self):
         # test ascii
-        param_str = 'StackStorm 1234'
+        param_str = 'coditation 1234'
         result = self._runner._param_to_ps(param_str)
-        self.assertEqual(result, '"StackStorm 1234"')
+        self.assertEqual(result, '"coditation 1234"')
 
         # test escaped
         param_str = '\n\r\t'
@@ -900,12 +900,12 @@ Add-Content -value $data -encoding byte -path $filePath
         self.assertEqual(result, '-76.5')
 
     def test_param_to_ps_list(self):
-        input_list = ['StackStorm Test String',
+        input_list = ['coditation Test String',
                       '`\0$',
                       True,
                       99]
         result = self._runner._param_to_ps(input_list)
-        self.assertEqual(result, '@("StackStorm Test String", "```0`$", $true, 99)')
+        self.assertEqual(result, '@("coditation Test String", "```0`$", $true, 99)')
 
     def test_param_to_ps_list_nested(self):
         input_list = [['a'], ['b'], [['c']]]

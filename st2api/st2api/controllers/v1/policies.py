@@ -23,7 +23,7 @@ from st2common.models.api.policy import PolicyTypeAPI, PolicyAPI
 from st2common.models.db.policy import PolicyTypeReference
 from st2common.persistence.policy import PolicyType, Policy
 from st2common.validators.api.misc import validate_not_part_of_system_pack
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.rbac.types import PermissionType
 from st2common.rbac.backends import get_rbac_backend
 from st2common.router import abort
@@ -95,7 +95,7 @@ class PolicyTypeController(resource.ResourceController):
 
         if not resource_db:
             msg = 'PolicyType with a reference of id "%s" not found.' % (ref_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         return resource_db
 

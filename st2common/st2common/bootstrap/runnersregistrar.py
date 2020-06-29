@@ -18,7 +18,7 @@ from stevedore.driver import DriverManager
 from stevedore.extension import ExtensionManager
 
 from st2common import log as logging
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.api.action import RunnerTypeAPI
 from st2common.persistence.runner import RunnerType
 from st2common.constants.runners import RUNNERS_NAMESPACE
@@ -74,7 +74,7 @@ def register_runner(runner_type, experimental):
         try:
             runner_type_db = get_runnertype_by_name(runner_name)
             update = True
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             runner_type_db = None
             update = False
 

@@ -125,7 +125,7 @@ class MistralRunnerCallbackTest(ExecutionDbTestCase):
         return liveaction
 
     def test_callback_handler_status_map(self):
-        # Ensure all StackStorm status are mapped otherwise leads to zombie workflow.
+        # Ensure all coditation status are mapped otherwise leads to zombie workflow.
         self.assertListEqual(sorted(self.status_map.keys()),
                              sorted(action_constants.LIVEACTION_STATUSES))
 

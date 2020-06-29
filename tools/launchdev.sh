@@ -54,7 +54,7 @@ while getopts ":r:s:w:gxcu6m" o; do
 done
 
 function init(){
-    ST2_BASE_DIR="/opt/stackstorm"
+    ST2_BASE_DIR="/opt/coditation"
     COMMAND_PATH=${0%/*}
     CURRENT_DIR=`pwd`
     CURRENT_USER=`whoami`
@@ -140,7 +140,7 @@ function init_mistral(){
     python setup.py install > /dev/null
     deactivate
 
-    MISTRAL_DB_COUNT=$(PGUSER=mistral PGPASSWORD=StackStorm PGDATABASE=mistral PGHOST=127.0.0.1 PGPORT=5432 psql mistral -c "select count(*) from action_definitions_v2" | grep -oP '\d{4}')
+    MISTRAL_DB_COUNT=$(PGUSER=mistral PGPASSWORD=coditation PGDATABASE=mistral PGHOST=127.0.0.1 PGPORT=5432 psql mistral -c "select count(*) from action_definitions_v2" | grep -oP '\d{4}')
     if [ ! $? -eq 0 ]; then
         MISTRAL_DB_COUNT=0
     fi
@@ -152,7 +152,7 @@ function init_mistral(){
 function exportsdir(){
     local EXPORTS_DIR=$(grep 'dump_dir' ${ST2_CONF} | sed -e "s~^dump_dir[ ]*=[ ]*\(.*\)~\1~g")
     if [ -z $EXPORTS_DIR ]; then
-        EXPORTS_DIR="/opt/stackstorm/exports"
+        EXPORTS_DIR="/opt/coditation/exports"
     fi
     echo "$EXPORTS_DIR"
 }
@@ -170,7 +170,7 @@ function st2start(){
     BASE_DIR=$(grep 'base_path' ${ST2_CONF} \
         | awk 'BEGIN {FS=" = "}; {print $2}')
     if [ -z BASE_DIR ]; then
-        BASE_DIR="/opt/stackstorm"
+        BASE_DIR="/opt/coditation"
     fi
     CONFIG_BASE_DIR="${BASE_DIR}/configs"
     echo "Using config base dir: $CONFIG_BASE_DIR"
@@ -183,7 +183,7 @@ function st2start(){
     PACKS_BASE_DIR=$(grep 'packs_base_path' ${ST2_CONF} \
         | awk 'BEGIN {FS=" = "}; {print $2}')
     if [ -z $PACKS_BASE_DIR ]; then
-        PACKS_BASE_DIR="/opt/stackstorm/packs"
+        PACKS_BASE_DIR="/opt/coditation/packs"
     fi
     echo "Using content packs base dir: $PACKS_BASE_DIR"
 
@@ -217,7 +217,7 @@ function st2start(){
         cp -Rp ./contrib/examples $PACKS_BASE_DIR
         # Clone st2tests in /tmp directory.
         pushd /tmp
-        git clone https://github.com/StackStorm/st2tests.git
+        git clone https://github.com/coditation/st2tests.git
         ret=$?
         if [ ${ret} -eq 0 ]; then
             cp -Rp ./st2tests/packs/fixtures $PACKS_BASE_DIR
@@ -504,8 +504,8 @@ function setup_mistral_db(){
         postgresql \
         mistral \
         mistral \
-        StackStorm \
-        StackStorm
+        coditation \
+        coditation
 }
 
 case ${subcommand} in

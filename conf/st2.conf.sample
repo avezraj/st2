@@ -42,11 +42,11 @@ logging = /etc/st2/logging.api.conf
 max_page_size = 100
 # True to mask secrets in the API responses
 mask_secrets = True
-# StackStorm API server host
+# coditation API server host
 host = 127.0.0.1
 # None
 debug = False
-# StackStorm API server port
+# coditation API server port
 port = 9101
 
 [auth]
@@ -87,23 +87,23 @@ port = 9100
 backend = flat_file
 
 [content]
-# A URL pointing to the pack index. StackStorm Exchange is used by default. Use a comma-separated list for multiple indexes if you want to get other packs discovered with "st2 pack search".
-index_url = https://index.stackstorm.org/v1/index.json # comma separated list allowed here.
-# Path to the directory which contains system runners. NOTE: This option has been deprecated and it's unused since StackStorm v3.0.0
-system_runners_base_path = /opt/stackstorm/runners
-# Paths which will be searched for runners. NOTE: This option has been deprecated and it's unused since StackStorm v3.0.0
+# A URL pointing to the pack index. coditation Exchange is used by default. Use a comma-separated list for multiple indexes if you want to get other packs discovered with "st2 pack search".
+index_url = https://index.coditation.org/v1/index.json # comma separated list allowed here.
+# Path to the directory which contains system runners. NOTE: This option has been deprecated and it's unused since coditation v3.0.0
+system_runners_base_path = /opt/coditation/runners
+# Paths which will be searched for runners. NOTE: This option has been deprecated and it's unused since coditation v3.0.0
 runners_base_paths = None
 # User group that can write to packs directory.
 pack_group = st2packs
 # Path to the directory which contains system packs.
-system_packs_base_path = /opt/stackstorm/packs
+system_packs_base_path = /opt/coditation/packs
 # Paths which will be searched for integration packs.
 packs_base_paths = None
 
 [coordination]
 # Endpoint for the coordination server.
 url = None
-# True to register StackStorm services in a service registry.
+# True to register coditation services in a service registry.
 service_registry = False
 # TTL for the lock if backend suports it.
 lock_timeout = 60
@@ -146,7 +146,7 @@ port = 27017
 # location of the logging.exporter.conf file
 logging = /etc/st2/logging.exporter.conf
 # Directory to dump data to.
-dump_dir = /opt/stackstorm/exports/
+dump_dir = /opt/coditation/exports/
 
 [garbagecollector]
 # Action executions and related objects (live actions, action output objects) older than this value (days) will be automatically deleted.
@@ -247,7 +247,7 @@ retry_exp_max_msec = 300000
 logging = /etc/st2/logging.notifier.conf
 
 [packs]
-# Enable/Disable support for pack common libs. Setting this config to ``True`` would allow you to place common library code for sensors and actions in lib/ folder in packs and use them in python sensors and actions. See https://docs.stackstorm.com/reference/sharing_code_sensors_actions.html for details.
+# Enable/Disable support for pack common libs. Setting this config to ``True`` would allow you to place common library code for sensors and actions in lib/ folder in packs and use them in python sensors and actions. See https://docs.coditation.com/reference/sharing_code_sensors_actions.html for details.
 enable_common_libs = False
 
 [resultstracker]
@@ -315,11 +315,11 @@ allow_partial_failure = False
 debug = False
 # Send empty message every N seconds to keep connection open
 heartbeat = 25
-# StackStorm stream API server host
+# coditation stream API server host
 host = 127.0.0.1
 # location of the logging.conf file
 logging = /etc/st2/logging.stream.conf
-# StackStorm API stream, server port
+# coditation API stream, server port
 port = 9102
 
 [syslog]
@@ -342,7 +342,7 @@ validate_output_schema = False
 # True to validate payload for non-system trigger types when dispatching a trigger inside the sensor. By default, only payload for system triggers is validated.
 validate_trigger_payload = True
 # Base path to all st2 artifacts.
-base_path = /opt/stackstorm
+base_path = /opt/coditation
 
 [system_user]
 # SSH private key for the system user.

@@ -48,7 +48,7 @@ function sshtest(){
     ORIG_CONTENT_PACK_BASE_DIR=$(grep 'packs_base_path' ${ST2_CONF} | awk 'BEGIN {FS=" = "}; {print $2}')
     if [ -z "$ORIG_CONTENT_PACK_BASE_DIR" ]; then
         echo "[content]\npacks_base_path = ${CONTENT_PACK_BASE_DIR}" >> ${ST2_CONF}
-        ORIG_CONTENT_PACK_BASE_DIR='/opt/stackstorm/packs/'
+        ORIG_CONTENT_PACK_BASE_DIR='/opt/coditation/packs/'
     else
         echo "Swapping out packs_base_path: ${ORIG_CONTENT_PACK_BASE_DIR} with dir: ${CONTENT_PACK_BASE_DIR}"
         sed -i "s|$ORIG_CONTENT_PACK_BASE_DIR|$CONTENT_PACK_BASE_DIR|g" ${ST2_CONF}

@@ -15,7 +15,7 @@
 from __future__ import absolute_import
 
 # NOTE: We need to perform monkeypatch before importing ssl module otherwise tests will fail.
-# See https://github.com/StackStorm/st2/pull/4834 for details
+# See https://github.com/coditation/st2/pull/4834 for details
 from st2common.util.monkey_patch import monkey_patch
 monkey_patch()
 
@@ -38,7 +38,7 @@ from st2common.util import reference
 from st2common.models.db import db_setup
 from st2common.models.db import _get_ssl_kwargs
 from st2common.util import date as date_utils
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.trigger import TriggerTypeDB, TriggerDB, TriggerInstanceDB
 from st2common.models.db.rule import RuleDB, ActionExecutionSpecDB
 from st2common.persistence.cleanup import db_cleanup
@@ -381,7 +381,7 @@ class ReactorModelTestCase(DbTestCase):
         ReactorModelTestCase._delete([retrieved])
         try:
             retrieved = TriggerType.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -401,7 +401,7 @@ class ReactorModelTestCase(DbTestCase):
         ReactorModelTestCase._delete([retrieved, triggertype])
         try:
             retrieved = Trigger.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -414,7 +414,7 @@ class ReactorModelTestCase(DbTestCase):
         ReactorModelTestCase._delete([retrieved, trigger, triggertype])
         try:
             retrieved = TriggerInstance.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -436,7 +436,7 @@ class ReactorModelTestCase(DbTestCase):
         ReactorModelTestCase._delete([retrieved, trigger, action, runnertype, triggertype])
         try:
             retrieved = Rule.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -605,7 +605,7 @@ class ActionModelTestCase(DbTestCase):
         self._delete([retrieved])
         try:
             retrieved = Action.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -632,7 +632,7 @@ class ActionModelTestCase(DbTestCase):
         self._delete([retrieved])
         try:
             retrieved = Action.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -661,7 +661,7 @@ class ActionModelTestCase(DbTestCase):
         self._delete([retrieved])
         try:
             retrieved = Action.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 
@@ -756,7 +756,7 @@ class KeyValuePairModelTestCase(DbTestCase):
         KeyValuePairModelTestCase._delete([retrieved])
         try:
             retrieved = KeyValuePair.get_by_name(saved.name)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 

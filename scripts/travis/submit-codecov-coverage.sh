@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -19,7 +19,7 @@ if [ ${TRAVIS_TEST_RESULT} -eq 0 ]; then
     # NOTE: We need eventlet installed so coverage can be correctly combined. This is needed because we are covering code which utilizes eventlet.
     # Without eventlet being available to the coverage command it will fail with "Couldn't trace with concurrency=eventlet, the module isn't installed."
     pip install eventlet
-    pip install -e "git+https://github.com/StackStorm/codecov-python.git@better_error_output#egg=codecov"
+    pip install -e "git+https://github.com/coditation/codecov-python.git@better_error_output#egg=codecov"
 
     # 2. Combine coverage report and submit coverage report to codecovs.io
     codecov --required

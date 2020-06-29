@@ -1,6 +1,6 @@
 ---
   name: "relayed_matched_irc_message"
-  description: "Relay IRC message to Slack if the message contains word StackStorm"
+  description: "Relay IRC message to Slack if the message contains word coditation"
   enabled: true
 
   trigger:
@@ -10,7 +10,7 @@
   criteria:
       trigger.message:
           type: "icontains"
-          pattern: "StackStorm"
+          pattern: "coditation"
 
   action:
     ref: "wolfpack.action-1"

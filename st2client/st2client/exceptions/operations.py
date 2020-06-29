@@ -14,8 +14,8 @@
 
 from __future__ import absolute_import
 
-from st2client.exceptions.base import StackStormCLIBaseException
+from st2client.exceptions.base import coditationCLIBaseException
 
 
-class OperationFailureException(StackStormCLIBaseException):
+class OperationFailureException(coditationCLIBaseException):
     pass

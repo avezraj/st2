@@ -66,7 +66,7 @@ def register_opts(ignore_errors=False):
         cfg.BoolOpt(
             'sync_remote_groups', default=False,
             help='True to synchronize remote groups returned by the auth backed for each '
-                 'StackStorm user with local StackStorm roles based on the group to role '
+                 'coditation user with local coditation roles based on the group to role '
                  'mapping definition files.'),
         cfg.BoolOpt(
             'permission_isolation', default=False,
@@ -104,7 +104,7 @@ def register_opts(ignore_errors=False):
             'debug', default=False,
             help='Enable debug mode.'),
         cfg.StrOpt(
-            'base_path', default='/opt/stackstorm',
+            'base_path', default='/opt/coditation',
             help='Base path to all st2 artifacts.'),
         cfg.BoolOpt(
             'validate_trigger_parameters', default=True,
@@ -134,17 +134,17 @@ def register_opts(ignore_errors=False):
         cfg.StrOpt(
             'system_runners_base_path', default=system_runners_base_path,
             help='Path to the directory which contains system runners. '
-                 'NOTE: This option has been deprecated and it\'s unused since StackStorm v3.0.0'),
+                 'NOTE: This option has been deprecated and it\'s unused since coditation v3.0.0'),
         cfg.StrOpt(
             'packs_base_paths', default=None,
             help='Paths which will be searched for integration packs.'),
         cfg.StrOpt(
             'runners_base_paths', default=None,
             help='Paths which will be searched for runners. '
-                 'NOTE: This option has been deprecated and it\'s unused since StackStorm v3.0.0'),
+                 'NOTE: This option has been deprecated and it\'s unused since coditation v3.0.0'),
         cfg.ListOpt(
-            'index_url', default=['https://index.stackstorm.org/v1/index.json'],
-            help='A URL pointing to the pack index. StackStorm Exchange is used by '
+            'index_url', default=['https://index.coditation.org/v1/index.json'],
+            help='A URL pointing to the pack index. coditation Exchange is used by '
                  'default. Use a comma-separated list for multiple indexes if you '
                  'want to get other packs discovered with "st2 pack search".'),
     ]
@@ -295,10 +295,10 @@ def register_opts(ignore_errors=False):
     api_opts = [
         cfg.StrOpt(
             'host', default='127.0.0.1',
-            help='StackStorm API server host'),
+            help='coditation API server host'),
         cfg.IntOpt(
             'port', default=9101,
-            help='StackStorm API server port'),
+            help='coditation API server port'),
         cfg.ListOpt(
             'allow_origin', default=['http://127.0.0.1:3000'],
             help='List of origins allowed for api, auth and stream'),
@@ -334,7 +334,7 @@ def register_opts(ignore_errors=False):
         cfg.IntOpt(
             'token_ttl', default=(24 * 60 * 60),
             help='Access token ttl in seconds.'),
-        # This TTL is used for tokens which belong to StackStorm services
+        # This TTL is used for tokens which belong to coditation services
         cfg.IntOpt(
             'service_token_ttl', default=(24 * 60 * 60),
             help='Service token ttl in seconds.')
@@ -446,7 +446,7 @@ def register_opts(ignore_errors=False):
                  'Setting this config to ``True`` would allow you to '
                  'place common library code for sensors and actions in lib/ folder '
                  'in packs and use them in python sensors and actions. '
-                 'See https://docs.stackstorm.com/reference/'
+                 'See https://docs.coditation.com/reference/'
                  'sharing_code_sensors_actions.html '
                  'for details.')
     ]
@@ -463,7 +463,7 @@ def register_opts(ignore_errors=False):
             help='TTL for the lock if backend suports it.'),
         cfg.BoolOpt(
             'service_registry', default=False,
-            help='True to register StackStorm services in a service registry.'),
+            help='True to register coditation services in a service registry.'),
     ]
 
     do_register_opts(coord_opts, 'coordination', ignore_errors)

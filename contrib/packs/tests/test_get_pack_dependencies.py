@@ -23,18 +23,18 @@ from pack_mgmt.get_pack_dependencies import GetPackDependencies
 UNINSTALLED_PACK = 'uninstalled_pack'
 UNINSTALLED_PACKS = [
     UNINSTALLED_PACK,
-    'https://github.com/StackStorm-Exchange/stackstorm-pack1',
-    'https://github.com/StackStorm-Exchange/stackstorm-pack2.git',
-    'https://github.com/StackStorm-Exchange/stackstorm-pack3.git=v2.1.1',
-    'StackStorm-Exchange/stackstorm-pack4',
-    'git://StackStorm-Exchange/stackstorm-pack5=v2.1.1',
-    'git://StackStorm-Exchange/stackstorm-pack6.git',
+    'https://github.com/coditation-Exchange/coditation-pack1',
+    'https://github.com/coditation-Exchange/coditation-pack2.git',
+    'https://github.com/coditation-Exchange/coditation-pack3.git=v2.1.1',
+    'coditation-Exchange/coditation-pack4',
+    'git://coditation-Exchange/coditation-pack5=v2.1.1',
+    'git://coditation-Exchange/coditation-pack6.git',
     'git@github.com:foo/pack7.git'
     'git@github.com:foo/pack8.git=v3.2.1',
-    'file:///home/vagrant/stackstorm-pack9',
-    'file://localhost/home/vagrant/stackstorm-pack10',
-    'ssh://<user@host>/AutomationStackStorm11',
-    'ssh://joe@local/AutomationStackStorm12'
+    'file:///home/vagrant/coditation-pack9',
+    'file://localhost/home/vagrant/coditation-pack10',
+    'ssh://<user@host>/Automationcoditation11',
+    'ssh://joe@local/Automationcoditation12'
 ]
 
 DOWNLOADED_OR_INSTALLED_PACK_METAdATA = {
@@ -42,44 +42,44 @@ DOWNLOADED_OR_INSTALLED_PACK_METAdATA = {
     "no_dependencies": {
         "version": "0.4.0",
         "name": "no_dependencies",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-no_dependencies",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-no_dependencies",
         "author": "st2-dev",
         "keywords": ["some", "search", "another", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "st2 pack to test package management pipeline",
     },
     # One uninstalled and one installed dependency packs.
     "test2": {
         "version": "0.5.0",
         "name": "test2",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test2",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test2",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline",
         "dependencies": ['uninstalled_pack', 'no_dependencies']
     },
     # List of uninstalled dependency packs.
     "test3": {
         "version": "0.6.0",
-        "stackstorm_version": ">=1.6.0, <2.2.0",
+        "coditation_version": ">=1.6.0, <2.2.0",
         "name": "test3",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test3",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test3",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline",
         "dependencies": UNINSTALLED_PACKS
     },
     # One conflict pack with existing pack.
     "test4": {
         "version": "0.7.0",
-        "stackstorm_version": ">=1.6.0, <2.2.0",
+        "coditation_version": ">=1.6.0, <2.2.0",
         "name": "test4",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test4",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test4",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline",
         "dependencies": [
             "test2=v0.4.0"
@@ -88,22 +88,22 @@ DOWNLOADED_OR_INSTALLED_PACK_METAdATA = {
     # One uninstalled conflict pack.
     "test5": {
         "version": "0.7.0",
-        "stackstorm_version": ">=1.6.0, <2.2.0",
+        "coditation_version": ">=1.6.0, <2.2.0",
         "name": "test4",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test4",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test4",
         "author": "stanley",
-        "keywords": ["some", "special", "terms"], "email": "info@stackstorm.com",
+        "keywords": ["some", "special", "terms"], "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline",
         "dependencies": ["uninstalled_pack=v0.4.0"]
     },
     # One dependency pack without version. It is not checked against conflict.
     "test6": {
         "version": "0.7.0",
-        "stackstorm_version": ">=1.6.0, <2.2.0",
+        "coditation_version": ">=1.6.0, <2.2.0",
         "name": "test4",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test4",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test4",
         "author": "stanley",
-        "keywords": ["some", "special", "terms"], "email": "info@stackstorm.com",
+        "keywords": ["some", "special", "terms"], "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline",
         "dependencies": ["test2"]
     }

@@ -135,7 +135,7 @@ def create_request(liveaction, action_db=None, runnertype_db=None):
     trace_db = None
     try:
         _, trace_db = trace_service.get_trace_db_by_live_action(liveaction)
-    except db_exc.StackStormDBObjectNotFoundError as e:
+    except db_exc.coditationDBObjectNotFoundError as e:
         _cleanup_liveaction(liveaction)
         raise trace_exc.TraceNotFoundException(six.text_type(e))
 

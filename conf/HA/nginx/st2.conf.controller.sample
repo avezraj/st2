@@ -4,7 +4,7 @@
 # To enable:
 #    cp ${LOCATION}/st2.conf /etc/nginx/sites-available
 #    ln -l /etc/nginx/sites-available/st2.conf /etc/nginx/sites-enabled/st2.conf
-# see https://docs.stackstorm.com/install.html for details
+# see https://docs.coditation.com/install.html for details
 
 upstream st2 {
   server st2-multi-node-1:443;
@@ -145,7 +145,7 @@ server {
   }
 
   location / {
-    root      /opt/stackstorm/static/webui/;
+    root      /opt/coditation/static/webui/;
     index     index.html;
 
     sendfile on;

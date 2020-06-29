@@ -63,7 +63,7 @@ class WorkflowInspectionCommand(commands.Command):
             '--action',
             dest='action',
             help='Reference name for the registered action. This option works only if the file '
-                 'referenced by the entry point is installed locally under /opt/stackstorm/packs.'
+                 'referenced by the entry point is installed locally under /opt/coditation/packs.'
         )
 
     @property
@@ -93,7 +93,7 @@ class WorkflowInspectionCommand(commands.Command):
             if not action:
                 raise Exception('Unable to identify action "%s".' % action_ref)
 
-            wf_def_file = '/opt/stackstorm/packs/' + action.pack + '/actions/' + action.entry_point
+            wf_def_file = '/opt/coditation/packs/' + action.pack + '/actions/' + action.entry_point
 
         wf_def = self.get_file_content(wf_def_file)
 

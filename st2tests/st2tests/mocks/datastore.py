@@ -46,7 +46,7 @@ class MockDatastoreService(BaseDatastoreService):
 
     def get_user_info(self):
         """
-        Retrieve information about the current user which is authenticated against StackStorm and
+        Retrieve information about the current user which is authenticated against coditation and
         used to perform other datastore operations via the API.
 
         :rtype: ``dict``

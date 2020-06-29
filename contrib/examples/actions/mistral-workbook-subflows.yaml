@@ -9,6 +9,6 @@ parameters:
     default: awesome
     type: string
   subject:
-    default: StackStorm
+    default: coditation
     type: string
 runner_type: mistral-v2

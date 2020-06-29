@@ -215,7 +215,7 @@ class AliasExecutionTestCase(FunctionalTest):
         self.assertEqual(mock_request.call_args[0][0].parameters, expected_parameters)
 
         # Also check for source_channel - see
-        # https://github.com/StackStorm/st2/issues/4650
+        # https://github.com/coditation/st2/issues/4650
         actual_context = mock_request.call_args[0][0].context
 
         self.assertIn('source_channel', mock_request.call_args[0][0].context.keys())

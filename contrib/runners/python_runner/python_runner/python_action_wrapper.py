@@ -74,7 +74,7 @@ either:
 1. Return a list instead of a tuple
 2. Return a tuple where a first items is a status flag - (True, ('item1', 'item2'))
 
-For more information, please see: https://docs.stackstorm.com/upgrade_notes.html#st2-v1-6
+For more information, please see: https://docs.coditation.com/upgrade_notes.html#st2-v1-6
 """.strip()
 
 # How many seconds to wait for stdin input when parameters are passed in via stdin before
@@ -196,7 +196,7 @@ class PythonActionWrapper(object):
             action_status = output[0]
             action_result = output[1]
         else:
-            # run() method returned only data, no status (pre StackStorm v1.6)
+            # run() method returned only data, no status (pre coditation v1.6)
             action_status = None
             action_result = output
 

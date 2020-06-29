@@ -509,7 +509,7 @@ class ActionChainRunner(ActionRunner):
                 LOG.exception(m)
                 top_level_error = self._format_error(e, m)
                 break
-            except db_exc.StackStormDBObjectNotFoundError as e:
+            except db_exc.coditationDBObjectNotFoundError as e:
                 chain_status = action_constants.LIVEACTION_STATUS_FAILED
                 m = 'Failed to resume task "%s". Unable to find liveaction.' % action_node.name
                 LOG.exception(m)

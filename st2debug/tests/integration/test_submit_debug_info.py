@@ -256,7 +256,7 @@ class SubmitDebugInfoTestCase(CleanFilesTestCase):
         self.assertIn('password = **removed**', st2_config_content)
         self.assertIn('url = **removed**', st2_config_content)
 
-        self.assertNotIn('StackStorm', mistral_config_content)
+        self.assertNotIn('coditation', mistral_config_content)
         self.assertIn('connection = **removed**', mistral_config_content)
 
         # Very config.yaml has been removed from the content pack directories

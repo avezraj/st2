@@ -12,14 +12,14 @@
       required: true
     abs_repo_base:
       type: "string"
-      default: "/opt/stackstorm/packs/"
+      default: "/opt/coditation/packs/"
       immutable: true
     verifyssl:
       type: "boolean"
       default: true
     force:
       type: "boolean"
-      description: "Set to True to force install the pack and skip StackStorm version compatibility check"
+      description: "Set to True to force install the pack and skip coditation version compatibility check"
       required: false
       default: false
     python3:

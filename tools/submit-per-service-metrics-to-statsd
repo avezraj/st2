@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -15,7 +15,7 @@
 # limitations under the License.
 
 """
-Script which submits per StackStorm service (process) metrics to statsd.
+Script which submits per coditation service (process) metrics to statsd.
 
 Metrics include:
 
@@ -61,13 +61,13 @@ def setup_logging():
 
 
 
-def get_name_for_stackstorm_service(pinfo):
+def get_name_for_coditation_service(pinfo):
     """
-    Return friendly name used inside the metrics key for the StackStorm service.
+    Return friendly name used inside the metrics key for the coditation service.
 
-    If the provided process don't refer to a StackStorm service it returns False instead.
+    If the provided process don't refer to a coditation service it returns False instead.
     """
-    # General stackstorm service (st2actionrunner, st2timersengine, etc)
+    # General coditation service (st2actionrunner, st2timersengine, etc)
     if pinfo['name'].startswith('st2'):
         return pinfo['name']
     elif pinfo['name'] == 'python':
@@ -92,18 +92,18 @@ def get_name_for_stackstorm_service(pinfo):
     return False
 
 
-def get_stackstorm_services_pids():
+def get_coditation_services_pids():
     """
-    Return pids for StackStorm service processes.
+    Return pids for coditation service processes.
     """
     result = []
     for proc in psutil.process_iter():
         pinfo = proc.as_dict(attrs=['pid', 'name', 'cmdline'])
 
-        # General stackstorm service (st2actionrunner, st2timersengine, etc)
-        is_stackstorm_service = bool(get_name_for_stackstorm_service(pinfo))
+        # General coditation service (st2actionrunner, st2timersengine, etc)
+        is_coditation_service = bool(get_name_for_coditation_service(pinfo))
 
-        if is_stackstorm_service:
+        if is_coditation_service:
             result.append(pinfo['pid'])
 
     return result
@@ -140,7 +140,7 @@ def get_metrics_for_process(pid, cpu_poll_interval=0.1):
             'name': p.name(),
             'cmdline': p.cmdline()
         }
-        data['name'] = get_name_for_stackstorm_service(pinfo)
+        data['name'] = get_name_for_coditation_service(pinfo)
         data['pid'] = pid
 
 
@@ -163,7 +163,7 @@ def get_metrics_for_process(pid, cpu_poll_interval=0.1):
     return data
 
 def submit_metrics_to_statsd(prefix=None, cpu_poll_interval=0.1):
-    service_pids = get_stackstorm_services_pids()
+    service_pids = get_coditation_services_pids()
 
     hostname = socket.gethostname()
 
@@ -198,11 +198,11 @@ def submit_metrics_to_statsd(prefix=None, cpu_poll_interval=0.1):
                 gauge = statsd.Gauge(metric_key)
                 gauge.send(None, item_value)
     else:
-        LOG.debug('No StackStorm services found')
+        LOG.debug('No coditation services found')
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Script which submits per StackStorm service '
+    parser = argparse.ArgumentParser(description='Script which submits per coditation service '
                                                  'metrics to statsd')
     parser.add_argument('--statsd-host', required=True,
                         help='Statsd hostname')

@@ -16,7 +16,7 @@ from __future__ import absolute_import
 from st2common.persistence.pack import Config
 from st2common.models.db.pack import ConfigDB
 from st2common.models.db.keyvalue import KeyValuePairDB
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence.keyvalue import KeyValuePair
 from st2common.services.config import set_datastore_value_for_config_key
 from st2common.util.config_loader import ContentPackConfigLoader
@@ -121,7 +121,7 @@ class ContentPackConfigLoaderTestCase(CleanDbTestCase):
         config_db.delete()
 
         # Verify config has been deleted from the database
-        self.assertRaises(StackStormDBObjectNotFoundError, Config.get_by_pack, pack_name)
+        self.assertRaises(coditationDBObjectNotFoundError, Config.get_by_pack, pack_name)
 
         loader = ContentPackConfigLoader(pack_name=pack_name)
         config = loader.get_config()

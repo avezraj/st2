@@ -2,7 +2,7 @@
 name: "pack_install"
 action_ref: "packs.install"
 pack: "packs"
-description: "Install/upgrade StackStorm packs."
+description: "Install/upgrade coditation packs."
 formats:
   - display: "pack install <pack_name|git_url>[,<pack_name|git_url>]"
     representation:

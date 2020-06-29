@@ -28,11 +28,11 @@ class PackUtilsTestCase(unittest2.TestCase):
             'description': 'YOLO CI pack',
             'version': '0.1.0',
             'author': 'Volkswagen',
-            'path': '/opt/stackstorm/packs/yolo_ci/'
+            'path': '/opt/coditation/packs/yolo_ci/'
         }
         pack_db = PackDB(**pack_model_args)
         lib_path = get_pack_common_libs_path_for_pack_db(pack_db)
-        self.assertEqual('/opt/stackstorm/packs/yolo_ci/lib', lib_path)
+        self.assertEqual('/opt/coditation/packs/yolo_ci/lib', lib_path)
 
     def test_get_pack_common_libs_path_for_pack_db_no_path_in_pack_db(self):
         pack_model_args = {

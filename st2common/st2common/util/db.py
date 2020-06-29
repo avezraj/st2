@@ -27,7 +27,7 @@ def mongodb_to_python_types(value):
         value = list(value)
     # Convert collections.Mapping types to python dict otherwise YAQL/Jinja related
     # functions used to convert JSON/YAML objects/strings will errored. This is caused
-    # by the PR StackStorm/orquesta#191 which converts dict to collections.Mapping
+    # by the PR coditation/orquesta#191 which converts dict to collections.Mapping
     # in YAQL related functions.
     elif isinstance(value, collections.Mapping):
         value = dict(value)

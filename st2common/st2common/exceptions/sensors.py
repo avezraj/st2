@@ -13,11 +13,11 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
-from st2common.exceptions import StackStormPluginException
+from st2common.exceptions import coditationBaseException
+from st2common.exceptions import coditationPluginException
 
 
-class SensorPluginException(StackStormPluginException):
+class SensorPluginException(coditationPluginException):
     pass
 
 
@@ -25,13 +25,13 @@ class TriggerTypeRegistrationException(SensorPluginException):
     pass
 
 
-class SensorNotFoundException(StackStormBaseException):
+class SensorNotFoundException(coditationBaseException):
     pass
 
 
-class SensorPartitionerNotSupportedException(StackStormBaseException):
+class SensorPartitionerNotSupportedException(coditationBaseException):
     pass
 
 
-class SensorPartitionMapMissingException(StackStormBaseException):
+class SensorPartitionMapMissingException(coditationBaseException):
     pass

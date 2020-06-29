@@ -4,7 +4,7 @@ name : dummy_pack_21
 description : dummy pack
 version : 0.1.0
 author : st2-dev
-email : info@stackstorm.com
+email : info@coditation.com
 python_versions:
   - "4"
   - "5"

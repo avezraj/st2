@@ -209,11 +209,11 @@ def _transform_action(name, spec):
 
     action = None
 
-    # Identify if action is a registered StackStorm action.
+    # Identify if action is a registered coditation action.
     if action_ref and ResourceReference.is_resource_reference(action_ref):
         action = action_utils.get_action_by_ref(ref=action_ref)
 
-    # If action is a registered StackStorm action, then wrap the
+    # If action is a registered coditation action, then wrap the
     # action with the st2 proxy and validate the action input.
     if action:
         if not transformed:

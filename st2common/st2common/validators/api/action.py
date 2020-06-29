@@ -16,7 +16,7 @@ from __future__ import absolute_import
 import six
 
 from st2common.exceptions.apivalidation import ValueValidationException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common import log as logging
 from st2common.util.action_db import get_runnertype_by_name
 from st2common.util import schema as util_schema
@@ -64,10 +64,10 @@ def get_runner_model(action_api):
     # Check if runner exists.
     try:
         runner_db = get_runnertype_by_name(action_api.runner_type)
-    except StackStormDBObjectNotFoundError:
+    except coditationDBObjectNotFoundError:
         msg = ('RunnerType %s is not found. If you are using old and deprecated runner name, you '
                'need to switch to a new one. For more information, please see '
-               'https://docs.stackstorm.com/upgrade_notes.html#st2-v0-9' % (action_api.runner_type))
+               'https://docs.coditation.com/upgrade_notes.html#st2-v0-9' % (action_api.runner_type))
         raise ValueValidationException(msg)
     return runner_db
 

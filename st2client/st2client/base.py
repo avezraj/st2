@@ -63,7 +63,7 @@ CONFIG_OPTION_TO_CLIENT_KWARGS_MAP = {
 
 class BaseCLIApp(object):
     """
-    Base class for StackStorm CLI apps.
+    Base class for coditation CLI apps.
     """
 
     LOG = logging.getLogger(__name__)  # logger instance to use

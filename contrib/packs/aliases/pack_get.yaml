@@ -1,7 +1,7 @@
 ---
 name: "pack_get"
 action_ref: "packs.get"
-description: "Get information about installed StackStorm pack."
+description: "Get information about installed coditation pack."
 formats:
   - display: "pack get <pack>"
     representation:
@@ -19,7 +19,7 @@ result:
     Git status: ```{{ execution.result.result.git_status }}```
     {% endif %}
     {% else %}
-    The requested pack is not present in your StackStorm installation.
+    The requested pack is not present in your coditation installation.
     To install the pack: `pack install {{ execution.parameters.pack }}`
     {% endif %}
     {% else %}

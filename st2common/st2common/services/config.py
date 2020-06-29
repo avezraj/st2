@@ -24,7 +24,7 @@ from st2common.constants.keyvalue import FULL_SYSTEM_SCOPE
 from st2common.util.crypto import symmetric_decrypt
 from st2common.models.api.keyvalue import KeyValuePairAPI
 from st2common.persistence.keyvalue import KeyValuePair
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'set_datastore_value_for_config_key',
@@ -68,7 +68,7 @@ def set_datastore_value_for_config_key(pack_name, key_name, value, secret=False,
     # TODO: Obtain a lock
     try:
         existing_kvp_db = KeyValuePair.get_by_scope_and_name(scope=scope, name=name)
-    except StackStormDBObjectNotFoundError:
+    except coditationDBObjectNotFoundError:
         existing_kvp_db = None
 
     if existing_kvp_db:

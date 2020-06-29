@@ -28,7 +28,7 @@ import st2tests.config as tests_config
 tests_config.parse_args()
 
 MOCK_PACK_DB = PackDB(ref='wolfpack', name='wolf pack', description='',
-                      path='/opt/stackstorm/packs/wolfpack/')
+                      path='/opt/coditation/packs/wolfpack/')
 
 
 class ProcessContainerTests(unittest2.TestCase):
@@ -68,7 +68,7 @@ class ProcessContainerTests(unittest2.TestCase):
             'id': '567890',
             'trigger_types': ['some_trigga'],
             'pack': 'wolfpack',
-            'file_path': '/opt/stackstorm/packs/wolfpack/sensors/stupid_sensor.py',
+            'file_path': '/opt/coditation/packs/wolfpack/sensors/stupid_sensor.py',
             'poll_interval': 5
         }
 
@@ -79,7 +79,7 @@ class ProcessContainerTests(unittest2.TestCase):
         _, call_kwargs = mock_subproc_popen.call_args
         actual_env = call_kwargs['env']
         self.assertIn('PYTHONPATH', actual_env)
-        pack_common_lib_path = '/opt/stackstorm/packs/wolfpack/lib'
+        pack_common_lib_path = '/opt/coditation/packs/wolfpack/lib'
         self.assertIn(pack_common_lib_path, actual_env['PYTHONPATH'])
 
     @patch.object(ProcessSensorContainer, '_get_sensor_id',
@@ -108,7 +108,7 @@ class ProcessContainerTests(unittest2.TestCase):
             'id': '567890',
             'trigger_types': ['some_trigga'],
             'pack': 'wolfpack',
-            'file_path': '/opt/stackstorm/packs/wolfpack/sensors/stupid_sensor.py',
+            'file_path': '/opt/coditation/packs/wolfpack/sensors/stupid_sensor.py',
             'poll_interval': 5
         }
 
@@ -119,7 +119,7 @@ class ProcessContainerTests(unittest2.TestCase):
         _, call_kwargs = mock_subproc_popen.call_args
         actual_env = call_kwargs['env']
         self.assertIn('PYTHONPATH', actual_env)
-        pack_common_lib_path = '/opt/stackstorm/packs/wolfpack/lib'
+        pack_common_lib_path = '/opt/coditation/packs/wolfpack/lib'
         self.assertNotIn(pack_common_lib_path, actual_env['PYTHONPATH'])
 
     @patch.object(time, 'time', MagicMock(return_value=1439441533))

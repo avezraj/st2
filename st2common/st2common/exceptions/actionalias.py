@@ -13,14 +13,14 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 
 __all__ = [
     'ActionAliasAmbiguityException'
 ]
 
 
-class ActionAliasAmbiguityException(ValueError, StackStormBaseException):
+class ActionAliasAmbiguityException(ValueError, coditationBaseException):
     def __init__(self, msg, command, matches):
         self.matches = matches
         self.command = command

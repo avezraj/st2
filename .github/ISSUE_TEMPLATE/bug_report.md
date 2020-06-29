@@ -8,7 +8,7 @@ about: Create a report to help us improve
 
 Provide a quick summary of your bug report.
 
-### STACKSTORM VERSION
+### CODITATION VERSION
 
 Paste the output of ``st2 --version``:
 

@@ -18,7 +18,7 @@ import abc
 import six
 
 from st2common import log as logging
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectConflictError
 from st2common.models.system.common import ResourceReference
 
 
@@ -142,7 +142,7 @@ class Access(object):
             conflict_object = cls._get_by_object(model_object)
             conflict_id = str(conflict_object.id) if conflict_object else None
             message = six.text_type(e)
-            raise StackStormDBObjectConflictError(message=message, conflict_id=conflict_id,
+            raise coditationDBObjectConflictError(message=message, conflict_id=conflict_id,
                                                   model_object=model_object)
 
         # Publish internal event on the message bus
@@ -181,7 +181,7 @@ class Access(object):
             conflict_object = cls._get_by_object(model_object)
             conflict_id = str(conflict_object.id) if conflict_object else None
             message = six.text_type(e)
-            raise StackStormDBObjectConflictError(message=message, conflict_id=conflict_id,
+            raise coditationDBObjectConflictError(message=message, conflict_id=conflict_id,
                                                   model_object=model_object)
 
         is_update = str(pre_persist_id) == str(model_object.id)

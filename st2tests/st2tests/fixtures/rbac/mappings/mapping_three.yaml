@@ -1,5 +1,5 @@
 ---
-  group: "CN=qa,OU=groups,DC=stackstorm,DC=net"
+  group: "CN=qa,OU=groups,DC=coditation,DC=net"
   description: "Grant 1 roles to qa stormers group members"
   enabled: false
   roles:

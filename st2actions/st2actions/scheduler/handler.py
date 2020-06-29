@@ -23,7 +23,7 @@ from st2common.util import date
 from st2common.util import service as service_utils
 from st2common.constants import action as action_constants
 from st2common.constants import policy as policy_constants
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.liveaction import LiveActionDB
 from st2common.services import action as action_service
 from st2common.services import coordination as coordination_service
@@ -117,7 +117,7 @@ class ActionExecutionSchedulingQueueHandler(object):
                     execution_queue_item_db.action_execution_id,
                     str(execution_queue_item_db.id)
                 )
-            except db_exc.StackStormDBObjectWriteConflictError:
+            except db_exc.coditationDBObjectWriteConflictError:
                 LOG.info(
                     '[%s] Execution queue item "%s" updated during garbage collection.',
                     execution_queue_item_db.action_execution_id,
@@ -163,7 +163,7 @@ class ActionExecutionSchedulingQueueHandler(object):
                     execution_queue_item_db.handling = True
                     execution_queue_item_db = ActionExecutionSchedulingQueue.add_or_update(
                         execution_queue_item_db, publish=False)
-                except db_exc.StackStormDBObjectWriteConflictError:
+                except db_exc.coditationDBObjectWriteConflictError:
                     msg = (
                         '[%s] Item "%s" is currently being processed by another scheduler.' %
                         (execution_queue_item_db.action_execution_id,
@@ -234,7 +234,7 @@ class ActionExecutionSchedulingQueueHandler(object):
         try:
             ActionExecutionSchedulingQueue.add_or_update(execution_queue_item_db, publish=False)
             return execution_queue_item_db
-        except db_exc.StackStormDBObjectWriteConflictError:
+        except db_exc.coditationDBObjectWriteConflictError:
             LOG.info(
                 '[%s] Item "%s" is already handled by another scheduler.',
                 execution_queue_item_db.action_execution_id,
@@ -257,7 +257,7 @@ class ActionExecutionSchedulingQueueHandler(object):
 
         try:
             liveaction_db = action_utils.get_liveaction_by_id(liveaction_id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             msg = '[%s] Failed to find liveaction "%s" in the database (queue_item_id=%s).'
             LOG.exception(msg, action_execution_id, liveaction_id, queue_item_id, extra=extra)
             ActionExecutionSchedulingQueue.delete(execution_queue_item_db)
@@ -336,7 +336,7 @@ class ActionExecutionSchedulingQueueHandler(object):
 
             try:
                 ActionExecutionSchedulingQueue.add_or_update(execution_queue_item_db, publish=False)
-            except db_exc.StackStormDBObjectWriteConflictError:
+            except db_exc.coditationDBObjectWriteConflictError:
                 LOG.warning(
                     '[%s] Database write conflict on updating scheduling queue.',
                     action_execution_id, extra=extra
@@ -374,7 +374,7 @@ class ActionExecutionSchedulingQueueHandler(object):
         try:
             execution_queue_item_db.handling = False
             ActionExecutionSchedulingQueue.add_or_update(execution_queue_item_db, publish=False)
-        except db_exc.StackStormDBObjectWriteConflictError:
+        except db_exc.coditationDBObjectWriteConflictError:
             LOG.warning(
                 '[%s] Database write conflict on updating scheduling queue.',
                 action_execution_id, extra=extra

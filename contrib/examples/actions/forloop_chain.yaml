@@ -8,5 +8,5 @@ parameters:
     github_organization_url:
       type: "string" 
       description: "Organization url to parse data from"
-      default: "https://github.com/StackStorm-Exchange"
+      default: "https://github.com/coditation-Exchange"
       required: false

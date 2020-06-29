@@ -1,4 +1,4 @@
-Contributing to StackStorm
+Contributing to coditation
 ==========================
 
 We welcome and appreciate contributions of any kind (code, tests,
@@ -6,14 +6,14 @@ documentation, examples, ...).
 
 For more information on how to contribute and the guidelines you should follow,
 please visit the Development section of our documentation -
-http://docs.stackstorm.com/development/index.html
+http://docs.coditation.com/development/index.html
 
 Managing Python dependencies
 ----------------------------
 
     ``requirements.txt`` files are generated automatically using ``scripts/fixate-requirements.py`` script and shouldn't be edited manually.
 
-To manage Python dependencies for each StackStorm component, we use the
+To manage Python dependencies for each coditation component, we use the
 following files:
 
 1. ``fixed-requirements.txt`` - A file which pins all the requirements to a

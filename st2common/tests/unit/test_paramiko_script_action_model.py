@@ -161,11 +161,11 @@ class ParamikoRemoteScriptActionTestCase(unittest2.TestCase):
 
     @staticmethod
     def _get_test_script_action():
-        local_script_path = '/opt/stackstorm/packs/fixtures/actions/remote_script.sh'
+        local_script_path = '/opt/coditation/packs/fixtures/actions/remote_script.sh'
         script_action = ParamikoRemoteScriptAction('fixtures.remote_script',
                                                    '55ce39d532ed3543aecbe71d',
                                                    local_script_path,
-                                                   '/opt/stackstorm/packs/fixtures/actions/lib/',
+                                                   '/opt/coditation/packs/fixtures/actions/lib/',
                                                    named_args={'song': 'b s'},
                                                    positional_args=['taylor swift'],
                                                    env_vars={},

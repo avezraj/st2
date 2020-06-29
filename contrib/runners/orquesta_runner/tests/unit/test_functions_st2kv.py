@@ -100,7 +100,7 @@ class UserScopeDatastoreFunctionTest(st2tests.ExecutionDbTestCase):
     def test_key_does_not_exist(self):
         self.assertRaisesRegexp(
             exc.ExpressionEvaluationException,
-            'The key ".*" does not exist in the StackStorm datastore.',
+            'The key ".*" does not exist in the coditation datastore.',
             st2kv.st2kv_,
             MOCK_CTX,
             'foobar'
@@ -179,7 +179,7 @@ class SystemScopeDatastoreFunctionTest(st2tests.ExecutionDbTestCase):
     def test_key_does_not_exist(self):
         self.assertRaisesRegexp(
             exc.ExpressionEvaluationException,
-            'The key ".*" does not exist in the StackStorm datastore.',
+            'The key ".*" does not exist in the coditation datastore.',
             st2kv.st2kv_,
             MOCK_CTX,
             'foo'

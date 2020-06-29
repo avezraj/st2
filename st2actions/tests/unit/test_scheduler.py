@@ -258,7 +258,7 @@ class ActionExecutionSchedulingQueueItemDBTest(ExecutionDbTestCase):
 
         with mock.patch(
             'st2actions.scheduler.handler.ActionExecutionSchedulingQueue.add_or_update',
-            side_effect=db_exc.StackStormDBObjectWriteConflictError(schedule_q_db)
+            side_effect=db_exc.coditationDBObjectWriteConflictError(schedule_q_db)
         ):
             schedule_q_db = self.scheduling_queue._get_next_execution()
             self.assertIsNone(schedule_q_db)

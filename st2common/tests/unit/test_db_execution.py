@@ -16,7 +16,7 @@ from __future__ import absolute_import
 import mock
 
 from st2common.constants.secrets import MASKED_ATTRIBUTE_VALUE
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.execution import ActionExecutionDB
 from st2common.persistence.execution import ActionExecution
 from st2common.transport.publishers import PoolPublisher
@@ -125,7 +125,7 @@ class ActionExecutionModelTest(DbTestCase):
             ActionExecutionModelTest._delete([execution])
             try:
                 retrieved = ActionExecution.get_by_id(execution.id)
-            except StackStormDBObjectNotFoundError:
+            except coditationDBObjectNotFoundError:
                 retrieved = None
             self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 

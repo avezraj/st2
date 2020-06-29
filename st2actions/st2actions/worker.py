@@ -20,7 +20,7 @@ from st2actions.container.base import RunnerContainer
 from st2common import log as logging
 from st2common.constants import action as action_constants
 from st2common.exceptions.actionrunner import ActionRunnerException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.liveaction import LiveActionDB
 from st2common.persistence.execution import ActionExecution
 from st2common.services import executions
@@ -99,7 +99,7 @@ class ActionExecutionDispatcher(MessageHandler):
 
         try:
             liveaction_db = action_utils.get_liveaction_by_id(liveaction.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             LOG.exception('Failed to find liveaction %s in the database.', liveaction.id)
             raise
 

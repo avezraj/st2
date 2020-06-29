@@ -22,7 +22,7 @@ from oslo_config import cfg
 
 from st2common import log as logging
 from st2common.constants.triggers import (INTERNAL_TRIGGER_TYPES, ACTION_SENSOR_TRIGGER)
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectConflictError
 from st2common.services.triggers import create_trigger_type_db
 from st2common.services.triggers import create_shadow_trigger
 from st2common.services.triggers import get_trigger_type_db
@@ -39,7 +39,7 @@ def _register_internal_trigger_type(trigger_definition):
     try:
         trigger_type_db = create_trigger_type_db(trigger_type=trigger_definition,
                                                  log_not_unique_error_as_debug=True)
-    except (NotUniqueError, StackStormDBObjectConflictError):
+    except (NotUniqueError, coditationDBObjectConflictError):
         # We ignore conflict error since this operation is idempotent and race is not an issue
         LOG.debug('Internal trigger type "%s" already exists, ignoring error...' %
                   (trigger_definition['name']))
@@ -60,7 +60,7 @@ def _register_internal_trigger_type(trigger_definition):
             extra = {'trigger_db': trigger_db}
             LOG.audit('Trigger created for parameter-less internal TriggerType. Trigger.id=%s' %
                       (trigger_db.id), extra=extra)
-        except (NotUniqueError, StackStormDBObjectConflictError):
+        except (NotUniqueError, coditationDBObjectConflictError):
             LOG.debug('Shadow trigger "%s" already exists. Ignoring.',
                       trigger_type_db.get_reference().ref, exc_info=True)
 

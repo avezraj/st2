@@ -43,7 +43,7 @@ from st2common.util.pack import get_pack_metadata
 from st2common.util.pack import get_pack_ref_from_metadata
 from st2common.util.green import shell
 from st2common.util.versioning import complex_semver_match
-from st2common.util.versioning import get_stackstorm_version
+from st2common.util.versioning import get_coditation_version
 from st2common.util.versioning import get_python_version
 
 __all__ = [
@@ -61,17 +61,17 @@ __all__ = [
 LOG = logging.getLogger(__name__)
 
 CONFIG_FILE = 'config.yaml'
-CURRENT_STACKSTORM_VERSION = get_stackstorm_version()
+CURRENT_coditation_VERSION = get_coditation_version()
 CURRENT_PYTHON_VERSION = get_python_version()
 
 SUDO_BINARY = find_executable('sudo')
 
 
-def download_pack(pack, abs_repo_base='/opt/stackstorm/packs', verify_ssl=True, force=False,
+def download_pack(pack, abs_repo_base='/opt/coditation/packs', verify_ssl=True, force=False,
                   proxy_config=None, force_owner_group=True, force_permissions=True,
                   use_python3=False, logger=LOG):
     """
-    Download the pack and move it to /opt/stackstorm/packs.
+    Download the pack and move it to /opt/coditation/packs.
 
     :param abs_repo_base: Path where the pack should be installed to.
     :type abs_repo_base: ``str``
@@ -157,7 +157,7 @@ def download_pack(pack, abs_repo_base='/opt/stackstorm/packs', verify_ssl=True, 
             pack_ref = get_pack_ref(pack_dir=abs_local_path)
             result[1] = pack_ref
 
-            # 2. Verify that the pack version if compatible with current StackStorm version
+            # 2. Verify that the pack version if compatible with current coditation version
             if not force:
                 verify_pack_version(pack_dir=abs_local_path, use_python3=use_python3)
 
@@ -421,21 +421,21 @@ def is_desired_pack(abs_pack_path, pack_name):
 
 def verify_pack_version(pack_dir, use_python3=False):
     """
-    Verify that the pack works with the currently running StackStorm version.
+    Verify that the pack works with the currently running coditation version.
     """
     pack_metadata = get_pack_metadata(pack_dir=pack_dir)
     pack_name = pack_metadata.get('name', None)
-    required_stackstorm_version = pack_metadata.get('stackstorm_version', None)
+    required_coditation_version = pack_metadata.get('coditation_version', None)
     supported_python_versions = pack_metadata.get('python_versions', None)
 
-    # If stackstorm_version attribute is specified, verify that the pack works with currently
-    # running version of StackStorm
-    if required_stackstorm_version:
-        if not complex_semver_match(CURRENT_STACKSTORM_VERSION, required_stackstorm_version):
-            msg = ('Pack "%s" requires StackStorm "%s", but current version is "%s". '
+    # If coditation_version attribute is specified, verify that the pack works with currently
+    # running version of coditation
+    if required_coditation_version:
+        if not complex_semver_match(CURRENT_coditation_VERSION, required_coditation_version):
+            msg = ('Pack "%s" requires coditation "%s", but current version is "%s". '
                    'You can override this restriction by providing the "force" flag, but '
                    'the pack is not guaranteed to work.' %
-                   (pack_name, required_stackstorm_version, CURRENT_STACKSTORM_VERSION))
+                   (pack_name, required_coditation_version, CURRENT_coditation_VERSION))
             raise ValueError(msg)
 
     if supported_python_versions:

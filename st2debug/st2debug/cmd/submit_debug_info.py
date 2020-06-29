@@ -13,16 +13,16 @@
 # limitations under the License.
 
 """
-This script submits information which helps StackStorm employees debug different
-user problems and issues to StackStorm.
+This script submits information which helps coditation employees debug different
+user problems and issues to coditation.
 
 By default the following information is included:
 
 - Logs from /var/log/st2
-- StackStorm and mistral config file (/etc/st2/st2.conf, /etc/mistral/mistral.conf)
+- coditation and mistral config file (/etc/st2/st2.conf, /etc/mistral/mistral.conf)
 - All the content (integration packs).
-- Information about your system and StackStorm installation (Operating system,
-  Python version, StackStorm version, Mistral version)
+- Information about your system and coditation installation (Operating system,
+  Python version, coditation version, Mistral version)
 
 Note: This script currently assumes it's running on Linux.
 """
@@ -510,7 +510,7 @@ class DebugInfoCollector(object):
                 'memory': {}
             },
             'python': {},
-            'stackstorm': {},
+            'coditation': {},
             'mistral': {}
         }
 
@@ -556,8 +556,8 @@ class DebugInfoCollector(object):
             # Unsupported platform
             system_information['hardware']['memory'] = 'unsupported platform'
 
-        # StackStorm information
-        system_information['stackstorm']['version'] = st2_version
+        # coditation information
+        system_information['coditation']['version'] = st2_version
 
         st2common_path = st2common.__file__
         st2common_path = os.path.dirname(st2common_path)
@@ -568,13 +568,13 @@ class DebugInfoCollector(object):
 
             revision_hash = get_repo_latest_revision_hash(repo_path=base_install_path)
 
-            system_information['stackstorm']['installation_method'] = 'source'
-            system_information['stackstorm']['revision_hash'] = revision_hash
+            system_information['coditation']['installation_method'] = 'source'
+            system_information['coditation']['revision_hash'] = revision_hash
         else:
             package_list = get_package_list(name_startswith='st2')
 
-            system_information['stackstorm']['installation_method'] = 'package'
-            system_information['stackstorm']['packages'] = package_list
+            system_information['coditation']['installation_method'] = 'package'
+            system_information['coditation']['packages'] = package_list
 
         # Mistral information
         repo_path = '/opt/openstack/mistral'

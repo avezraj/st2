@@ -17,7 +17,7 @@ from st2common.services.packs import get_pack_from_index
 
 
 class ShowRemote(Action):
-    """Get detailed information about an available pack from the StackStorm Exchange index"""
+    """Get detailed information about an available pack from the coditation Exchange index"""
     def run(self, pack):
         """
         :param pack: Pack Name to get info about

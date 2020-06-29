@@ -65,7 +65,7 @@ class TestClientEndpoints(unittest2.TestCase):
         self.assertEqual(endpoints['stream'], stream_url)
 
     def test_env(self):
-        base_url = 'http://www.stackstorm.com'
+        base_url = 'http://www.coditation.com'
         api_url = 'http://www.st2.com:9101/v1'
         stream_url = 'http://www.st2.com:9102/v1'
 
@@ -83,9 +83,9 @@ class TestClientEndpoints(unittest2.TestCase):
         self.assertEqual(endpoints['stream'], stream_url)
 
     def test_env_base_only(self):
-        base_url = 'http://www.stackstorm.com'
-        api_url = 'http://www.stackstorm.com:9101/v1'
-        stream_url = 'http://www.stackstorm.com:9102/v1'
+        base_url = 'http://www.coditation.com'
+        api_url = 'http://www.coditation.com:9101/v1'
+        stream_url = 'http://www.coditation.com:9102/v1'
 
         os.environ['ST2_BASE_URL'] = base_url
         self.assertEqual(os.environ.get('ST2_BASE_URL'), base_url)
@@ -99,7 +99,7 @@ class TestClientEndpoints(unittest2.TestCase):
         self.assertEqual(endpoints['stream'], stream_url)
 
     def test_args(self):
-        base_url = 'http://www.stackstorm.com'
+        base_url = 'http://www.coditation.com'
         api_url = 'http://www.st2.com:9101/v1'
         stream_url = 'http://www.st2.com:9102/v1'
 
@@ -111,7 +111,7 @@ class TestClientEndpoints(unittest2.TestCase):
 
     def test_cacert_arg(self):
         # Valid value, boolean True
-        base_url = 'http://www.stackstorm.com'
+        base_url = 'http://www.coditation.com'
         api_url = 'http://www.st2.com:9101/v1'
         stream_url = 'http://www.st2.com:9102/v1'
 
@@ -119,7 +119,7 @@ class TestClientEndpoints(unittest2.TestCase):
         self.assertEqual(client.cacert, True)
 
         # Valid value, boolean False
-        base_url = 'http://www.stackstorm.com'
+        base_url = 'http://www.coditation.com'
         api_url = 'http://www.st2.com:9101/v1'
         stream_url = 'http://www.st2.com:9102/v1'
 
@@ -138,9 +138,9 @@ class TestClientEndpoints(unittest2.TestCase):
                                 api_url=api_url, stream_url=stream_url, cacert='doesntexist')
 
     def test_args_base_only(self):
-        base_url = 'http://www.stackstorm.com'
-        api_url = 'http://www.stackstorm.com:9101/v1'
-        stream_url = 'http://www.stackstorm.com:9102/v1'
+        base_url = 'http://www.coditation.com'
+        api_url = 'http://www.coditation.com:9101/v1'
+        stream_url = 'http://www.coditation.com:9102/v1'
 
         client = Client(base_url=base_url)
         endpoints = client.endpoints

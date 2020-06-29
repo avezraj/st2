@@ -27,7 +27,7 @@ from st2common.content import utils as content_utils
 from st2common.util import jinja as jinja_utils
 from st2common.util.templating import render_template_with_system_and_user_context
 from st2common.util.config_parser import ContentPackConfigParser
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'ContentPackConfigLoader'
@@ -44,7 +44,7 @@ class ContentPackConfigLoader(object):
     It loads and resolves values in the following order:
 
     1. Static values from <pack path>/config.yaml file
-    2. Dynamic and or static values from /opt/stackstorm/configs/<pack name>.yaml file.
+    2. Dynamic and or static values from /opt/coditation/configs/<pack name>.yaml file.
 
     Values are merged from left to right which means values from "<pack name>.yaml" file have
     precedence and override values from pack local config file.
@@ -65,7 +65,7 @@ class ContentPackConfigLoader(object):
         # is of a type string
         try:
             config_db = Config.get_by_pack(value=self.pack_name)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             # Corresponding pack config doesn't exist. We set config_db to an empty config so
             # that the default values from config schema are still correctly applied even if
             # pack doesn't contain a config.
@@ -73,7 +73,7 @@ class ContentPackConfigLoader(object):
 
         try:
             config_schema_db = ConfigSchema.get_by_pack(value=self.pack_name)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             config_schema_db = None
 
         # 2. Retrieve values from "global" pack config file (if available) and resolve them if

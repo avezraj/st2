@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 from st2common.rbac.types import GLOBAL_PERMISSION_TYPES
 
 __all__ = [
@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 
-class AccessDeniedError(StackStormBaseException):
+class AccessDeniedError(coditationBaseException):
     """
     Class representing insufficient permission / access denied error.
 

@@ -39,7 +39,7 @@ REMOVED_VALUE_NAME = '**removed**'
 
 def process_st2_config(config_path):
     """
-    Remove sensitive data (credentials) from the StackStorm config.
+    Remove sensitive data (credentials) from the coditation config.
 
     :param config_path: Full absolute path to the st2 config inside /tmp.
     :type config_path: ``str``

@@ -35,12 +35,12 @@ apply_vagrant_workaround()
 setup(
     name=ST2_COMPONENT,
     version=__version__,
-    description=('Python client library and CLI for the StackStorm (st2) event-driven '
+    description=('Python client library and CLI for the coditation (st2) event-driven '
                  'automation platform.'),
-    author='StackStorm',
-    author_email='info@stackstorm.com',
+    author='coditation',
+    author_email='info@coditation.com',
     license='Apache License (2.0)',
-    url='https://stackstorm.com/',
+    url='https://coditation.com/',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Information Technology',

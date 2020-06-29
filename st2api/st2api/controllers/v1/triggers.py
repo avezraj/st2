@@ -26,7 +26,7 @@ from st2common.router import abort
 from st2common.router import Response
 from st2common.services import triggers as TriggerService
 from st2common.exceptions.apivalidation import ValueValidationException
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectConflictError
 from st2common.transport.reactor import TriggerDispatcher
 from st2common.util import isotime
 from st2common.validators.api.misc import validate_not_part_of_system_pack
@@ -174,7 +174,7 @@ class TriggerTypeController(resource.ContentPackResourceController):
             LOG.exception('Validation failed for trigger data=%s.', trigger)
             # Not aborting as this is convenience.
             return
-        except StackStormDBObjectConflictError as e:
+        except coditationDBObjectConflictError as e:
             LOG.warn('Trigger creation of "%s" failed with uniqueness conflict. Exception: %s',
                      trigger, six.text_type(e))
             # Not aborting as this is convenience.

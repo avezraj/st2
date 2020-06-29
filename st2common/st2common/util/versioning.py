@@ -22,26 +22,26 @@ import sys
 
 import semver
 
-from st2common import __version__ as stackstorm_version
+from st2common import __version__ as coditation_version
 
 __all__ = [
-    'get_stackstorm_version',
+    'get_coditation_version',
     'get_python_version',
 
     'complex_semver_match'
 ]
 
 
-def get_stackstorm_version():
+def get_coditation_version():
     """
-    Return a valid semver version string for the currently running StackStorm version.
+    Return a valid semver version string for the currently running coditation version.
     """
     # Special handling for dev versions which are not valid semver identifiers
-    if 'dev' in stackstorm_version and stackstorm_version.count('.') == 1:
-        version = stackstorm_version.replace('dev', '.0')
+    if 'dev' in coditation_version and coditation_version.count('.') == 1:
+        version = coditation_version.replace('dev', '.0')
         return version
 
-    return stackstorm_version
+    return coditation_version
 
 
 def get_python_version():

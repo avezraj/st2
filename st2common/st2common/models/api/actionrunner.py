@@ -24,7 +24,7 @@ LOG = logging.getLogger(__name__)
 
 class ActionRunnerAPI(BaseAPI):
     """The system entity that represents an ActionRunner environment in the system.
-       This entity is used internally to manage and scale-out the StackStorm services.
+       This entity is used internally to manage and scale-out the coditation services.
     Attribute:
        ...
     """

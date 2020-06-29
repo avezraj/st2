@@ -20,7 +20,7 @@ import six
 from mongoengine import ValidationError
 
 from st2api.controllers import resource
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common import log as logging
 from st2common.content import utils
 from st2common.models.api.action import ActionAPI
@@ -221,7 +221,7 @@ class EntryPointController(resource.ContentPackResourceController):
         abs_path = utils.get_entry_point_abs_path(pack, entry_point)
 
         if not abs_path:
-            raise StackStormDBObjectNotFoundError('Action ref_or_id=%s has no entry_point to output'
+            raise coditationDBObjectNotFoundError('Action ref_or_id=%s has no entry_point to output'
                                                   % ref_or_id)
 
         with codecs.open(abs_path, 'r') as fp:

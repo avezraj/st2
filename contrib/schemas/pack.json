@@ -22,7 +22,7 @@
                 "maxLength": 100
             }, 
             "type": "array", 
-            "description": "A list of people who have contributed to the pack. Format is: Name <email address> e.g. Tomaz Muraus <tomaz@stackstorm.com>."
+            "description": "A list of people who have contributed to the pack. Format is: Name <email address> e.g. Tomaz Muraus <tomaz@coditation.com>."
         }, 
         "author": {
             "required": true, 
@@ -54,10 +54,10 @@
             "uniqueItems": true, 
             "type": "array"
         }, 
-        "stackstorm_version": {
+        "coditation_version": {
             "pattern": "^((>?>|>=|=|<=|<?<)\\s*[0-9]+\\.[0-9]+\\.[0-9]+?(\\s*,)?\\s*)+$", 
             "type": "string", 
-            "description": "Required StackStorm version. Examples: \">1.6.0\", \">=1.8.0, <2.2.0\""
+            "description": "Required coditation version. Examples: \">1.6.0\", \">=1.8.0, <2.2.0\""
         }, 
         "email": {
             "type": "string", 
@@ -76,7 +76,7 @@
                 "type": "string"
             }, 
             "type": "array", 
-            "description": "A list of other StackStorm packs this pack depends upon. The same format as in \"st2 pack install\" is used: \"<name or full URL>[=<version or git ref>]\"."
+            "description": "A list of other coditation packs this pack depends upon. The same format as in \"st2 pack install\" is used: \"<name or full URL>[=<version or git ref>]\"."
         }, 
         "keywords": {
             "default": [], 

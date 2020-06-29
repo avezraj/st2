@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -30,8 +30,8 @@ function join { local IFS="$1"; shift; echo "$*"; }
 ###########
 
 # A list of dependencies which are installed and available to every pack tests
-# Note: Those only need to be installed when running this script standalone outside of StackStorm
-# package installation. When using StackStorm package installation, those dependencies are already
+# Note: Those only need to be installed when running this script standalone outside of coditation
+# package installation. When using coditation package installation, those dependencies are already
 # available (they are installed by st2tests package).
 PACK_TEST_PYTHON_DEPENDENCIES_NAMES=(
     'mock'
@@ -63,8 +63,8 @@ ENABLE_TIMING=false
 
 VIRTUALENV_ACTIVATED=false
 
-STACKSTORM_VIRTUALENV_BIN="/opt/stackstorm/st2/bin"
-STACKSTORM_VIRTUALENV_PYTHON_BINARY="${STACKSTORM_VIRTUALENV_BIN}/python"
+coditation_VIRTUALENV_BIN="/opt/coditation/st2/bin"
+coditation_VIRTUALENV_PYTHON_BINARY="${coditation_VIRTUALENV_BIN}/python"
 
 ####################
 # Script beings here
@@ -179,10 +179,10 @@ PACK_TESTS_REQUIREMENTS_FILE="${PACK_PATH}/requirements-tests.txt"
 
 echo "Running tests for pack: ${PACK_NAME}"
 
-# Make sure /opt/stackstorm/bin is in PATH (for package installations)
-if [ -d "${STACKSTORM_VIRTUALENV_BIN}" ]; then
-    verbose_log "Adding ${STACKSTORM_VIRTUALENV_BIN} to \$PATH"
-    export PATH="${STACKSTORM_VIRTUALENV_BIN}:${PATH}"
+# Make sure /opt/coditation/bin is in PATH (for package installations)
+if [ -d "${coditation_VIRTUALENV_BIN}" ]; then
+    verbose_log "Adding ${coditation_VIRTUALENV_BIN} to \$PATH"
+    export PATH="${coditation_VIRTUALENV_BIN}:${PATH}"
 fi
 
 # Create virtualenv (if requested, otherwise just activate it)
@@ -222,7 +222,7 @@ if [ -n "${ST2_REPO_PATH}" ]; then
 else
     # ST2_REPO_PATH not provided, assume all the st2 component packages are
     # already in PYTHONPATH
-    ST2_RUNNERS=$(find /opt/stackstorm/runners/* -maxdepth 0 -type d 2> /dev/null)
+    ST2_RUNNERS=$(find /opt/coditation/runners/* -maxdepth 0 -type d 2> /dev/null)
     PACK_PYTHONPATH="$(join ":" ${ST2_COMPONENTS}):$(join ":" ${ST2_RUNNERS}):${SENSORS_PATH}:${ACTIONS_PATH}:${ACTIONS_LIB_PATH}:${ETC_PATH}"
 fi
 
@@ -276,11 +276,11 @@ fi
 # Set PYTHONPATH, make sure it contains st2 components in PYTHONPATH
 TESTS_PYTHON_PATH=()
 
-# 1. Add PYTHONPATH from StackStorm packages virtualenv (only applies when running on server when
-# StackStorm is installed using packages)
-if [ -f "${STACKSTORM_VIRTUALENV_PYTHON_BINARY}" ]; then
-    ST2_PYTHONPATH=$(${STACKSTORM_VIRTUALENV_PYTHON_BINARY} -c "import sys;print(':'.join([x for x in sys.path if x.strip()]))")
-    verbose_log "Adding entries from StackStorm virtualenv to PYTHONPATH: ${ST2_PYTHONPATH}"
+# 1. Add PYTHONPATH from coditation packages virtualenv (only applies when running on server when
+# coditation is installed using packages)
+if [ -f "${coditation_VIRTUALENV_PYTHON_BINARY}" ]; then
+    ST2_PYTHONPATH=$(${coditation_VIRTUALENV_PYTHON_BINARY} -c "import sys;print(':'.join([x for x in sys.path if x.strip()]))")
+    verbose_log "Adding entries from coditation virtualenv to PYTHONPATH: ${ST2_PYTHONPATH}"
 
     TESTS_PYTHON_PATH+=("${ST2_PYTHONPATH}")
 fi

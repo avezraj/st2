@@ -453,7 +453,7 @@ def request_rerun(ac_ex_db, st2_ctx, options=None):
 
     try:
         wf_ex_db = wf_db_access.WorkflowExecution.get_by_id(wf_ex_id)
-    except db_exc.StackStormDBObjectNotFoundError:
+    except db_exc.coditationDBObjectNotFoundError:
         msg = 'Unable to rerun workflow execution "%s" because it does not exist.'
         raise wf_exc.WorkflowExecutionRerunException(msg % wf_ex_id)
 

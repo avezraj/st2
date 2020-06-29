@@ -207,17 +207,17 @@ class CLIConfigPermissionsTestCase(unittest2.TestCase):
         self.assertEqual(parser.LOG.info.call_count, 1)
 
         self.assertEqual(
-            "The SGID bit is not set on the StackStorm configuration directory.",
+            "The SGID bit is not set on the coditation configuration directory.",
             parser.LOG.info.call_args_list[0][0][0])
 
         self.assertEqual(parser.LOG.warn.call_count, 2)
         self.assertEqual(
-            "The StackStorm configuration directory permissions are insecure "
+            "The coditation configuration directory permissions are insecure "
             "(too permissive): others have access.",
             parser.LOG.warn.call_args_list[0][0][0])
 
         self.assertEqual(
-            "The StackStorm configuration file permissions are insecure: others have access.",
+            "The coditation configuration file permissions are insecure: others have access.",
             parser.LOG.warn.call_args_list[1][0][0])
 
         # Make sure we left the file alone

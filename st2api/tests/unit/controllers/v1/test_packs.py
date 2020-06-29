@@ -40,19 +40,19 @@ PACK_INDEX = {
     "test": {
         "version": "0.4.0",
         "name": "test",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test",
         "author": "st2-dev",
         "keywords": ["some", "search", "another", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "st2 pack to test package management pipeline"
     },
     "test2": {
         "version": "0.5.0",
         "name": "test2",
-        "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test2",
+        "repo_url": "https://github.com/coditation-Exchange/coditation-test2",
         "author": "stanley",
         "keywords": ["some", "special", "terms"],
-        "email": "info@stackstorm.com",
+        "email": "info@coditation.com",
         "description": "another st2 pack to test package management pipeline"
     }
 }
@@ -63,10 +63,10 @@ PACK_INDEXES = {
         "test": {
             "version": "0.1.0",
             "name": "test",
-            "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test",
+            "repo_url": "https://github.com/coditation-Exchange/coditation-test",
             "author": "st2-dev",
             "keywords": ["some", "search", "another", "terms"],
-            "email": "info@stackstorm.com",
+            "email": "info@coditation.com",
             "description": "st2 pack to test package management pipeline"
         }
     },
@@ -74,10 +74,10 @@ PACK_INDEXES = {
         "test2": {
             "version": "1.0.0",
             "name": "test2",
-            "repo_url": "https://github.com/StackStorm-Exchange/stackstorm-test2",
+            "repo_url": "https://github.com/coditation-Exchange/coditation-test2",
             "author": "stanley",
             "keywords": ["some", "special", "terms"],
-            "email": "info@stackstorm.com",
+            "email": "info@coditation.com",
             "description": "another st2 pack to test package management pipeline"
         }
     },

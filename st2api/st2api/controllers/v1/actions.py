@@ -22,7 +22,7 @@ from mongoengine import ValidationError
 
 # TODO: Encapsulate mongoengine errors in our persistence layer. Exceptions
 #       that bubble up to this layer should be core Python exceptions or
-#       StackStorm defined exceptions.
+#       coditation defined exceptions.
 
 from st2api.controllers import resource
 from st2api.controllers.v1.action_views import ActionViewsController
@@ -130,7 +130,7 @@ class ActionsController(resource.ContentPackResourceController):
         LOG.debug('/actions/ POST saved ActionDB object=%s', action_db)
 
         # Dispatch an internal trigger for each written data file. This way user
-        # automate comitting this files to git using StackStorm rule
+        # automate comitting this files to git using coditation rule
         if written_data_files:
             self._dispatch_trigger_for_written_data_files(action_db=action_db,
                                                           written_data_files=written_data_files)
@@ -179,7 +179,7 @@ class ActionsController(resource.ContentPackResourceController):
             return
 
         # Dispatch an internal trigger for each written data file. This way user
-        # automate committing this files to git using StackStorm rule
+        # automate committing this files to git using coditation rule
         if written_data_files:
             self._dispatch_trigger_for_written_data_files(action_db=action_db,
                                                           written_data_files=written_data_files)

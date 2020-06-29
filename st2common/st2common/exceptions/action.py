@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 
 __all__ = [
     'ParameterRenderingFailedException',
@@ -22,13 +22,13 @@ __all__ = [
 ]
 
 
-class ParameterRenderingFailedException(StackStormBaseException):
+class ParameterRenderingFailedException(coditationBaseException):
     pass
 
 
-class InvalidActionReferencedException(StackStormBaseException):
+class InvalidActionReferencedException(coditationBaseException):
     pass
 
 
-class InvalidActionParameterException(StackStormBaseException):
+class InvalidActionParameterException(coditationBaseException):
     pass

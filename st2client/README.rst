@@ -1,4 +1,4 @@
-StackStorm CLI and Python Client
+coditation CLI and Python Client
 ================================
 
 Install stable / production version from Python Package Index (PyPi)
@@ -11,13 +11,13 @@ Install stable / production version from Python Package Index (PyPi)
 Install latest development version from Source
 ----------------------------------------------
 
-Git clone StackStorm/st2 repo locally, change directory to st2client, then
+Git clone coditation/st2 repo locally, change directory to st2client, then
 run "python setup.py install" or install it directly using pip from git:
 
 
 .. sourcecode:: bash
 
-    pip install "git+https://github.com/stackstorm/st2.git#egg=st2client&subdirectory=st2client"
+    pip install "git+https://github.com/coditation/st2.git#egg=st2client&subdirectory=st2client"
 
 Endpoint Configuration
 ----------------------
@@ -26,7 +26,7 @@ By default, both the python client and the CLI will retrieve endpoint
 configuration from the environment. If no configuration is provided, the
 client will assume localhost and default ports.
 
--  ``ST2_BASE_URL`` - Base URL for the StackStorm API server endpoints (i.e.
+-  ``ST2_BASE_URL`` - Base URL for the coditation API server endpoints (i.e.
    http://127.0.0.1). If only the base URL is provided, the client will
    assume default ports for the API servers are used. If any of the API
    server URL is provided, it will override the base URL and default
@@ -38,7 +38,7 @@ client will assume localhost and default ports.
 - ``ST2_STREAM_URL`` - URL to the stream API endpoind uses for event-stream data.
 
 The default endpoint configuration can be explicitly specified at the
-StackStorm CLI and the python client. For StackStorm CLI, the endpoints are provided
+coditation CLI and the python client. For coditation CLI, the endpoints are provided
 via optional parameters (i.e. ``--url`` for base URL, ``--auth-url``, ``--api-url`` and
 ``--stream-url``).
 

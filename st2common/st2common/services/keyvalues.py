@@ -21,7 +21,7 @@ from st2common.constants.keyvalue import SYSTEM_SCOPE, FULL_SYSTEM_SCOPE
 from st2common.constants.keyvalue import USER_SCOPE, FULL_USER_SCOPE
 from st2common.constants.keyvalue import ALLOWED_SCOPES
 from st2common.constants.keyvalue import DATASTORE_KEY_SEPARATOR
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.keyvalue import InvalidScopeException, InvalidUserException
 from st2common.models.system.keyvalue import UserKeyReference
 from st2common.persistence.keyvalue import KeyValuePair
@@ -152,7 +152,7 @@ class KeyValueLookup(BaseKeyValueLookup):
 
         try:
             kvp = KeyValuePair.get_by_scope_and_name(scope=scope, name=key)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             kvp = None
 
         if kvp:
@@ -212,7 +212,7 @@ class UserKeyValueLookup(BaseKeyValueLookup):
 
         try:
             kvp = KeyValuePair.get_by_scope_and_name(scope=scope, name=key)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             kvp = None
 
         return kvp.value if kvp else ''

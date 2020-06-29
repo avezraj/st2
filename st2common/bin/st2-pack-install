@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -15,7 +15,7 @@
 # limitations under the License.
 
 """
-StackStorm command for installing a pack and setting up pack virtual environment on the local
+coditation command for installing a pack and setting up pack virtual environment on the local
 system where the command runs.
 
 This command is meant to be used in Docker and similar environments where container / server
@@ -25,11 +25,11 @@ where the pack is installed doesn't have access to the database (MongoDB) and me
 Keep in mind that pack still eventually needs to be registered in the database by running
 "st2ctl reload --register-all" command on a server with access to the database and message bus.
 
-NOTE: Ideally for this command to work, whole StackStorm package would be installed on the
+NOTE: Ideally for this command to work, whole coditation package would be installed on the
 system, but at the very least, the following things need to be present:
 
     * Python 2.7 / 3.x with a recent virtualenv binary
-    * st2common StackStorm Python package
+    * st2common coditation Python package
     * /etc/st2/st2.conf config file (user can specify custom pack exchange index, settings there,
       etc.)
 """

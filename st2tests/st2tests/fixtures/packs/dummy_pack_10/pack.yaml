@@ -2,8 +2,8 @@
 name : dummy_pack_10_wrong_deps
 description : dummy pack with wrong dependencies
 version : 0.1.0
-stackstorm_version : wrongstackstormversion
+coditation_version : wrongcoditationversion
 author : st2-dev
-email : info@stackstorm.com
+email : info@coditation.com
 dependencies :
   - core=0.2.0

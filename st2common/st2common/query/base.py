@@ -190,7 +190,7 @@ class Querier(object):
 
         try:
             state_db = ActionExecutionState.get_by_id(query_context.id)
-        except db_exc.StackStormDBObjectNotFoundError:
+        except db_exc.coditationDBObjectNotFoundError:
             pass
 
         if state_db is not None:
@@ -205,7 +205,7 @@ class Querier(object):
 
         try:
             state_db = ActionExecutionState.get_by_id(query_context.id)
-        except db_exc.StackStormDBObjectNotFoundError:
+        except db_exc.coditationDBObjectNotFoundError:
             pass
 
         return (state_db is not None)

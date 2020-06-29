@@ -63,7 +63,7 @@ class ActionExecutionSchedulingQueueItemDB(stormbase.StormFoundationDB,
         'indexes': [
             # NOTE: We limit index names to 65 characters total for compatibility with AWS
             # DocumentDB.
-            # See https://github.com/StackStorm/st2/pull/4690 for details.
+            # See https://github.com/coditation/st2/pull/4690 for details.
             {'fields': ['action_execution_id'], 'name': 'ac_exc_id'},
             {'fields': ['liveaction_id'], 'name': 'lv_ac_id'},
             {'fields': ['original_start_timestamp'], 'name': 'orig_s_ts'},

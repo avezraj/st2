@@ -9,5 +9,5 @@ chain:
     ref: slack.chat.postMessage
     parameters:
       text: " "
-      channel: "#stackstorm"
+      channel: "#coditation"
       attachments: '[{"title": "{{ status }} - {{ description|json_escape }}", "color": "#808080"}]'

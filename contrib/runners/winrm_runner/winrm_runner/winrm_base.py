@@ -151,14 +151,14 @@ class WinRmBaseRunner(ActionRunner):
         command_done = False
         start_time = time.time()
         while not command_done:
-            # check if we need to timeout (StackStorm custom)
+            # check if we need to timeout (coditation custom)
             current_time = time.time()
             elapsed_time = (current_time - start_time)
             if self._timeout and (elapsed_time > self._timeout):
                 raise WinRmRunnerTimoutError(Response((b''.join(stdout_buffer),
                                                        b''.join(stderr_buffer),
                                                        WINRM_TIMEOUT_EXIT_CODE)))
-            # end stackstorm custom
+            # end coditation custom
 
             try:
                 stdout, stderr, return_code, command_done = \
@@ -179,7 +179,7 @@ class WinRmBaseRunner(ActionRunner):
         shell_id = session.protocol.open_shell(env_vars=env,
                                                working_directory=cwd)
         command_id = session.protocol.run_command(shell_id, command, args)
-        # try/catch is for custom timeout handing (StackStorm custom)
+        # try/catch is for custom timeout handing (coditation custom)
         try:
             rs = Response(self._winrm_get_command_output(session.protocol,
                                                          shell_id,
@@ -188,7 +188,7 @@ class WinRmBaseRunner(ActionRunner):
         except WinRmRunnerTimoutError as e:
             rs = e.response
             rs.timeout = True
-        # end stackstorm custom
+        # end coditation custom
         session.protocol.cleanup_command(shell_id, command_id)
         session.protocol.close_shell(shell_id)
         return rs

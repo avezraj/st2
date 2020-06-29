@@ -13,12 +13,12 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormPluginException
+from st2common.exceptions import coditationPluginException
 
 
-class PluginLoadError(StackStormPluginException):
+class PluginLoadError(coditationPluginException):
     pass
 
 
-class IncompatiblePluginException(StackStormPluginException):
+class IncompatiblePluginException(coditationPluginException):
     pass

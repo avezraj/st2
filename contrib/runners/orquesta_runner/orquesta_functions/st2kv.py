@@ -51,7 +51,7 @@ def st2kv_(context, key, **kwargs):
 
     try:
         return kvp_util.get_key(key=key, user_db=user_db, decrypt=decrypt)
-    except db_exc.StackStormDBObjectNotFoundError as e:
+    except db_exc.coditationDBObjectNotFoundError as e:
         if not has_default:
             raise exc.ExpressionEvaluationException(str(e))
         else:

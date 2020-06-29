@@ -64,7 +64,7 @@ class TestChangeRevision(DbTestCase):
         created.delete()
 
         self.assertRaises(
-            db_exc.StackStormDBObjectNotFoundError,
+            db_exc.coditationDBObjectNotFoundError,
             self.access.get_by_id,
             doc_id
         )
@@ -90,7 +90,7 @@ class TestChangeRevision(DbTestCase):
 
         # Test update on instance 2, expect race error
         self.assertRaises(
-            db_exc.StackStormDBObjectWriteConflictError,
+            db_exc.coditationDBObjectWriteConflictError,
             self.access.update,
             retrieved2,
             context={'a': 1, 'b': 2}

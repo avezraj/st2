@@ -16,7 +16,7 @@ from __future__ import absolute_import
 
 from st2common import log as logging
 from st2common.constants.triggers import TRIGGER_INSTANCE_PENDING
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.trigger import TriggerInstanceDB
 from st2common.persistence.trigger import TriggerInstance
 from st2common.services.triggers import get_trigger_db_by_ref_or_dict
@@ -41,7 +41,7 @@ def create_trigger_instance(trigger, payload, occurrence_time, raise_on_no_trigg
     if not trigger_db:
         LOG.debug('No trigger in db for %s', trigger)
         if raise_on_no_trigger:
-            raise StackStormDBObjectNotFoundError('Trigger not found for %s' % trigger)
+            raise coditationDBObjectNotFoundError('Trigger not found for %s' % trigger)
         return None
 
     trigger_ref = trigger_db.get_reference().ref

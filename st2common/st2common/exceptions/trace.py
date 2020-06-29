@@ -13,13 +13,13 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions import coditationBaseException
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 
-class UniqueTraceNotFoundException(StackStormBaseException):
+class UniqueTraceNotFoundException(coditationBaseException):
     pass
 
 
-class TraceNotFoundException(StackStormDBObjectNotFoundError):
+class TraceNotFoundException(coditationDBObjectNotFoundError):
     pass

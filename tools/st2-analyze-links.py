@@ -25,7 +25,7 @@ Visualize the links created by rules.
 To run :
     ./st2-analyze-links.py --action_ref <action-ref>
 
-The command must run on a StackStorm box.
+The command must run on a coditation box.
 """
 
 from __future__ import print_function

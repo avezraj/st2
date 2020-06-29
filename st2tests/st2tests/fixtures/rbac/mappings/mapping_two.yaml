@@ -1,5 +1,5 @@
 ---
-  group: "CN=stormers,OU=groups,DC=stackstorm,DC=net"
+  group: "CN=stormers,OU=groups,DC=coditation,DC=net"
   description: "Grant 3 roles to stormers group members"
   enabled: false
   roles:

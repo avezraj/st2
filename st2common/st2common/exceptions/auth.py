@@ -13,8 +13,8 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions import coditationBaseException
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'TokenNotProvidedError',
@@ -32,53 +32,53 @@ __all__ = [
 ]
 
 
-class TokenNotProvidedError(StackStormBaseException):
+class TokenNotProvidedError(coditationBaseException):
     pass
 
 
-class TokenNotFoundError(StackStormDBObjectNotFoundError):
+class TokenNotFoundError(coditationDBObjectNotFoundError):
     pass
 
 
-class TokenExpiredError(StackStormBaseException):
+class TokenExpiredError(coditationBaseException):
     pass
 
 
-class TTLTooLargeException(StackStormBaseException):
+class TTLTooLargeException(coditationBaseException):
     pass
 
 
-class ApiKeyNotProvidedError(StackStormBaseException):
+class ApiKeyNotProvidedError(coditationBaseException):
     pass
 
 
-class ApiKeyNotFoundError(StackStormDBObjectNotFoundError):
+class ApiKeyNotFoundError(coditationDBObjectNotFoundError):
     pass
 
 
-class ApiKeyDisabledError(StackStormDBObjectNotFoundError):
+class ApiKeyDisabledError(coditationDBObjectNotFoundError):
     pass
 
 
-class MultipleAuthSourcesError(StackStormBaseException):
+class MultipleAuthSourcesError(coditationBaseException):
     pass
 
 
-class NoAuthSourceProvidedError(StackStormBaseException):
+class NoAuthSourceProvidedError(coditationBaseException):
     pass
 
 
-class NoNicknameOriginProvidedError(StackStormBaseException):
+class NoNicknameOriginProvidedError(coditationBaseException):
     pass
 
 
-class UserNotFoundError(StackStormBaseException):
+class UserNotFoundError(coditationBaseException):
     pass
 
 
-class AmbiguousUserError(StackStormBaseException):
+class AmbiguousUserError(coditationBaseException):
     pass
 
 
-class NotServiceUserError(StackStormBaseException):
+class NotServiceUserError(coditationBaseException):
     pass

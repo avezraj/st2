@@ -12,7 +12,7 @@
       required: true
     abs_repo_base:
       type: "string"
-      default: "/opt/stackstorm/packs/"
+      default: "/opt/coditation/packs/"
       immutable: true
     delete_env:
       type: "boolean"

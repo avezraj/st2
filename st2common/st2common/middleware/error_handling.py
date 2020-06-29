@@ -62,10 +62,10 @@ class ErrorHandlingMiddleware(object):
             if isinstance(e, exc.HTTPException):
                 status_code = status
                 message = six.text_type(e)
-            elif isinstance(e, db_exceptions.StackStormDBObjectNotFoundError):
+            elif isinstance(e, db_exceptions.coditationDBObjectNotFoundError):
                 status_code = exc.HTTPNotFound.code
                 message = six.text_type(e)
-            elif isinstance(e, db_exceptions.StackStormDBObjectConflictError):
+            elif isinstance(e, db_exceptions.coditationDBObjectConflictError):
                 status_code = exc.HTTPConflict.code
                 message = six.text_type(e)
                 body['conflict-id'] = getattr(e, 'conflict_id', None)

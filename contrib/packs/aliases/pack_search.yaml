@@ -2,7 +2,7 @@
 name: "pack_search"
 action_ref: "packs.search"
 pack: "packs"
-description: "Search for packs in StackStorm Exchange and other directories."
+description: "Search for packs in coditation Exchange and other directories."
 formats:
   - display: "pack search <query>"
     representation:
@@ -10,7 +10,7 @@ formats:
 ack:
   enabled: true
   append_url: false
-  format: "Alright! Let me check if that matches anything in the StackStorm Exchange index."
+  format: "Alright! Let me check if that matches anything in the coditation Exchange index."
 result:
   format: |
     {% if execution.status == "succeeded" %}

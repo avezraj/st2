@@ -707,12 +707,12 @@ class AliasExecutionAPI(BaseAPI):
             },
             "notification_channel": {
                 "type": "string",
-                "description": "StackStorm notification channel to use to respond.",
+                "description": "coditation notification channel to use to respond.",
                 "required": False
             },
             "notification_route": {
                 "type": "string",
-                "description": "StackStorm notification route to use to respond.",
+                "description": "coditation notification route to use to respond.",
                 "required": False
             }
         },
@@ -756,13 +756,13 @@ class AliasMatchAndExecuteInputAPI(BaseAPI):
             },
             "notification_channel": {
                 "type": "string",
-                "description": "StackStorm notification channel to use to respond.",
+                "description": "coditation notification channel to use to respond.",
                 "required": False,
                 "default": None
             },
             "notification_route": {
                 "type": "string",
-                "description": "StackStorm notification route to use to respond.",
+                "description": "coditation notification route to use to respond.",
                 "required": False,
                 "default": None
             }

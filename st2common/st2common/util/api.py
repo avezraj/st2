@@ -58,7 +58,7 @@ def get_full_public_api_url(api_version=DEFAULT_API_VERSION):
 
 def get_mistral_api_url(api_version=DEFAULT_API_VERSION):
     """
-    Return a URL which Mistral uses to talk back to the StackStorm API.
+    Return a URL which Mistral uses to talk back to the coditation API.
 
     Note: If not provided it defaults to the public API url.
     """

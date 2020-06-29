@@ -77,7 +77,7 @@ class UnencryptedKeyValuePairTest(CustomKeyValuePairTest):
 
     def test_jinja_user_kvp(self):
         # Pending completion of jinja rendering of user scoped variable.
-        # https://github.com/StackStorm/st2/pull/2931
+        # https://github.com/coditation/st2/pull/2931
         pass
 
 
@@ -100,6 +100,6 @@ class EncryptedKeyValuePairTest(CustomKeyValuePairTest):
         self.assertEqual(ex.status, action_constants.LIVEACTION_STATUS_SUCCEEDED)
 
     def test_jinja_user_kvp(self):
-        # Per https://docs.stackstorm.com/datastore.html#storing-secrets,
+        # Per https://docs.coditation.com/datastore.html#storing-secrets,
         # decrypting user scoped variables is currently unsupported.
         pass

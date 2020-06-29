@@ -110,7 +110,7 @@ class PermissionGrantDB(stormbase.StormFoundationDB):
 
 class GroupToRoleMappingDB(stormbase.StormFoundationDB):
     """
-    An entity which represents mapping from a remote auth backend group to StackStorm roles.
+    An entity which represents mapping from a remote auth backend group to coditation roles.
 
     Attribute:
         group: Name of the remote auth backend group.

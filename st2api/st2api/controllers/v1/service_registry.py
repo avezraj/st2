@@ -17,7 +17,7 @@ import six
 from tooz.coordination import GroupNotCreated
 
 from st2common.services import coordination
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.rbac.backends import get_rbac_backend
 
 __all__ = [
@@ -56,7 +56,7 @@ class ServiceRegistryGroupMembersController(object):
             member_ids = list(coordinator.get_members(group_id).get())
         except GroupNotCreated:
             msg = ('Group with ID "%s" not found.' % (group_id.decode('utf-8')))
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         result = {
             'members': []

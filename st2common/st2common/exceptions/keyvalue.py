@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 
 __all__ = [
     'CryptoKeyNotSetupException',
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 
-class CryptoKeyNotSetupException(StackStormBaseException):
+class CryptoKeyNotSetupException(coditationBaseException):
     pass
 
 
-class InvalidScopeException(StackStormBaseException):
+class InvalidScopeException(coditationBaseException):
     pass
 
 
-class InvalidUserException(StackStormBaseException):
+class InvalidUserException(coditationBaseException):
     pass

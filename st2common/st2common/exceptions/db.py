@@ -13,29 +13,29 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 
 
-class StackStormDBObjectNotFoundError(StackStormBaseException):
+class coditationDBObjectNotFoundError(coditationBaseException):
     pass
 
 
-class StackStormDBObjectMalformedError(StackStormBaseException):
+class coditationDBObjectMalformedError(coditationBaseException):
     pass
 
 
-class StackStormDBObjectConflictError(StackStormBaseException):
+class coditationDBObjectConflictError(coditationBaseException):
     """
     Exception that captures a DB object conflict error.
     """
     def __init__(self, message, conflict_id, model_object):
-        super(StackStormDBObjectConflictError, self).__init__(message)
+        super(coditationDBObjectConflictError, self).__init__(message)
         self.conflict_id = conflict_id
         self.model_object = model_object
 
 
-class StackStormDBObjectWriteConflictError(StackStormBaseException):
+class coditationDBObjectWriteConflictError(coditationBaseException):
 
     def __init__(self, instance):
         msg = 'Conflict saving DB object with id "%s" and rev "%s".' % (instance.id, instance.rev)
-        super(StackStormDBObjectWriteConflictError, self).__init__(msg)
+        super(coditationDBObjectWriteConflictError, self).__init__(msg)

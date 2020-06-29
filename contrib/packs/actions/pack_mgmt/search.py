@@ -53,7 +53,7 @@ class PackSearch(Action):
         if self.proxy_ca_bundle_path and not os.environ.get('proxy_ca_bundle_path', None):
             os.environ['no_proxy'] = self.no_proxy
 
-    """"Search for packs in StackStorm Exchange and other directories."""
+    """"Search for packs in coditation Exchange and other directories."""
     def run(self, query):
         """
         :param query: A word or a phrase to search for

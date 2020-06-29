@@ -2,27 +2,27 @@ swagger: '2.0'
 
 info:
   version: "1.0.0"
-  title: StackStorm API
+  title: coditation API
   description: |
     {% raw %}
     ## Welcome
 
-    Welcome to the StackStorm API Reference documentation! You can use the StackStorm API to integrate StackStorm with 3rd-party systems and custom applications. Example integrations include writing your own self-service user portal, or integrating with other orquestation systems.
+    Welcome to the coditation API Reference documentation! You can use the coditation API to integrate coditation with 3rd-party systems and custom applications. Example integrations include writing your own self-service user portal, or integrating with other orquestation systems.
 
-    This document provides an overview of how to use the API. Use the menu on the left to look up details of specific API endpoints. For more information about how StackStorm works, and how to use it, check out the main [StackStorm documentation](https://docs.stackstorm.com).
+    This document provides an overview of how to use the API. Use the menu on the left to look up details of specific API endpoints. For more information about how coditation works, and how to use it, check out the main [coditation documentation](https://docs.coditation.com).
 
     > ### A Quick Note
-    > This API is intended for software developers, and those are who are comfortable working with RESTful APIs, and writing some code. You do not need to use this API to work with StackStorm, or to use and write integration packs for StackStorm.
+    > This API is intended for software developers, and those are who are comfortable working with RESTful APIs, and writing some code. You do not need to use this API to work with coditation, or to use and write integration packs for coditation.
 
     ## Accessing the API
 
-    Usually the API is available at `https://$ST2_HOSTNAME/api`. The default implementation is to use Nginx as a front-end, passing `/api` requests through to the `st2api` service, which by default listens on port `9101`. On a [reference single-system deployment](https://docs.stackstorm.com/install/index.html), all processes run on the same system. If you have a [multi-system deployment](https://docs.stackstorm.com/reference/ha.html), the components may be running on multiple systems, and may be load-balanced.
+    Usually the API is available at `https://$ST2_HOSTNAME/api`. The default implementation is to use Nginx as a front-end, passing `/api` requests through to the `st2api` service, which by default listens on port `9101`. On a [reference single-system deployment](https://docs.coditation.com/install/index.html), all processes run on the same system. If you have a [multi-system deployment](https://docs.coditation.com/reference/ha.html), the components may be running on multiple systems, and may be load-balanced.
 
     ## Authentication
 
-    To authenticate against the StackStorm API, either an authentication token or an API key (but not both) should be provided in the HTTP request headers. The headers are named `X-Auth-Token` and `St2-Api-Key` respectively. In situation when it is impossble to provide a header to the response, query parameters `x-auth-token` and `st2-api-key` could be used instead, but would require you to weight in on security implications.
+    To authenticate against the coditation API, either an authentication token or an API key (but not both) should be provided in the HTTP request headers. The headers are named `X-Auth-Token` and `St2-Api-Key` respectively. In situation when it is impossble to provide a header to the response, query parameters `x-auth-token` and `st2-api-key` could be used instead, but would require you to weight in on security implications.
 
-    An authentication token is a time-limited access token, granted once a user authenticates, typically using a username and password. This is suitable for short-term, interactive sessions. [API Keys](https://docs.stackstorm.com/authentication.html#api-keys) do not expire, and are therefore better suited for use with integrating other applications.
+    An authentication token is a time-limited access token, granted once a user authenticates, typically using a username and password. This is suitable for short-term, interactive sessions. [API Keys](https://docs.coditation.com/authentication.html#api-keys) do not expire, and are therefore better suited for use with integrating other applications.
 
     ### Authentication Tokens
 
@@ -66,7 +66,7 @@ info:
 
     ## HTTP Methods
 
-    The StackStorm API supports these HTTP methods:
+    The coditation API supports these HTTP methods:
 
     * **GET:** Use to retrieve data, e.g. current status of an execution. GET requests will not update or change data.
     * **POST:** Use to create new resources. For example, make a POST request to create a new rule, or execute an action.
@@ -79,15 +79,15 @@ info:
 
     ## SSL
 
-    The default StackStorm installation creates a self-signed certificate. If you are testing this with `curl`, you may need to disable certificate validation with `curl -k`. We **strongly** recommend you configure valid, signed certificates for StackStorm.
+    The default coditation installation creates a self-signed certificate. If you are testing this with `curl`, you may need to disable certificate validation with `curl -k`. We **strongly** recommend you configure valid, signed certificates for coditation.
 
     ## JSON
 
-    The StackStorm API only supports JSON, not XML. Most POST requests require a well-formatted JSON object body.
+    The coditation API only supports JSON, not XML. Most POST requests require a well-formatted JSON object body.
 
     ## Code Examples
 
-    These are some examples to show how to use the StackStorm API with cURL. You can use any REST-capable client, library or programming language to access the StackStorm API.
+    These are some examples to show how to use the coditation API with cURL. You can use any REST-capable client, library or programming language to access the coditation API.
 
     Obtaining an authentication token:
 
@@ -186,13 +186,13 @@ info:
     }
     ```
 
-    `4xx` codes indicate a bad request, whereas `5xx` errors indicate a server-side problem with StackStorm.
+    `4xx` codes indicate a bad request, whereas `5xx` errors indicate a server-side problem with coditation.
 
     ## Support
 
-    Join our [Slack Community](https://stackstorm.com/community-signup) to get help from the engineering team and fellow users. You can also create issues against the main [StackStorm GitHub repo](https://github.com/StackStorm/st2/issues), or the [st2apidocs repo](https://github.com/StackStorm/st2apidocs) for documentation-specific issues.
+    Join our [Slack Community](https://coditation.com/community-signup) to get help from the engineering team and fellow users. You can also create issues against the main [coditation GitHub repo](https://github.com/coditation/st2/issues), or the [st2apidocs repo](https://github.com/coditation/st2apidocs) for documentation-specific issues.
 
-    We also recommend reviewing the main [StackStorm documentation](https://docs.stackstorm.com/).
+    We also recommend reviewing the main [coditation documentation](https://docs.coditation.com/).
     {% endraw %}
 
 paths:
@@ -566,7 +566,7 @@ paths:
             type: string
           examples:
             text/plain: |-
-              # Licensed to the StackStorm, Inc ('StackStorm') under one or more
+              # Licensed to the coditation, Inc ('coditation') under one or more
               # contributor license agreements.  See the NOTICE file distributed with
               # this work for additional information regarding copyright ownership.
               # and stuff
@@ -1822,7 +1822,7 @@ paths:
     get:
       operationId: st2api.controllers.v1.packs:packs_controller.index.get_all
       x-permissions: {{ PERMISSION_TYPE.PACK_SEARCH }}
-      description: To list all the packs of all indexes used by your StackStorm instance.
+      description: To list all the packs of all indexes used by your coditation instance.
       responses:
         '200':
           description: Pack index.
@@ -1871,7 +1871,7 @@ paths:
     get:
       operationId: st2api.controllers.v1.packs:packs_controller.index.health.get
       x-permissions: {{ PERMISSION_TYPE.PACK_VIEWS_INDEX_HEALTH }}
-      description: To get the state of all indexes used by your StackStorm instance.
+      description: To get the state of all indexes used by your coditation instance.
       responses:
         '200':
           description: Index health.
@@ -4767,11 +4767,11 @@ definitions:
         description: Channel the message is from (different than the notification channel)
       notification_channel:
         type: string
-        description: StackStorm notification channel to use to respond
+        description: coditation notification channel to use to respond
         default: ""
       notification_route:
         type: string
-        description: StackStorm notification route to use to respond
+        description: coditation notification route to use to respond
         default: ""
   Execution:
     title: ActionExecution
@@ -4951,7 +4951,7 @@ definitions:
         description: Encrypt value before saving the value.
         type: boolean
       encrypted:
-        description: Value provided is already encrypted with this instances crypto key and should be stored as-is. This is useful when migrating / loading keys from one StackStorm instance to another.
+        description: Value provided is already encrypted with this instances crypto key and should be stored as-is. This is useful when migrating / loading keys from one coditation instance to another.
         type: boolean
       scope:
         description: "Scope the item is under. Example: 'user'."

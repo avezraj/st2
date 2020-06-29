@@ -50,7 +50,7 @@ MOCK_PACKAGE_METADATA = """
 [server]
 version = 2.8dev
 git_sha = abcdefg
-circle_build_url = https://circleci.com/gh/StackStorm/st2/7213
+circle_build_url = https://circleci.com/gh/coditation/st2/7213
 """
 
 
@@ -78,7 +78,7 @@ class ShellTestCase(base.BaseCLITestCase):
         stderr = self.stderr.read()
         self.assertIn('Usage: ', stderr)
         self.assertIn('For example:', stderr)
-        self.assertIn('CLI for StackStorm', stderr)
+        self.assertIn('CLI for coditation', stderr)
         self.assertIn('positional arguments:', stderr)
 
         self.stdout.truncate()
@@ -94,7 +94,7 @@ class ShellTestCase(base.BaseCLITestCase):
         stdout = self.stdout.read()
         self.assertIn('Usage: ', stdout)
         self.assertIn('For example:', stdout)
-        self.assertIn('CLI for StackStorm', stdout)
+        self.assertIn('CLI for coditation', stdout)
         self.assertIn('positional arguments:', stdout)
 
         self.stdout.truncate()
@@ -158,8 +158,8 @@ class ShellTestCase(base.BaseCLITestCase):
     def test_endpoints_override_from_cli(self):
         base_url = 'http://www.st2.com'
         auth_url = 'http://www.st2.com:8888'
-        api_url = 'http://www.stackstorm1.com:9101/v1'
-        stream_url = 'http://www.stackstorm1.com:9102/v1'
+        api_url = 'http://www.coditation1.com:9101/v1'
+        stream_url = 'http://www.coditation1.com:9102/v1'
         args = ['--url', base_url,
                 '--auth-url', auth_url,
                 '--api-url', api_url,
@@ -175,8 +175,8 @@ class ShellTestCase(base.BaseCLITestCase):
     def test_endpoints_override_from_env(self):
         base_url = 'http://www.st2.com'
         auth_url = 'http://www.st2.com:8888'
-        api_url = 'http://www.stackstorm1.com:9101/v1'
-        stream_url = 'http://www.stackstorm1.com:9102/v1'
+        api_url = 'http://www.coditation1.com:9101/v1'
+        stream_url = 'http://www.coditation1.com:9102/v1'
         os.environ['ST2_BASE_URL'] = base_url
         os.environ['ST2_AUTH_URL'] = auth_url
         os.environ['ST2_API_URL'] = api_url
@@ -499,15 +499,15 @@ class ShellTestCase(base.BaseCLITestCase):
         self.assertEqual(shell.LOG.warn.call_count, 2)
         self.assertEqual(
             shell.LOG.warn.call_args_list[0][0][0][:63],
-            'The StackStorm configuration directory permissions are insecure')
+            'The coditation configuration directory permissions are insecure')
         self.assertEqual(
             shell.LOG.warn.call_args_list[1][0][0][:58],
-            'The StackStorm configuration file permissions are insecure')
+            'The coditation configuration file permissions are insecure')
 
         self.assertEqual(shell.LOG.info.call_count, 2)
         self.assertEqual(
             shell.LOG.info.call_args_list[0][0][0], "The SGID bit is not "
-            "set on the StackStorm configuration directory.")
+            "set on the coditation configuration directory.")
 
         self.assertEqual(
             shell.LOG.info.call_args_list[1][0][0], 'Skipping parsing CLI config')

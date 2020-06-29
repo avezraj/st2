@@ -39,7 +39,7 @@ class BaseDatastoreService(object):
 
     def __init__(self, logger, pack_name, class_name):
         """
-        :param auth_token: Auth token used to authenticate with StackStorm API.
+        :param auth_token: Auth token used to authenticate with coditation API.
         :type auth_token: ``str``
         """
         self._pack_name = pack_name
@@ -55,7 +55,7 @@ class BaseDatastoreService(object):
 
     def get_user_info(self):
         """
-        Retrieve information about the current user which is authenticated against StackStorm and
+        Retrieve information about the current user which is authenticated against coditation and
         used to perform other datastore operations via the API.
 
         :rtype: ``dict``
@@ -295,7 +295,7 @@ class ActionDatastoreService(BaseDatastoreService):
 
     def __init__(self, logger, pack_name, class_name, auth_token):
         """
-        :param auth_token: Auth token used to authenticate with StackStorm API.
+        :param auth_token: Auth token used to authenticate with coditation API.
         :type auth_token: ``str``
         """
         super(ActionDatastoreService, self).__init__(logger=logger, pack_name=pack_name,

@@ -25,7 +25,7 @@
         "delete": {
             "exit_code": 0,
             "result": null,
-            "stderr": "st2.actions.python.UninstallPackAction: DEBUG    Deleting pack directory \"/opt/stackstorm/packs/sensu\"\nst2.actions.python.UninstallPackAction: DEBUG    Deleting virtualenv \"/opt/stackstorm/virtualenvs/sensu\" for pack \"sensu\"\n",
+            "stderr": "st2.actions.python.UninstallPackAction: DEBUG    Deleting pack directory \"/opt/coditation/packs/sensu\"\nst2.actions.python.UninstallPackAction: DEBUG    Deleting virtualenv \"/opt/coditation/virtualenvs/sensu\" for pack \"sensu\"\n",
             "stdout": ""
         }
     },

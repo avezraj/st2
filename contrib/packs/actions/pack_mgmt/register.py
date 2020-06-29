@@ -102,7 +102,7 @@ class St2RegisterAction(Action):
         auth_url = self.config.get('auth_url', None)
 
         # not found look up from env vars. Assuming the pack is
-        # configuered to work with current StackStorm instance.
+        # configuered to work with current coditation instance.
         if not base_url:
             api_url = os.environ.get('ST2_ACTION_API_URL', None)
             auth_url = os.environ.get('ST2_ACTION_AUTH_URL', None)
@@ -114,7 +114,7 @@ class St2RegisterAction(Action):
         token = self.config.get('auth_token', None)
 
         # not found look up from env vars. Assuming the pack is
-        # configuered to work with current StackStorm instance.
+        # configuered to work with current coditation instance.
         if not token:
             token = os.environ.get('ST2_ACTION_AUTH_TOKEN', None)
 

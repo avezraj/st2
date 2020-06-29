@@ -107,7 +107,7 @@ def get_runner_module(name):
             available_runners = get_available_plugins(namespace=RUNNERS_NAMESPACE)
             available_runners = ', '.join(available_runners)
             msg = ('Failed to find runner %s. Make sure that the runner is available and installed '
-                   'in StackStorm virtual environment. Available runners are: %s' %
+                   'in coditation virtual environment. Available runners are: %s' %
                    (name, available_runners))
             LOG.exception(msg)
 
@@ -168,7 +168,7 @@ def get_metadata(package_name):
 @six.add_metaclass(abc.ABCMeta)
 class ActionRunner(object):
     """
-    The interface that must be implemented by each StackStorm
+    The interface that must be implemented by each coditation
     Action Runner implementation.
     """
 

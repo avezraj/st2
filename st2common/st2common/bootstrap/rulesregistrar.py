@@ -25,7 +25,7 @@ from st2common.models.api.rule import RuleAPI
 from st2common.models.system.common import ResourceReference
 from st2common.persistence.rule import Rule
 from st2common.services.triggers import cleanup_trigger_db_for_rule, increment_trigger_ref_count
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 import st2common.content.utils as content_utils
 
 __all__ = [
@@ -152,7 +152,7 @@ class RulesRegistrar(ResourceRegistrar):
                     if existing:
                         rule_db.id = existing.id
                         LOG.debug('Found existing rule: %s with id: %s', rule_ref, existing.id)
-                except StackStormDBObjectNotFoundError:
+                except coditationDBObjectNotFoundError:
                     LOG.debug('Rule %s not found. Creating new one.', rule)
 
                 try:

@@ -21,7 +21,7 @@ from st2common.persistence.rule_enforcement import RuleEnforcement
 from st2common.transport.publishers import PoolPublisher
 from st2common.constants.rule_enforcement import RULE_ENFORCEMENT_STATUS_SUCCEEDED
 from st2common.constants.rule_enforcement import RULE_ENFORCEMENT_STATUS_FAILED
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 from st2tests import DbTestCase
 
@@ -53,7 +53,7 @@ class RuleEnforcementModelTest(DbTestCase):
         RuleEnforcementModelTest._delete([retrieved])
         try:
             retrieved = RuleEnforcement.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after delete.')
 

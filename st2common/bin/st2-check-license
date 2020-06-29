@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env bash
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -22,7 +22,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 LICENSE=$@
-BWC_LICENSE_CHECK_URL="https://${LICENSE}:@packagecloud.io/install/repositories/StackStorm/enterprise/script.deb.sh"
+BWC_LICENSE_CHECK_URL="https://${LICENSE}:@packagecloud.io/install/repositories/coditation/enterprise/script.deb.sh"
 LICENSE_CURL_TEST=`curl --output /dev/null --silent --fail ${BWC_LICENSE_CHECK_URL}`
 
 if [ $? -ne 0 ]; then

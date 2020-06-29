@@ -163,7 +163,7 @@ def get_sandbox_python_path_for_python_action(pack, inherit_from_parent=True,
 
         # Work around to make sure we also add system lib dir to PYTHONPATH and not just virtualenv
         # one (e.g. /usr/lib/python3.6)
-        # NOTE: We can't simply use sys.prefix dir since it will be set to /opt/stackstorm/st2
+        # NOTE: We can't simply use sys.prefix dir since it will be set to /opt/coditation/st2
 
         system_prefix_dirs = []
         # Take custom prefix into account (if specified)

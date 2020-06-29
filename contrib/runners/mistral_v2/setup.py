@@ -31,14 +31,14 @@ install_reqs, dep_links = fetch_requirements(REQUIREMENTS_FILE)
 
 apply_vagrant_workaround()
 setup(
-    name='stackstorm-runner-mistral-v2',
+    name='coditation-runner-mistral-v2',
     version=__version__,
-    description=('Mistral v2 workflow action runner for StackStorm event-driven '
+    description=('Mistral v2 workflow action runner for coditation event-driven '
                  'automation platform'),
-    author='StackStorm',
-    author_email='info@stackstorm.com',
+    author='coditation',
+    author_email='info@coditation.com',
     license='Apache License (2.0)',
-    url='https://stackstorm.com/',
+    url='https://coditation.com/',
     install_requires=install_reqs,
     dependency_links=dep_links,
     test_suite='tests',

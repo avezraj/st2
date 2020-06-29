@@ -20,7 +20,7 @@ from collections import OrderedDict
 import bson
 from unittest2 import TestCase
 
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.trace import UniqueTraceNotFoundException
 from st2common.models.api.trace import TraceContext
 from st2common.persistence.trace import Trace
@@ -138,7 +138,7 @@ class TestTraceService(DbTestCase):
         self.assertEqual(trace_db.id, self.trace1.id, 'Incorrect trace_db returned.')
 
         trace_context = {'id_': str(bson.ObjectId())}
-        self.assertRaises(StackStormDBObjectNotFoundError, trace_service.get_trace, trace_context)
+        self.assertRaises(coditationDBObjectNotFoundError, trace_service.get_trace, trace_context)
 
         trace_context = {'trace_tag': self.trace1.trace_tag}
         trace_db = trace_service.get_trace(trace_context)
@@ -201,7 +201,7 @@ class TestTraceService(DbTestCase):
         traceable_liveaction.context['parent'] = {
             'execution_id': str(bson.ObjectId())
         }
-        self.assertRaises(StackStormDBObjectNotFoundError,
+        self.assertRaises(coditationDBObjectNotFoundError,
                           trace_service.get_trace_db_by_live_action,
                           traceable_liveaction)
 

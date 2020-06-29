@@ -115,7 +115,7 @@ class ContentUtilsTestCase(unittest2.TestCase):
 
         # Invalid paths (directory traversal and absolute paths)
         file_paths = ['/tmp/foo.py', '../foo.py', '/etc/passwd', '../../foo.py',
-                     '/opt/stackstorm/packs/invalid_pack/actions/my_action.py',
+                     '/opt/coditation/packs/invalid_pack/actions/my_action.py',
                      '../../foo.py']
         for file_path in file_paths:
             # action resource_type

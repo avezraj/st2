@@ -28,7 +28,7 @@ from st2common.persistence.action import ActionAlias
 from st2common.persistence.policy import Policy
 from st2common.constants.pack import SYSTEM_PACK_NAMES
 from st2common.services.triggers import cleanup_trigger_db_for_rule
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 BLOCKED_PACKS = frozenset(SYSTEM_PACK_NAMES)
 
@@ -123,7 +123,7 @@ class UnregisterPackAction(BaseAction):
         # 1. Try by ref
         try:
             pack_db = Pack.get_by_ref(value=pack)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             pack_db = None
 
         # 2. Try by name (here for backward compatibility)
@@ -131,7 +131,7 @@ class UnregisterPackAction(BaseAction):
         if not pack_db:
             try:
                 pack_db = Pack.get_by_name(value=pack)
-            except StackStormDBObjectNotFoundError:
+            except coditationDBObjectNotFoundError:
                 pack_db = None
 
         if not pack_db:
@@ -146,7 +146,7 @@ class UnregisterPackAction(BaseAction):
     def _delete_config_schema_db_object(self, pack):
         try:
             config_schema_db = ConfigSchema.get_by_pack(value=pack)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             self.logger.exception('ConfigSchemaDB object not found')
             return
 

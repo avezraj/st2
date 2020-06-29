@@ -15,7 +15,7 @@
 # limitations under the License.
 
 """
-Command-line interface to StackStorm.
+Command-line interface to coditation.
 """
 
 from __future__ import print_function
@@ -71,7 +71,7 @@ __all__ = [
 
 LOGGER = logging.getLogger(__name__)
 
-CLI_DESCRIPTION = 'CLI for StackStorm event-driven automation platform. https://stackstorm.com'
+CLI_DESCRIPTION = 'CLI for coditation event-driven automation platform. https://coditation.com'
 USAGE_STRING = """
 Usage: %(prog)s [options] <command> <sub command> [options]
 
@@ -90,12 +90,12 @@ You are encouraged to use UTF-8 locale by setting LC_ALL environment variable to
 similar.
 """.strip().replace('\n', ' ').replace('  ', ' ')
 
-PACKAGE_METADATA_FILE_PATH = '/opt/stackstorm/st2/package.meta'
+PACKAGE_METADATA_FILE_PATH = '/opt/coditation/st2/package.meta'
 
 
-def get_stackstorm_version():
+def get_coditation_version():
     """
-    Return StackStorm version including git commit revision if running a dev release and a file
+    Return coditation version including git commit revision if running a dev release and a file
     with package metadata which includes git revision is available.
 
     :rtype: ``str``
@@ -145,7 +145,7 @@ class Shell(BaseCLIApp):
             '--version',
             action='version',
             version='%(prog)s {version}, on Python {python_major}.{python_minor}.{python_patch}'
-                    .format(version=get_stackstorm_version(),
+                    .format(version=get_coditation_version(),
                             python_major=sys.version_info.major,
                             python_minor=sys.version_info.minor,
                             python_patch=sys.version_info.micro))
@@ -313,7 +313,7 @@ class Shell(BaseCLIApp):
             self, self.subparsers, read_only=True, has_disable=True)
 
         self.commands['sensor'] = sensor.SensorBranch(
-            'An adapter which allows you to integrate StackStorm with external system.',
+            'An adapter which allows you to integrate coditation with external system.',
             self, self.subparsers)
 
         self.commands['trace'] = trace.TraceBranch(

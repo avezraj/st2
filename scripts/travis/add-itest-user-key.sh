@@ -9,7 +9,7 @@ fi
 
 mkdir -p /home/travis/.ssh
 
-# Generate ssh keys on StackStorm box and copy over public key into remote box.
+# Generate ssh keys on coditation box and copy over public key into remote box.
 ssh-keygen -f /home/travis/.ssh/travis_rsa -P ""
 
 # Authorize key-base acces

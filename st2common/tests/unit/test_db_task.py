@@ -102,7 +102,7 @@ class TaskExecutionModelTest(st2tests.DbTestCase):
         created.delete()
 
         self.assertRaises(
-            db_exc.StackStormDBObjectNotFoundError,
+            db_exc.coditationDBObjectNotFoundError,
             wf_db_access.TaskExecution.get_by_id,
             doc_id
         )
@@ -181,7 +181,7 @@ class TaskExecutionModelTest(st2tests.DbTestCase):
         created.delete()
 
         self.assertRaises(
-            db_exc.StackStormDBObjectNotFoundError,
+            db_exc.coditationDBObjectNotFoundError,
             wf_db_access.TaskExecution.get_by_id,
             doc_id
         )
@@ -226,7 +226,7 @@ class TaskExecutionModelTest(st2tests.DbTestCase):
 
         # Test update on instance 2, expect race error
         self.assertRaises(
-            db_exc.StackStormDBObjectWriteConflictError,
+            db_exc.coditationDBObjectWriteConflictError,
             wf_db_access.TaskExecution.update,
             retrieved2,
             status='pausing'
@@ -236,7 +236,7 @@ class TaskExecutionModelTest(st2tests.DbTestCase):
         created.delete()
 
         self.assertRaises(
-            db_exc.StackStormDBObjectNotFoundError,
+            db_exc.coditationDBObjectNotFoundError,
             wf_db_access.TaskExecution.get_by_id,
             doc_id
         )

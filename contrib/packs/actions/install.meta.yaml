@@ -24,7 +24,7 @@
       required: false
     force:
       type: "boolean"
-      description: "Set to True to force install the pack and skip StackStorm version compatibility check and also delete and ignore lock file if one exists."
+      description: "Set to True to force install the pack and skip coditation version compatibility check and also delete and ignore lock file if one exists."
       required: false
       default: false
     python3:

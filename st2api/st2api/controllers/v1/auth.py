@@ -24,7 +24,7 @@ from st2common.models.api.auth import ApiKeyAPI, ApiKeyCreateResponseAPI
 from st2common.models.db.auth import UserDB
 from st2common.constants.secrets import MASKED_ATTRIBUTE_VALUE
 from st2common.exceptions.auth import ApiKeyNotFoundError
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence.auth import ApiKey, User
 from st2common.rbac.types import PermissionType
 from st2common.rbac.backends import get_rbac_backend
@@ -143,7 +143,7 @@ class ApiKeyController(BaseRestControllerMixin):
 
             try:
                 User.get_by_name(api_key_api.user)
-            except StackStormDBObjectNotFoundError:
+            except coditationDBObjectNotFoundError:
                 user_db = UserDB(name=api_key_api.user)
                 User.add_or_update(user_db)
 
@@ -186,7 +186,7 @@ class ApiKeyController(BaseRestControllerMixin):
 
         try:
             User.get_by_name(api_key_api.user)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             user_db = UserDB(name=api_key_api.user)
             User.add_or_update(user_db)
 

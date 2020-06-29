@@ -17,7 +17,7 @@ import bson
 
 from st2common.models.db.executionstate import ActionExecutionStateDB
 from st2common.persistence.executionstate import ActionExecutionState
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 from st2tests import DbTestCase
 
@@ -31,7 +31,7 @@ class ActionExecutionStateTests(DbTestCase):
         ActionExecutionStateTests._delete(model_objects=[retrieved])
         try:
             retrieved = ActionExecutionState.get_by_id(saved.id)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             retrieved = None
         self.assertIsNone(retrieved, 'managed to retrieve after failure.')
 

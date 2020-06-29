@@ -67,7 +67,7 @@ def list_format_strings_from_aliases(aliases, match_multiple=False):
 
 def normalise_alias_format_string(alias_format):
     '''
-    StackStorm action aliases come in two forms;
+    coditation action aliases come in two forms;
         1. A string holding the format, which is also used as the help string.
         2. A dictionary containing "display" and/or "representation" keys.
            "representation": a list of numerous alias format "representation(s)"

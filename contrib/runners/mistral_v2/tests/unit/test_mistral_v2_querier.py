@@ -882,10 +882,10 @@ class MistralQuerierTest(DbTestCase):
 
     @mock.patch.object(
         action_utils, 'get_liveaction_by_id',
-        mock.MagicMock(side_effect=db_exc.StackStormDBObjectNotFoundError()))
+        mock.MagicMock(side_effect=db_exc.coditationDBObjectNotFoundError()))
     def test_query_liveaction_not_found(self):
         self.assertRaises(
-            db_exc.StackStormDBObjectNotFoundError,
+            db_exc.coditationDBObjectNotFoundError,
             self.querier.query,
             uuid.uuid4().hex,
             MOCK_QRY_CONTEXT

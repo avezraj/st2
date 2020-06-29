@@ -31,13 +31,13 @@ install_reqs, dep_links = fetch_requirements(REQUIREMENTS_FILE)
 
 apply_vagrant_workaround()
 setup(
-    name='stackstorm-runner-orquesta',
+    name='coditation-runner-orquesta',
     version=__version__,
-    description='Orquesta workflow runner for StackStorm event-driven automation platform',
-    author='StackStorm',
-    author_email='info@stackstorm.com',
+    description='Orquesta workflow runner for coditation event-driven automation platform',
+    author='coditation',
+    author_email='info@coditation.com',
     license='Apache License (2.0)',
-    url='https://stackstorm.com/',
+    url='https://coditation.com/',
     install_requires=install_reqs,
     dependency_links=dep_links,
     test_suite='tests',

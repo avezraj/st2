@@ -25,7 +25,7 @@ from st2common.constants.meta import ALLOWED_EXTS
 from st2common.bootstrap.base import ResourceRegistrar
 from st2common.models.api.pack import ConfigAPI
 from st2common.persistence.pack import Config
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'ConfigsRegistrar'
@@ -38,7 +38,7 @@ LOG = logging.getLogger(__name__)
 class ConfigsRegistrar(ResourceRegistrar):
     """
     Class for loading and registering pack configs located in
-    /opt/stackstorm/configs/<pack name>.yaml
+    /opt/coditation/configs/<pack name>.yaml
     """
 
     ALLOWED_EXTENSIONS = ALLOWED_EXTS
@@ -130,7 +130,7 @@ class ConfigsRegistrar(ResourceRegistrar):
 
         try:
             config_db.id = Config.get_by_pack(pack).id
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             LOG.debug('Config for pack "%s" not found. Creating new entry.', pack)
 
         try:

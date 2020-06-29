@@ -29,7 +29,7 @@ from st2common.persistence.pack import ConfigSchema
 from st2common.util.file_system import get_file_list
 from st2common.util.pack import get_pack_metadata
 from st2common.util.pack import get_pack_ref_from_metadata
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'ResourceRegistrar'
@@ -150,12 +150,12 @@ class ResourceRegistrar(object):
         config_path = os.path.join(pack_dir, 'config.yaml')
         if os.path.isfile(config_path):
             LOG.error('Pack "%s" contains a deprecated config.yaml file (%s). '
-                      'Support for "config.yaml" files has been deprecated in StackStorm v1.6.0 '
+                      'Support for "config.yaml" files has been deprecated in coditation v1.6.0 '
                       'in favor of config.schema.yaml config schema files and config files in '
-                      '/opt/stackstorm/configs/ directory. Support for config.yaml files has '
+                      '/opt/coditation/configs/ directory. Support for config.yaml files has '
                       'been removed in the release (v2.4.0) so please migrate. For more '
                       'information please refer to %s ' % (pack_db.name, config_path,
-                      'https://docs.stackstorm.com/reference/pack_configs.html'))
+                      'https://docs.coditation.com/reference/pack_configs.html'))
 
         # 2. Register corresponding pack config schema
         config_schema_db = self._register_pack_config_schema_db(pack_name=pack_name,
@@ -186,7 +186,7 @@ class ResourceRegistrar(object):
 
         try:
             pack_db.id = Pack.get_by_ref(content['ref']).id
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             LOG.debug('Pack %s not found. Creating new one.', pack_name)
 
         pack_db = Pack.add_or_update(pack_db)
@@ -215,7 +215,7 @@ class ResourceRegistrar(object):
 
         try:
             config_schema_db.id = ConfigSchema.get_by_pack(pack_name).id
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             LOG.debug('Config schema for pack %s not found. Creating new one.', pack_name)
 
         config_schema_db = ConfigSchema.add_or_update(config_schema_db)

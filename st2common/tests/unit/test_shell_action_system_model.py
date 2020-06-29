@@ -359,7 +359,7 @@ class ShellScriptActionTestCase(unittest2.TestCase):
             'fork': {
                 'type': 'string',
                 'position': 2,
-                'default': 'StackStorm',
+                'default': 'coditation',
             },
             'branch': {
                 'type': 'string',
@@ -393,7 +393,7 @@ class ShellScriptActionTestCase(unittest2.TestCase):
         live_action_db_parameters = {
             'project': 'st2flow',
             'version': '3.0.0',
-            'fork': 'StackStorm',
+            'fork': 'coditation',
             'local_repo': '/tmp/repo'
         }
 
@@ -405,7 +405,7 @@ class ShellScriptActionTestCase(unittest2.TestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2flow',
             'version': '3.0.0',
-            'fork': 'StackStorm',
+            'fork': 'coditation',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': False,  # default value used
@@ -422,14 +422,14 @@ class ShellScriptActionTestCase(unittest2.TestCase):
                                                 positional_args=positional_args)
         command_string = shell_script_action.get_full_command_string()
 
-        expected = '/tmp/local.sh st2flow 3.0.0 StackStorm master 0 0 /tmp/repo'
+        expected = '/tmp/local.sh st2flow 3.0.0 coditation master 0 0 /tmp/repo'
         self.assertEqual(command_string, expected)
 
         # 2. Some default values used
         live_action_db_parameters = {
             'project': 'st2web',
             'version': '3.1.0',
-            'fork': 'StackStorm1',
+            'fork': 'coditation1',
             'update_changelog': True,
             'local_repo': '/tmp/repob'
         }
@@ -442,7 +442,7 @@ class ShellScriptActionTestCase(unittest2.TestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2web',
             'version': '3.1.0',
-            'fork': 'StackStorm1',
+            'fork': 'coditation1',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': True,  # default value used
@@ -459,14 +459,14 @@ class ShellScriptActionTestCase(unittest2.TestCase):
                                                 positional_args=positional_args)
         command_string = shell_script_action.get_full_command_string()
 
-        expected = '/tmp/local.sh st2web 3.1.0 StackStorm1 master 0 1 /tmp/repob'
+        expected = '/tmp/local.sh st2web 3.1.0 coditation1 master 0 1 /tmp/repob'
         self.assertEqual(command_string, expected)
 
         # 3. None is specified for a boolean parameter, should use a default
         live_action_db_parameters = {
             'project': 'st2rbac',
             'version': '3.2.0',
-            'fork': 'StackStorm2',
+            'fork': 'coditation2',
             'update_changelog': None,
             'local_repo': '/tmp/repoc'
         }
@@ -479,7 +479,7 @@ class ShellScriptActionTestCase(unittest2.TestCase):
         self.assertDictEqual(action_params, {
             'project': 'st2rbac',
             'version': '3.2.0',
-            'fork': 'StackStorm2',
+            'fork': 'coditation2',
             'branch': 'master',  # default value used
             'update_mistral': False,  # default value used
             'update_changelog': False,  # default value used
@@ -496,5 +496,5 @@ class ShellScriptActionTestCase(unittest2.TestCase):
                                                 positional_args=positional_args)
         command_string = shell_script_action.get_full_command_string()
 
-        expected = '/tmp/local.sh st2rbac 3.2.0 StackStorm2 master 0 0 /tmp/repoc'
+        expected = '/tmp/local.sh st2rbac 3.2.0 coditation2 master 0 0 /tmp/repoc'
         self.assertEqual(command_string, expected)

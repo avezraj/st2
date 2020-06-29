@@ -24,7 +24,7 @@ from st2api.controllers.base import BaseRestControllerMixin
 from st2api.controllers.resource import ResourceController
 from st2common.bootstrap.configsregistrar import ConfigsRegistrar
 from st2common.exceptions.apivalidation import ValueValidationException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.rbac.types import PermissionType
 from st2common.rbac.backends import get_rbac_backend
 from st2common.router import abort
@@ -83,7 +83,7 @@ class PackConfigsController(ResourceController, BaseRestControllerMixin):
         }
         try:
             instance = packs_service.get_pack_by_ref(pack_ref=pack_ref)
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             msg = 'Unable to identify resource with pack_ref "%s".' % (pack_ref)
             abort(http_client.NOT_FOUND, msg)
 

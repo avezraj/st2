@@ -30,7 +30,7 @@ from st2common.constants.action import (
     LIVEACTION_STATUS_CANCELED,
     LIVEACTION_STATUS_SUCCEEDED,
 )
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence.action import Action
 from st2common.persistence.liveaction import LiveAction
 from st2common.persistence.runner import RunnerType
@@ -84,14 +84,14 @@ def get_runnertype_by_id(runnertype_id):
     """
         Get RunnerType by id.
 
-        On error, raise StackStormDBObjectNotFoundError
+        On error, raise coditationDBObjectNotFoundError
     """
     try:
         runnertype = RunnerType.get_by_id(runnertype_id)
     except (ValueError, ValidationError) as e:
         LOG.warning('Database lookup for runnertype with id="%s" resulted in '
                     'exception: %s', runnertype_id, e)
-        raise StackStormDBObjectNotFoundError('Unable to find runnertype with '
+        raise coditationDBObjectNotFoundError('Unable to find runnertype with '
                                               'id="%s"' % runnertype_id)
 
     return runnertype
@@ -107,11 +107,11 @@ def get_runnertype_by_name(runnertype_name):
     except (ValueError, ValidationError) as e:
         LOG.error('Database lookup for name="%s" resulted in exception: %s',
                   runnertype_name, e)
-        raise StackStormDBObjectNotFoundError('Unable to find runnertype with name="%s"'
+        raise coditationDBObjectNotFoundError('Unable to find runnertype with name="%s"'
                                               % runnertype_name)
 
     if not runnertypes:
-        raise StackStormDBObjectNotFoundError('Unable to find RunnerType with name="%s"'
+        raise coditationDBObjectNotFoundError('Unable to find RunnerType with name="%s"'
                                               % runnertype_name)
 
     if len(runnertypes) > 1:
@@ -125,7 +125,7 @@ def get_action_by_id(action_id):
     """
         Get Action by id.
 
-        On error, raise StackStormDBObjectNotFoundError
+        On error, raise coditationDBObjectNotFoundError
     """
     action = None
 
@@ -134,7 +134,7 @@ def get_action_by_id(action_id):
     except (ValueError, ValidationError) as e:
         LOG.warning('Database lookup for action with id="%s" resulted in '
                     'exception: %s', action_id, e)
-        raise StackStormDBObjectNotFoundError('Unable to find action with '
+        raise coditationDBObjectNotFoundError('Unable to find action with '
                                               'id="%s"' % action_id)
 
     return action
@@ -170,7 +170,7 @@ def get_liveaction_by_id(liveaction_id):
     except (ValidationError, ValueError) as e:
         LOG.error('Database lookup for LiveAction with id="%s" resulted in '
                   'exception: %s', liveaction_id, e)
-        raise StackStormDBObjectNotFoundError('Unable to find LiveAction with '
+        raise coditationDBObjectNotFoundError('Unable to find LiveAction with '
                                               'id="%s"' % liveaction_id)
 
     return liveaction

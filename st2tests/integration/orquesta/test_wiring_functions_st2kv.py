@@ -111,7 +111,7 @@ class DatastoreFunctionTest(base.TestWorkflowExecution):
 
         self.assertEqual(output.status, ac_const.LIVEACTION_STATUS_FAILED)
 
-        expected_error = 'The key "%s" does not exist in the StackStorm datastore.' % key
+        expected_error = 'The key "%s" does not exist in the coditation datastore.' % key
 
         self.assertIn(expected_error, output.result['errors'][0]['message'])
 

@@ -20,7 +20,7 @@ import mongoengine
 from st2common.models import db
 from st2common.models.db import stormbase
 from st2common.persistence.base import Access
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 
 __all__ = [
     'BaseDBModelCRUDTestCase',
@@ -67,7 +67,7 @@ class BaseDBModelCRUDTestCase(object):
 
         # 3. Test delete
         self.persistance_class.delete(model_db)
-        self.assertRaises(StackStormDBObjectNotFoundError, self.persistance_class.get_by_id,
+        self.assertRaises(coditationDBObjectNotFoundError, self.persistance_class.get_by_id,
                           model_db.id)
 
 

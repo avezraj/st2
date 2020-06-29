@@ -56,7 +56,7 @@ backend_kwargs = {"file_path": "/etc/st2/htpasswd"}
 api_url =
 
 [system]
-base_path = /opt/stackstorm
+base_path = /opt/coditation
 
 [syslog]
 host = st2-multi-node-controller

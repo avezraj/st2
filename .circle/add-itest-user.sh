@@ -14,7 +14,7 @@ fi
 
 mkdir -p /home/stanley/.ssh
 
-# Generate ssh keys on StackStorm box and copy over public key into remote box.
+# Generate ssh keys on Coditation box and copy over public key into remote box.
 ssh-keygen -f /home/stanley/.ssh/stanley_rsa -P ""
 
 # Authorize key-base acces

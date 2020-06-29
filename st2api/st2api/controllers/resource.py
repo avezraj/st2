@@ -24,7 +24,7 @@ from six.moves import http_client
 
 from st2common import log as logging
 from st2common.models.system.common import ResourceReference
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.rbac import ResourceAccessDeniedPermissionIsolationError
 from st2common.rbac.backends import get_rbac_backend
 from st2common.exceptions.rbac import AccessDeniedError
@@ -111,7 +111,7 @@ class ResourceController(object):
     valid_exclude_attributes = []
 
     # Method responsible for retrieving an instance of the corresponding model DB object
-    # Note: This method should throw StackStormDBObjectNotFoundError if the corresponding DB
+    # Note: This method should throw coditationDBObjectNotFoundError if the corresponding DB
     # object doesn't exist
     get_one_db_method = None
 
@@ -385,7 +385,7 @@ class ResourceController(object):
 
         if not resource_db:
             msg = 'Resource with a name or id "%s" not found' % (name_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         return resource_db
 
@@ -402,7 +402,7 @@ class ResourceController(object):
         instance = self.access.get_by_scope_and_name(scope=scope, name=name)
         if not instance:
             msg = 'KeyValuePair with name: %s and scope: %s not found in db.' % (name, scope)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
         from_model_kwargs = from_model_kwargs or {}
         result = self.model.from_model(instance, **from_model_kwargs)
         LOG.debug('GET with scope=%s and name=%s, client_result=%s', scope, name, result)
@@ -568,7 +568,7 @@ class ContentPackResourceController(ResourceController):
         """
         Retrieve resource object by an id of a reference.
 
-        Note: This method throws StackStormDBObjectNotFoundError exception if the object is not
+        Note: This method throws coditationDBObjectNotFoundError exception if the object is not
         found in the database.
         """
 
@@ -592,7 +592,7 @@ class ContentPackResourceController(ResourceController):
 
         if not resource_db:
             msg = 'Resource with a reference or id "%s" not found' % (ref_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         return resource_db
 

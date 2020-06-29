@@ -111,7 +111,7 @@ class InquiriesController(ResourceController):
                 requester_user=requester_user,
                 permission_type=rbac_types.PermissionType.INQUIRY_VIEW
             )
-        except db_exceptions.StackStormDBObjectNotFoundError as e:
+        except db_exceptions.coditationDBObjectNotFoundError as e:
             LOG.exception('Unable to identify inquiry with id "%s".' % inquiry_id)
             api_router.abort(http_client.NOT_FOUND, six.text_type(e))
         except rbac_exceptions.ResourceAccessDeniedError as e:
@@ -152,7 +152,7 @@ class InquiriesController(ResourceController):
                 requester_user=requester_user,
                 permission_type=rbac_types.PermissionType.INQUIRY_RESPOND
             )
-        except db_exceptions.StackStormDBObjectNotFoundError as e:
+        except db_exceptions.coditationDBObjectNotFoundError as e:
             LOG.exception('Unable to identify inquiry with id "%s".' % inquiry_id)
             api_router.abort(http_client.NOT_FOUND, six.text_type(e))
         except rbac_exceptions.ResourceAccessDeniedError as e:
@@ -206,7 +206,7 @@ class InquiriesController(ResourceController):
         execution_db = self._get_by_id(resource_id=id, exclude_fields=exclude_fields)
 
         if not execution_db:
-            raise db_exceptions.StackStormDBObjectNotFoundError()
+            raise db_exceptions.coditationDBObjectNotFoundError()
 
         # Inquiry currently does not have it's own database model and share with ActionExecution.
         # The object uid is in the format of "execution:<id>". To allow RBAC to resolve correctly

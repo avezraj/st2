@@ -328,7 +328,7 @@ class AuthGroupToRoleMapAssignmentFileFormatAPI(BaseAPI):
             },
             'roles': {
                 'type': 'array',
-                'description': ('StackStorm roles which are assigned to each user which belongs '
+                'description': ('coditation roles which are assigned to each user which belongs '
                                 'to that group.'),
                 'uniqueItems': True,
                 'items': {

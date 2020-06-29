@@ -20,7 +20,7 @@ from oslo_config import cfg
 from st2api.controllers.base import BaseRestControllerMixin
 from st2common import log as logging
 from st2common.exceptions.actionalias import ActionAliasAmbiguityException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.api.action import ActionAliasAPI
 from st2common.models.api.action import AliasMatchAndExecuteInputAPI
 from st2common.models.api.auth import get_system_username
@@ -223,7 +223,7 @@ class ActionAliasExecutionController(BaseRestControllerMixin):
         action_db = action_utils.get_action_by_ref(action_ref)
 
         if not action_db:
-            raise StackStormDBObjectNotFoundError('Action with ref "%s" not found ' % (action_ref))
+            raise coditationDBObjectNotFoundError('Action with ref "%s" not found ' % (action_ref))
 
         rbac_utils = get_rbac_backend().get_utils_class()
         permission_type = PermissionType.ACTION_EXECUTE

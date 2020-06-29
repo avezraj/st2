@@ -23,7 +23,7 @@ from st2common.util import isotime
 from st2common.util import date as date_utils
 from st2common.persistence.execution import ActionExecution
 from st2common.models.api.execution import ActionExecutionAPI
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from six.moves import range
 
 
@@ -145,7 +145,7 @@ class TestActionExecutionHistoryModel(DbTestCase):
 
         # Delete the DB record.
         ActionExecution.delete(model)
-        self.assertRaises(StackStormDBObjectNotFoundError, ActionExecution.get_by_id, obj.id)
+        self.assertRaises(coditationDBObjectNotFoundError, ActionExecution.get_by_id, obj.id)
 
     def test_model_partial(self):
         # Create API object.
@@ -218,7 +218,7 @@ class TestActionExecutionHistoryModel(DbTestCase):
 
         # Delete the DB record.
         ActionExecution.delete(model)
-        self.assertRaises(StackStormDBObjectNotFoundError, ActionExecution.get_by_id, obj.id)
+        self.assertRaises(coditationDBObjectNotFoundError, ActionExecution.get_by_id, obj.id)
 
     def test_datetime_range(self):
         base = date_utils.add_utc_tz(datetime.datetime(2014, 12, 25, 0, 0, 0))

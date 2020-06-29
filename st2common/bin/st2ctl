@@ -1,5 +1,5 @@
 #!/bin/bash
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -18,7 +18,7 @@ COMPONENTS="st2actionrunner st2api st2stream st2auth st2garbagecollector st2noti
 ST2_CONF="/etc/st2/st2.conf"
 
 # Installations which use Python 3 (e.g. Ubuntu Bionic) ship without Mistral
-PYTHON_VERSION=$(/opt/stackstorm/st2/bin/python --version 2>&1 | awk '{print $2'} | awk -F"." '{print $1}')
+PYTHON_VERSION=$(/opt/coditation/st2/bin/python --version 2>&1 | awk '{print $2'} | awk -F"." '{print $1}')
 
 if [ "${PYTHON_VERSION}" = "3" ]; then
     COMPONENTS=${COMPONENTS/mistral}
@@ -180,7 +180,7 @@ function register_content() {
 
 function clean_db() {
   echo "Dropping st2 Database..."
-  /opt/stackstorm/st2/bin/st2-cleanup-db --config-file ${ST2_CONF}
+  /opt/coditation/st2/bin/st2-cleanup-db --config-file ${ST2_CONF}
 }
 
 function clean_logs() {

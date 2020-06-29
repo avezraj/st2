@@ -188,7 +188,7 @@ class Client(object):
     @add_auth_token_to_kwargs_from_env
     def get_user_info(self, **kwargs):
         """
-        Retrieve information about the current user which is authenticated against StackStorm API.
+        Retrieve information about the current user which is authenticated against coditation API.
 
         :rtype: ``dict``
         """

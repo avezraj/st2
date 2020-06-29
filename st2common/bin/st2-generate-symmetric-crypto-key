@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Licensed to the StackStorm, Inc ('StackStorm') under one or more
+# Licensed to the coditation, Inc ('coditation') under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
 # The ASF licenses this file to You under the Apache License, Version 2.0
@@ -47,8 +47,8 @@ def main(key_path, force=False):
         key_file.write(aes_key.to_json())
         key_file.flush()
 
-    msg = ('Key written to %s. ' % key_path + 'Secure the permissions so only StackStorm API ' +
-           'process and StackStorm admin access the file.')
+    msg = ('Key written to %s. ' % key_path + 'Secure the permissions so only coditation API ' +
+           'process and coditation admin access the file.')
     print(msg)
 
 if __name__ == '__main__':

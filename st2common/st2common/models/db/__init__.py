@@ -206,7 +206,7 @@ def db_ensure_indexes(model_classes=None):
             # Special case for "uid" index. MongoDB 3.4 has dropped "_types" index option so we
             # need to re-create the index to make it work and avoid "index with different options
             # already exists" error.
-            # Note: This condition would only be encountered when upgrading existing StackStorm
+            # Note: This condition would only be encountered when upgrading existing coditation
             # installation from MongoDB 3.2 to 3.4.
             msg = six.text_type(e)
             if 'already exists with different options' in msg and 'uid_1' in msg:
@@ -384,7 +384,7 @@ class MongoDBAccess(object):
 
         if not instance and raise_exception:
             msg = 'Unable to find the %s instance. %s' % (self.model.__name__, kwargs)
-            raise db_exc.StackStormDBObjectNotFoundError(msg)
+            raise db_exc.coditationDBObjectNotFoundError(msg)
 
         return instance
 
@@ -592,7 +592,7 @@ class ChangeRevisionMongoDBAccess(MongoDBAccess):
                 instance.rev = instance.rev + 1
                 instance.save(save_condition=save_condition, validate=validate)
             except mongoengine.SaveConditionError:
-                raise db_exc.StackStormDBObjectWriteConflictError(instance)
+                raise db_exc.coditationDBObjectWriteConflictError(instance)
 
             return self._undo_dict_field_escape(instance)
 

@@ -18,7 +18,7 @@ from mongoengine import NotUniqueError
 from st2common import log as logging
 from st2common.rbac.types import SystemRole
 from st2common.models.db.rbac import RoleDB
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectConflictError
 
 LOG = logging.getLogger(__name__)
 
@@ -47,6 +47,6 @@ def insert_system_roles():
 
         try:
             role_db.save()
-        except (StackStormDBObjectConflictError, NotUniqueError):
+        except (coditationDBObjectConflictError, NotUniqueError):
             # Role already exists error is not fatal
             pass

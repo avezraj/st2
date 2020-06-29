@@ -20,7 +20,7 @@ from oslo_config import cfg
 
 from st2common import log as logging
 from st2common.exceptions.auth import TTLTooLargeException, UserNotFoundError
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.auth import NoNicknameOriginProvidedError, AmbiguousUserError
 from st2common.exceptions.auth import NotServiceUserError
 from st2common.persistence.auth import User
@@ -60,7 +60,7 @@ class AuthHandlerBase(object):
                                   message=message)
                     return
                 username = impersonate_user
-            except (UserNotFoundError, StackStormDBObjectNotFoundError):
+            except (UserNotFoundError, coditationDBObjectNotFoundError):
                 message = "Could not locate user %s" % \
                           (impersonate_user)
                 abort_request(status_code=http_client.BAD_REQUEST,
@@ -82,7 +82,7 @@ class AuthHandlerBase(object):
                     abort_request(status_code=http_client.BAD_REQUEST,
                                   message=message)
                     return
-                except (UserNotFoundError, StackStormDBObjectNotFoundError):
+                except (UserNotFoundError, coditationDBObjectNotFoundError):
                     message = "Could not locate user %s@%s" % \
                               (impersonate_user, nickname_origin)
                     abort_request(status_code=http_client.BAD_REQUEST,
@@ -181,7 +181,7 @@ class StandaloneAuthHandler(AuthHandlerBase):
                               message=six.text_type(e))
                 return
 
-            # If remote group sync is enabled, sync the remote groups with local StackStorm roles
+            # If remote group sync is enabled, sync the remote groups with local coditation roles
             if cfg.CONF.rbac.sync_remote_groups and cfg.CONF.rbac.backend != 'noop':
                 LOG.debug('Retrieving auth backend groups for user "%s"' % (username),
                           extra=extra)

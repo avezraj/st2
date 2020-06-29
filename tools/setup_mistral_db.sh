@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# This script lovingly "borrowed" from https://github.com/StackStorm/mistral_dev/blob/master/actions/setup_db.sh
+# This script lovingly "borrowed" from https://github.com/coditation/mistral_dev/blob/master/actions/setup_db.sh
 
 MISTRAL_PATH=$1
 MISTRAL_CONFIG=$2

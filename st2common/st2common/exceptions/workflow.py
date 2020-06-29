@@ -43,7 +43,7 @@ def retry_on_transient_db_errors(exc):
     LOG.warning('Determining if exception %s should be retried.', type(exc))
 
     retrying = (
-        isinstance(exc, db_exc.StackStormDBObjectWriteConflictError)
+        isinstance(exc, db_exc.coditationDBObjectWriteConflictError)
     )
 
     if retrying:
@@ -52,15 +52,15 @@ def retry_on_transient_db_errors(exc):
     return retrying
 
 
-class WorkflowDefinitionException(st2_exc.StackStormBaseException):
+class WorkflowDefinitionException(st2_exc.coditationBaseException):
     pass
 
 
-class WorkflowExecutionException(st2_exc.StackStormBaseException):
+class WorkflowExecutionException(st2_exc.coditationBaseException):
     pass
 
 
-class WorkflowExecutionNotFoundException(st2_exc.StackStormBaseException):
+class WorkflowExecutionNotFoundException(st2_exc.coditationBaseException):
 
     def __init__(self, ac_ex_id):
         Exception.__init__(
@@ -70,7 +70,7 @@ class WorkflowExecutionNotFoundException(st2_exc.StackStormBaseException):
         )
 
 
-class AmbiguousWorkflowExecutionException(st2_exc.StackStormBaseException):
+class AmbiguousWorkflowExecutionException(st2_exc.coditationBaseException):
 
     def __init__(self, ac_ex_id):
         Exception.__init__(
@@ -80,19 +80,19 @@ class AmbiguousWorkflowExecutionException(st2_exc.StackStormBaseException):
         )
 
 
-class WorkflowExecutionIsCompletedException(st2_exc.StackStormBaseException):
+class WorkflowExecutionIsCompletedException(st2_exc.coditationBaseException):
 
     def __init__(self, wf_ex_id):
         Exception.__init__(self, 'Workflow execution "%s" is already completed.' % wf_ex_id)
 
 
-class WorkflowExecutionIsRunningException(st2_exc.StackStormBaseException):
+class WorkflowExecutionIsRunningException(st2_exc.coditationBaseException):
 
     def __init__(self, wf_ex_id):
         Exception.__init__(self, 'Workflow execution "%s" is already active.' % wf_ex_id)
 
 
-class WorkflowExecutionRerunException(st2_exc.StackStormBaseException):
+class WorkflowExecutionRerunException(st2_exc.coditationBaseException):
 
     def __init__(self, msg):
         Exception.__init__(self, msg)

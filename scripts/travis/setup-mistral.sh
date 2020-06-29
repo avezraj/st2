@@ -77,7 +77,7 @@ fi
 touch $config
 cat <<mistral_config >$config
 [database]
-connection=postgresql://mistral:StackStorm@127.0.0.1/mistral
+connection=postgresql://mistral:coditation@127.0.0.1/mistral
 max_pool_size=50
 
 [pecan]
@@ -101,7 +101,7 @@ setup_mistral_db()
   echo "Setting up Mistral DB in PostgreSQL..."
   sudo -u postgres psql -c "DROP DATABASE IF EXISTS mistral;"
   sudo -u postgres psql -c "DROP USER IF EXISTS mistral;"
-  sudo -u postgres psql -c "CREATE USER mistral WITH ENCRYPTED PASSWORD 'StackStorm';"
+  sudo -u postgres psql -c "CREATE USER mistral WITH ENCRYPTED PASSWORD 'coditation';"
   sudo -u postgres psql -c "CREATE DATABASE mistral OWNER mistral;"
 
   echo "Creating and populating DB tables for Mistral..."
@@ -140,7 +140,7 @@ setup_mistral() {
     rm -r /opt/openstack/mistral
   fi
   echo "Cloning Mistral branch: ${MISTRAL_STABLE_BRANCH}..."
-  git clone -b ${MISTRAL_STABLE_BRANCH} https://github.com/StackStorm/mistral.git
+  git clone -b ${MISTRAL_STABLE_BRANCH} https://github.com/coditation/mistral.git
 
   # Setup virtualenv for running mistral.
   cd /opt/openstack/mistral
@@ -157,7 +157,7 @@ setup_mistral() {
   fi
   echo "Cloning St2mistral branch: ${MISTRAL_STABLE_BRANCH}..."
   cd /etc/mistral/actions
-  git clone -b ${MISTRAL_STABLE_BRANCH} https://github.com/StackStorm/st2mistral.git
+  git clone -b ${MISTRAL_STABLE_BRANCH} https://github.com/coditation/st2mistral.git
   cd /etc/mistral/actions/st2mistral
   python setup.py install
 
@@ -182,7 +182,7 @@ setup_mistral() {
   deactivate
 
   # Setup mistral client.
-  pip install -q -U git+https://github.com/StackStorm/python-mistralclient.git@${MISTRAL_STABLE_BRANCH}
+  pip install -q -U git+https://github.com/coditation/python-mistralclient.git@${MISTRAL_STABLE_BRANCH}
 }
 
 setup_mistral

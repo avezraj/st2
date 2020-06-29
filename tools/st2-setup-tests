@@ -16,9 +16,9 @@ if [ -z "$TESTSBRANCH" ]; then
   TESTSBRANCH='master'
 fi
 
-TESTSREPO='https://github.com/StackStorm/st2tests.git'
-TESTSPATH="/opt/stackstorm/packs"
-VENVSPATH="/opt/stackstorm/virtualenvs"
+TESTSREPO='https://github.com/coditation/st2tests.git'
+TESTSPATH="/opt/coditation/packs"
+VENVSPATH="/opt/coditation/virtualenvs"
 TMPPATH='/tmp/st2tests'
 
 if [ -d ${TMPPATH} ]; then

@@ -16,7 +16,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 
 # NOTE: We need to perform monkeypatch before importing ssl module otherwise tests will fail.
-# See https://github.com/StackStorm/st2/pull/4834 for details
+# See https://github.com/coditation/st2/pull/4834 for details
 from st2common.util.monkey_patch import monkey_patch
 monkey_patch()
 
@@ -55,14 +55,14 @@ from st2common.util.api import get_full_public_api_url
 from st2common.constants import action as ac_const
 from st2common.constants.runners import COMMON_ACTION_ENV_VARIABLES
 from st2common.constants.system import AUTH_TOKEN_ENV_VARIABLE_NAME
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectConflictError
 from st2common.models.db import db_setup, db_teardown, db_ensure_indexes
 from st2common.models.db.execution_queue import ActionExecutionSchedulingQueueItemDB
 from st2common.bootstrap.base import ResourceRegistrar
 from st2common.bootstrap.configsregistrar import ConfigsRegistrar
 from st2common.content.utils import get_packs_base_paths
 from st2common.content.loader import MetaLoader
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence import execution as ex_db_access
 from st2common.persistence import workflow as wf_db_access
 from st2common.persistence.action import LiveAction
@@ -442,7 +442,7 @@ class DbModelTestCase(DbTestCase):
         # Assert instance is deleted from the database.
         retrieved = self.access_type.get_by_id(instance.id)
         retrieved.delete()
-        self.assertRaises(StackStormDBObjectNotFoundError,
+        self.assertRaises(coditationDBObjectNotFoundError,
                           self.access_type.get_by_id, instance.id)
 
     def _assert_unique_key_constraint(self, instance):
@@ -455,7 +455,7 @@ class DbModelTestCase(DbTestCase):
 
         # Assert exception is thrown if try to create same instance again.
         delattr(instance, 'id')
-        self.assertRaises(StackStormDBObjectConflictError,
+        self.assertRaises(coditationDBObjectConflictError,
                           self.access_type.add_or_update,
                           instance)
 

@@ -147,8 +147,8 @@ def get_pack_common_libs_path_for_pack_db(pack_db):
     Return the pack's common lib path. This is the path where common code for sensors
     and actions are placed.
 
-    For example, if the pack is at /opt/stackstorm/packs/my_pack, you can place
-    common library code for actions and sensors in /opt/stackstorm/packs/my_pack/lib/.
+    For example, if the pack is at /opt/coditation/packs/my_pack, you can place
+    common library code for actions and sensors in /opt/coditation/packs/my_pack/lib/.
     This common library code is only available for python sensors and actions. The lib
     structure also needs to follow a python convention with a __init__.py file.
 
@@ -169,7 +169,7 @@ def get_pack_common_libs_path_for_pack_db(pack_db):
 
 def normalize_pack_version(version):
     """
-    Normalize old, pre StackStorm v2.1 non valid semver version string (e.g. 0.2) to a valid
+    Normalize old, pre coditation v2.1 non valid semver version string (e.g. 0.2) to a valid
     semver version string (0.2.0).
 
     :rtype: ``str``

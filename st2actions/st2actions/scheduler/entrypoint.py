@@ -17,7 +17,7 @@ from __future__ import absolute_import
 from st2common import log as logging
 from st2common.util import date
 from st2common.constants import action as action_constants
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.models.db.liveaction import LiveActionDB
 from st2common.persistence.execution import ActionExecution
 from st2common.transport import consumers
@@ -58,7 +58,7 @@ class SchedulerEntrypoint(consumers.MessageHandler):
 
         try:
             liveaction_db = action_utils.get_liveaction_by_id(str(request.id))
-        except StackStormDBObjectNotFoundError:
+        except coditationDBObjectNotFoundError:
             LOG.exception('Failed to find liveaction %s in the database.', str(request.id))
             raise
 

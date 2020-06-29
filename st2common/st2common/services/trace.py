@@ -18,7 +18,7 @@ from mongoengine import ValidationError
 from st2common import log as logging
 from st2common.constants.triggers import ACTION_SENSOR_TRIGGER, NOTIFY_TRIGGER
 from st2common.constants.trace import TRACE_CONTEXT
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.exceptions.trace import UniqueTraceNotFoundException
 from st2common.models.api.trace import TraceContext
 from st2common.models.db.trace import TraceDB, TraceComponentDB
@@ -118,7 +118,7 @@ def get_trace(trace_context, ignore_trace_tag=False):
         except (ValidationError, ValueError):
             LOG.warning('Database lookup for Trace with id="%s" failed.',
                         trace_context.id_, exc_info=True)
-            raise StackStormDBObjectNotFoundError(
+            raise coditationDBObjectNotFoundError(
                 'Unable to find Trace with id="%s"' % trace_context.id_)
 
     if ignore_trace_tag:
@@ -173,7 +173,7 @@ def get_trace_db_by_live_action(liveaction):
             # be associated with a Trace.
             trace_db = get_trace_db_by_action_execution(action_execution_id=parent_execution_id)
             if not trace_db:
-                raise StackStormDBObjectNotFoundError('No trace found for execution %s' %
+                raise coditationDBObjectNotFoundError('No trace found for execution %s' %
                                                       parent_execution_id)
             return (created, trace_db)
     # 3. Check if the action_execution associated with liveaction leads to a trace_db

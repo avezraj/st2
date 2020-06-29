@@ -51,7 +51,7 @@ class TraceDB(stormbase.StormFoundationDB, stormbase.UIDFieldMixin):
     that represent an activity which begins with the introduction of a
     TriggerInstance or request of an ActionExecution and ends with the
     completion of an ActionExecution. Given the closed feedback look sort of
-    nature of StackStorm this implies a Trace can comprise of multiple
+    nature of coditation this implies a Trace can comprise of multiple
     TriggerInstances, Rules and ActionExecutions.
 
     :param trace_tag: A user specified reference to the trace.

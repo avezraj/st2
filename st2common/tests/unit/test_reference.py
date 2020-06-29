@@ -63,7 +63,7 @@ class ReferenceTest(DbTestCase):
             model.id = None
             reference.get_ref_from_model(model)
             self.assertTrue(False, 'Exception expected.')
-        except db.StackStormDBObjectMalformedError:
+        except db.coditationDBObjectMalformedError:
             self.assertTrue(True)
 
     def test_to_model_with_id(self):
@@ -80,7 +80,7 @@ class ReferenceTest(DbTestCase):
         try:
             reference.get_model_from_ref(Trigger, {})
             self.assertTrue(False, 'Exception expected.')
-        except db.StackStormDBObjectNotFoundError:
+        except db.coditationDBObjectNotFoundError:
             self.assertTrue(True)
 
     def test_to_model_unknown_id(self):
@@ -94,5 +94,5 @@ class ReferenceTest(DbTestCase):
         try:
             reference.get_model_from_ref(Trigger, {'name': 'unknown'})
             self.assertTrue(False, 'Exception expected.')
-        except db.StackStormDBObjectNotFoundError:
+        except db.coditationDBObjectNotFoundError:
             self.assertTrue(True)

@@ -23,7 +23,7 @@ import mock
 from oslo_config import cfg
 
 from st2common.constants import action as action_constants
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence.action import Action
 from st2common.persistence.executionstate import ActionExecutionState
 from st2common.persistence.liveaction import LiveAction
@@ -125,13 +125,13 @@ class ResultsTrackerTests(EventletTestCase, DbTestCase):
 
         # Ensure state objects are deleted.
         self.assertRaises(
-            StackStormDBObjectNotFoundError,
+            coditationDBObjectNotFoundError,
             ActionExecutionState.get_by_id,
             ResultsTrackerTests.states['state1.yaml'].id
         )
 
         self.assertRaises(
-            StackStormDBObjectNotFoundError,
+            coditationDBObjectNotFoundError,
             ActionExecutionState.get_by_id,
             ResultsTrackerTests.states['state2.yaml'].id
         )
@@ -347,13 +347,13 @@ class ResultsTrackerTests(EventletTestCase, DbTestCase):
 
         # Ensure state objects are deleted.
         self.assertRaises(
-            StackStormDBObjectNotFoundError,
+            coditationDBObjectNotFoundError,
             ActionExecutionState.get_by_id,
             ResultsTrackerTests.states['state1.yaml'].id
         )
 
         self.assertRaises(
-            StackStormDBObjectNotFoundError,
+            coditationDBObjectNotFoundError,
             ActionExecutionState.get_by_id,
             ResultsTrackerTests.states['state2.yaml'].id
         )

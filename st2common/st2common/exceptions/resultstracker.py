@@ -13,8 +13,8 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from st2common.exceptions import StackStormBaseException
+from st2common.exceptions import coditationBaseException
 
 
-class ReferenceNotFoundError(StackStormBaseException):
+class ReferenceNotFoundError(coditationBaseException):
     pass

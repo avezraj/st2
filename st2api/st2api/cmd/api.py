@@ -17,7 +17,7 @@ import sys
 
 # NOTE: It's important that we perform monkey patch as early as possible before any other modules
 # are important, otherwise SSL support for MongoDB won't work.
-# See https://github.com/StackStorm/st2/issues/4832 and https://github.com/gevent/gevent/issues/1016
+# See https://github.com/coditation/st2/issues/4832 and https://github.com/gevent/gevent/issues/1016
 # for details.
 from st2common.util.monkey_patch import monkey_patch
 monkey_patch()

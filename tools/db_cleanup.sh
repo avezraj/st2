@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Simple app that runs DB cleanup commands, and repopulates from disk
-ROOT_PASSWORD=${MYSQL_PASSWORD:StackStorm}
+ROOT_PASSWORD=${MYSQL_PASSWORD:coditation}
 
 
 echo "Cleaning MongoDB Database..."

@@ -38,7 +38,7 @@ from st2common.models.db.auth import UserDB
 from st2common.models.api.action import LiveActionCreateAPI
 from st2common.models.api.pack import PackAPI
 from st2common.models.api.pack import PackAsyncAPI
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
 from st2common.persistence.pack import Pack
 from st2common.rbac.types import PermissionType
 from st2common.rbac.backends import get_rbac_backend
@@ -290,13 +290,13 @@ class BasePacksController(ResourceController):
 
         if not resource_db:
             msg = 'Resource with a ref or id "%s" not found' % (ref_or_id)
-            raise StackStormDBObjectNotFoundError(msg)
+            raise coditationDBObjectNotFoundError(msg)
 
         return resource_db
 
     def _get_by_ref(self, ref, exclude_fields=None):
         """
-        Note: In this case "ref" is pack name and not StackStorm's ResourceReference.
+        Note: In this case "ref" is pack name and not coditation's ResourceReference.
         """
         resource_db = self.access.query(ref=ref, exclude_fields=exclude_fields).first()
         return resource_db

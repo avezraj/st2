@@ -70,7 +70,7 @@ def mock_wf_db_update_conflict(wf_ex_db, publish=True, dispatch_trigger=True, **
 
         if os.path.exists(temp_file_path):
             os.remove(temp_file_path)
-            raise db_exc.StackStormDBObjectWriteConflictError(wf_ex_db)
+            raise db_exc.coditationDBObjectWriteConflictError(wf_ex_db)
 
     return wf_db_access.WorkflowExecution._get_impl().update(wf_ex_db, **kwargs)
 

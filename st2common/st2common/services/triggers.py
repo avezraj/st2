@@ -20,8 +20,8 @@ from st2common import log as logging
 from st2common.constants.triggers import CRON_TIMER_TRIGGER_REF
 from st2common.exceptions.sensors import TriggerTypeRegistrationException
 from st2common.exceptions.triggers import TriggerDoesNotExistException
-from st2common.exceptions.db import StackStormDBObjectNotFoundError
-from st2common.exceptions.db import StackStormDBObjectConflictError
+from st2common.exceptions.db import coditationDBObjectNotFoundError
+from st2common.exceptions.db import coditationDBObjectConflictError
 from st2common.models.api.trigger import (TriggerAPI, TriggerTypeAPI)
 from st2common.models.system.common import ResourceReference
 from st2common.persistence.trigger import (Trigger, TriggerType)
@@ -91,7 +91,7 @@ def get_trigger_db_given_type_and_params(type=None, parameters=None):
             trigger_db = Trigger.query(type=type, parameters=None).first()
 
         return trigger_db
-    except StackStormDBObjectNotFoundError as e:
+    except coditationDBObjectNotFoundError as e:
         LOG.debug('Database lookup for type="%s" parameters="%s" resulted ' +
                   'in exception : %s.', type, parameters, e, exc_info=True)
         return None
@@ -143,7 +143,7 @@ def get_trigger_db_by_id(id):
     """
     try:
         return Trigger.get_by_id(id)
-    except StackStormDBObjectNotFoundError as e:
+    except coditationDBObjectNotFoundError as e:
         LOG.debug('Database lookup for id="%s" resulted in exception : %s.',
                   id, e, exc_info=True)
 
@@ -161,7 +161,7 @@ def get_trigger_db_by_uid(uid):
     """
     try:
         return Trigger.get_by_uid(uid)
-    except StackStormDBObjectNotFoundError as e:
+    except coditationDBObjectNotFoundError as e:
         LOG.debug('Database lookup for uid="%s" resulted in exception : %s.',
                   uid, e, exc_info=True)
 
@@ -179,7 +179,7 @@ def get_trigger_db_by_ref(ref):
     """
     try:
         return Trigger.get_by_ref(ref)
-    except StackStormDBObjectNotFoundError as e:
+    except coditationDBObjectNotFoundError as e:
         LOG.debug('Database lookup for ref="%s" resulted ' +
                   'in exception : %s.', ref, e, exc_info=True)
 
@@ -214,7 +214,7 @@ def get_trigger_type_db(ref):
     """
     try:
         return TriggerType.get_by_ref(ref)
-    except StackStormDBObjectNotFoundError as e:
+    except coditationDBObjectNotFoundError as e:
         LOG.debug('Database lookup for ref="%s" resulted ' +
                   'in exception : %s.', ref, e, exc_info=True)
 
@@ -426,7 +426,7 @@ def create_or_update_trigger_type_db(trigger_type, log_not_unique_error_as_debug
     try:
         trigger_type_db = TriggerType.add_or_update(trigger_type_api,
             log_not_unique_error_as_debug=log_not_unique_error_as_debug)
-    except StackStormDBObjectConflictError:
+    except coditationDBObjectConflictError:
         # Operation is idempotent and trigger could have already been created by
         # another process. Ignore object already exists because it simply means
         # there was a race and object is already in the database.

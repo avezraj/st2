@@ -123,12 +123,12 @@ class DistUtilsTestCase(unittest2.TestCase):
             'zake==0.2.2'
         ]
         expected_links = [
-            'git+https://github.com/Kami/logshipper.git@stackstorm_patched#egg=logshipper',
-            'git+https://github.com/StackStorm/orquesta.git@224c1a589a6007eb0598a62ee99d674e7836d369#egg=orquesta', # NOQA
-            'git+https://github.com/StackStorm/python-mistralclient.git#egg=python-mistralclient',
-            'git+https://github.com/StackStorm/st2-auth-backend-flat-file.git@master#egg=st2-auth-backend-flat-file', # NOQA
-            'git+https://github.com/Kami/logshipper.git@stackstorm_patched#egg=logshipper-editable',
-            'git+https://github.com/StackStorm/st2.git#egg=python_runner&subdirectory=contrib/runners/python_runner', # NOQA
+            'git+https://github.com/Kami/logshipper.git@coditation_patched#egg=logshipper',
+            'git+https://github.com/coditation/orquesta.git@224c1a589a6007eb0598a62ee99d674e7836d369#egg=orquesta', # NOQA
+            'git+https://github.com/coditation/python-mistralclient.git#egg=python-mistralclient',
+            'git+https://github.com/coditation/st2-auth-backend-flat-file.git@master#egg=st2-auth-backend-flat-file', # NOQA
+            'git+https://github.com/Kami/logshipper.git@coditation_patched#egg=logshipper-editable',
+            'git+https://github.com/coditation/st2.git#egg=python_runner&subdirectory=contrib/runners/python_runner', # NOQA
             'hg+https://hg.repo/some_pkg.git#egg=SomePackageHq',
             'svn+svn://svn.repo/some_pkg/trunk/@ma-branch#egg=SomePackageSvn'
         ]
